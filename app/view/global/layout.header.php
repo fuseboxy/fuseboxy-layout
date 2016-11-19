@@ -90,10 +90,8 @@
 			<?php if ( !empty($arguments['nav']) ) __renderGlobalNav($arguments['nav']); ?>
 		</ul>
 		<!-- right menu -->
-		<ul class="nav navbar-nav navbar-right">
+		<ul class="nav navbar-nav navbar-right" style="margin-right: 20px;">
 			<?php if ( !empty($arguments['navRight']) ) __renderGlobalNav($arguments['navRight']); ?>
-			<!-- placeholder for [navbar-fixed-top] bug -->
-			<li style="width: 20px;"></li>
 		</ul>
 	</nav>
 </header>
