@@ -1,4 +1,37 @@
-<?php
+<?php /*
+<fusedoc>
+	<io>
+		<in>
+			<structure name="$tabLayout">
+				<string name="style" comments="tab|pill" />
+				<string name="position" comments="left|right|top|bottom" />
+				<number name="navWidth" comments="1 ~ 12" />
+				<string name="header" optional="yes" />
+				<string name="footer" optional="yes" />
+				<array name="nav">
+					<structure name="+">
+						<string name="name" />
+						<string name="url" />
+						<structure name="button" comments="single button only">
+							<string name="~buttonName~" value="~buttonURL~" />
+						</structure>
+						<array name="menus">
+							<structure name="+">
+								<string name="name" />
+								<string name="url" />
+								<string name="navHeader" />
+								<string name="divider" comments="before|after" />
+							</structure>
+						</array>
+						<boolean name="active" />
+					</structure>
+				</array>
+			</structure>
+		</in>
+		<out />
+	</io>
+</fusedoc>
+*/
 // class combination for nav
 $tabNavClass = "nav nav-{$tabLayout['style']}s ";
 if ( !empty($tabLayout['justify']) ) {
@@ -36,7 +69,8 @@ if ( $tabLayout['style'] == 'tab' ) {
 							<?php foreach ( $t['button'] as $buttonName => $buttonURL ) : ?>
 								<button
 									class="btn btn-xs btn-default"
-								 	onclick="document.location.href='<?php echo $buttonURL; ?>';"
+									data-url="<?php echo $buttonURL; ?>"
+								 	onclick="document.location.href = $(this).attr('data-url');"
 								 	onmousedown="var parent = $(this).closest('a'); $(parent).attr('data-href', $(parent).attr('href')).removeAttr('href');"
 								 	onmouseup="var parent = $(this).closest('a'); window.setTimeout(function(){ $(parent).attr('href', $(parent).attr('data-href')).removeAttr('data-href'); }, 0);">
 									<?php echo $buttonName; ?>

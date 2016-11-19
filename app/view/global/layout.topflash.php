@@ -4,6 +4,7 @@
 		<in>
 			<string name="topFlash" scope="$arguments|$_SESSION" />
 			<structure name="topFlash" scope="$arguments|$_SESSION">
+				<string name="icon" optional="yes" />
 				<string name="type" optional="yes" default="warning" comments="success|info|warning|danger" />
 				<string name="title" optional="yes" />
 				<string name="message" />
