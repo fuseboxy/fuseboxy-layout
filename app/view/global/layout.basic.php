@@ -23,6 +23,6 @@
 	<script src="<?php echo $fusebox->config['baseUrl']; ?>js/main.js"></script>
 </head>
 <body data-controller="<?php echo $fusebox->controller; ?>" data-action="<?php echo $fusebox->action; ?>" data-ajax-error="modal">
-<?php echo $layout['content']; ?>
+<?php if ( isset($layout['content']) ) echo $layout['content']; ?>
 </body>
 </html>
