@@ -23,7 +23,7 @@ if ( $tabLayout['position'] != 'top' ) {
 			<?php include 'layout.title.php'; ?>
 			<?php include 'layout.breadcrumb.php'; ?>
 			<?php include 'layout.flash.php'; ?>
-			<div><?php echo $layout['content']; ?></div>
+			<div><?php if ( isset($layout['content']) ) echo $layout['content']; ?></div>
 			<?php include 'layout.pagination.php'; ?>
 		</div>
 	</div>
