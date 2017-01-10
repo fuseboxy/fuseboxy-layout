@@ -300,6 +300,24 @@ class TestFuseboxyLayout extends UnitTestCase {
 	}
 
 
+	function test__layout__modal() {
+		// check all sizes of modal
+		ob_start();
+		include dirname(dirname(__FILE__)).'/app/view/global/layout.modal.php';
+		$output = ob_get_clean();
+		$doc = phpQuery::newDocument($output);
+		$this->assertNoPattern('/PHP ERROR/i', $output);
+		$this->assertTrue( pq('#global-modal')->length );
+		$this->assertTrue( pq('.modal-sm')->length );
+		$this->assertTrue( pq('.modal-lg')->length );
+		$this->assertTrue( pq('.modal-max')->length );
+		$this->assertTrue( pq('#global-modal-iframe')->length );
+		$this->assertTrue( pq('#global-modal-title-iframe')->length );
+		$this->assertTrue( pq('iframe')->length == 2 );
+		$this->assertTrue( pq('.modal')->length == 6 );
+	}
+
+
 	function test__layout__pagination() {
 		// has pages
 		$arguments['pagination'] = array(
@@ -532,6 +550,30 @@ class TestFuseboxyLayout extends UnitTestCase {
 	}
 
 
+	function test__modal__body() {
+
+	}
+
+
+	function test__modal__footer() {
+
+	}
+
+
+	function test__modal__nav() {
+
+	}
+
+
+	function test__modal__title() {
+
+	}
+
+
+	function test__modal() {
+		
+	}
+/*
 	function test__modal__content() {
 		// always has content, footer, and close button
 		ob_start();
@@ -574,25 +616,7 @@ class TestFuseboxyLayout extends UnitTestCase {
 		$this->assertPattern('/this is body content/i', pq('.modal-body')->text());
 		unset($layout['modalBody']);
 	}
-
-
-	function test__modal() {
-		// check all sizes of modal
-		ob_start();
-		include dirname(dirname(__FILE__)).'/app/view/global/modal.php';
-		$output = ob_get_clean();
-		$doc = phpQuery::newDocument($output);
-		$this->assertNoPattern('/PHP ERROR/i', $output);
-		$this->assertTrue( pq('#global-modal')->length );
-		$this->assertTrue( pq('.modal-sm')->length );
-		$this->assertTrue( pq('.modal-lg')->length );
-		$this->assertTrue( pq('.modal-max')->length );
-		$this->assertTrue( pq('#global-modal-iframe')->length );
-		$this->assertTrue( pq('#global-modal-title-iframe')->length );
-		$this->assertTrue( pq('iframe')->length == 2 );
-		$this->assertTrue( pq('.modal')->length == 6 );
-	}
-
+*/
 
 	function test__tab__body() {
 		// essential settings

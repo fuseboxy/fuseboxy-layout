@@ -44,9 +44,10 @@ $arguments['navRight'] = array(
 
 
 // display altogether
+// ===> include modal in different sizes for [toggle=modal]
 ob_start();
 include 'layout.body.php';
-include 'modal.php';  // modal in different sizes
+include 'layout.modal.php';
 $layout['content'] = ob_get_clean();
 
 

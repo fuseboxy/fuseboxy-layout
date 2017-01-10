@@ -3,7 +3,7 @@
 // ===> not stand bootstrap 3 class
 // ===> please refer to {bootstrap.custom.css}
 if ( $tabLayout['style'] == 'tab' ) {
-	$tabLayoutClass = "tabbable  tabs-{$tabLayout['position']}";
+	$tabLayoutClass = "tabbable tabs-{$tabLayout['position']}";
 } else {
 	$tabLayoutClass = '';
 }
