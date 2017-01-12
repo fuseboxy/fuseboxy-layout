@@ -3,23 +3,23 @@ class TestFuseboxyLayout extends UnitTestCase {
 
 
 	function __construct() {
-		$GLOBALS['FUSEBOX_UNIT_TEST'] = true;
 		if ( !class_exists('Framework') ) {
-			include dirname(__FILE__).'/utility-layout/framework/1.0.1/fuseboxy.php';
+			include dirname(__FILE__).'/utility-layout/framework/1.0.2/fuseboxy.php';
 		}
 		if ( !class_exists('F') ) {
-			include dirname(__FILE__).'/utility-layout/framework/1.0.1/F.php';
+			include dirname(__FILE__).'/utility-layout/framework/1.0.2/F.php';
 		}
 		if ( !class_exists('phpQuery') ) {
 			include dirname(__FILE__).'/utility-layout/phpquery/0.9.5/phpQuery.php';
 		}
+		Framework::$mode = Framework::FUSEBOX_UNIT_TEST;
 	}
 
 
 	function test__layout__basic() {
 		global $fusebox;
 		Framework::createAPIObject();
-		Framework::loadDefaultConfig();
+		Framework::loadConfig();
 		Framework::setMyself();
 		// essential arguments
 		$fusebox->config['baseUrl'] = '';
@@ -529,7 +529,7 @@ class TestFuseboxyLayout extends UnitTestCase {
 	function test__layout() {
 		global $fusebox;
 		Framework::createAPIObject();
-		Framework::loadDefaultConfig();
+		Framework::loadConfig();
 		Framework::setMyself();
 		$fusebox->config['baseUrl'] = '';
 		$fusebox->controller = 'foo';
