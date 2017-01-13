@@ -21,10 +21,10 @@ if ( empty($fusebox->error) ) {
 } else {
 	$arguments['flash'] = array(
 		'type' => ( $fusebox->error == 'page not found' ) ? 'warning' : 'danger',
-		'message' => "<i class='fa fa-exclamation-circle'></i> {$fusebox->error}",
+		'message' => "<i class='fa fa-exclamation-circle'>&nbsp;</i> {$fusebox->error}",
 	);
-	if ( F::is('auth.*') ) {
-		include F::config('appPath').'view/auth/layout.php';
+	if ( F::is('account.*,auth.*') ) {
+		include F::config('appPath')."view/{$fusebox->controller}/layout.php";
 	} else {
 		include F::config('appPath').'view/global/layout.php';
 	}
