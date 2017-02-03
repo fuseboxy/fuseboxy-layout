@@ -25,21 +25,21 @@
 $layout['modalTitleSize'] = isset($layout['modalTitleSize']) ? $layout['modalTitleSize'] : 'h4';
 ?>
 <!-- modal title & header text -->
-<?php if ( isset($layout['modalTitle']) or isset($layout['modalHeader']) ) : ?>
-	<div class="modal-header" <?php if ( isset($layout['modalNav']) ) : ?>style="border: none; margin-bottom: 0; padding-bottom: 0;"<?php endif; ?>>
+<?php if ( !empty($layout['modalTitle']) or !empty($layout['modalHeader']) ) : ?>
+	<div class="modal-header" <?php if ( !empty($layout['modalNav']) ) : ?>style="border: none; margin-bottom: 0; padding-bottom: 0;"<?php endif; ?>>
 		<!-- close button -->
 		<button type="button" class="close" data-dismiss="modal">
 			<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 		</button>
 		<!-- title -->
-		<?php if ( isset($layout['modalTitle']) ) : ?>
+		<?php if ( !empty($layout['modalTitle']) ) : ?>
 			<<?php echo $layout['modalTitleSize']; ?> class="modal-title">
 				<?php echo $layout['modalTitle']; ?>
 			</<?php echo $layout['modalTitleSize']; ?>>
 		<?php endif; ?>
 		<!-- header -->
-		<?php if ( isset($layout['modalHeader']) ) : ?>
-			<?php if ( isset($layout['modalTitle']) ) echo '<br />'; ?>
+		<?php if ( !empty($layout['modalHeader']) ) : ?>
+			<?php if ( !empty($layout['modalTitle']) ) echo '<br />'; ?>
 			<div><?php echo $layout['modalHeader']; ?></div>
 		<?php endif; ?>
 	</div>
@@ -47,7 +47,7 @@ $layout['modalTitleSize'] = isset($layout['modalTitleSize']) ? $layout['modalTit
 
 
 <!-- modal nav -->
-<?php if ( isset($layout['modalNav']) ) : ?>
+<?php if ( !empty($layout['modalNav']) ) : ?>
 	<ul class="nav modal-header nav-tabs" style="margin-bottom: 0; padding-bottom: 0;">
 		<!-- nav -->
 		<?php foreach ( $layout['modalNav'] as $i => $m ) : ?>
@@ -64,7 +64,7 @@ $layout['modalTitleSize'] = isset($layout['modalTitleSize']) ? $layout['modalTit
 				><?php if ( isset($m['name']) ) echo $m['name']; ?></a></li>
 		<?php endforeach; ?>
 		<!-- close button for nav (when necessary) -->
-		<?php if ( !isset($layout['modalTitle']) and !isset($layout['modalHeader']) ) : ?>
+		<?php if ( empty($layout['modalTitle']) and empty($layout['modalHeader']) ) : ?>
 			<li class="close pull-right" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></li>
 		<?php endif; ?>
 	</ul>
