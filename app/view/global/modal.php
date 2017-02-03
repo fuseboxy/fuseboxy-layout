@@ -25,6 +25,4 @@ $layout['modalID'] = isset($layout['modalID']) ? $layout['modalID'] : ('modal-'.
 	include 'modal.header.php';
 	include 'modal.body.php';
 	include 'modal.footer.php';
-	// avoid showing in other layout
-	if ( isset($arguments['flash']) ) unset($arguments['flash']);
 ?></div>
