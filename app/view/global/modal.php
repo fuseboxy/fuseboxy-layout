@@ -7,8 +7,10 @@
 		<in>
 			<structure name="$layout">
 				<string name="modalID" optional="yes" />
-				<string name="modalTitle" optional="yes" comments="mutual exclusive to nav" />
-				<array  name="modalNav" optional="yes" comments="mutual exclusive to title" />
+				<string name="modalTitle" optional="yes" />
+				<string name="modalTitleSize" optional="yes" />
+				<string name="modalHeader" optional="yes" />
+				<array  name="modalNav" optional="yes" />
 				<string name="modalBody" optional="yes" />
 				<string name="modalFooter" optional="yes" />
 			</structure>
@@ -20,8 +22,7 @@
 $layout['modalID'] = isset($layout['modalID']) ? $layout['modalID'] : ('modal-'.uniqid());
 ?>
 <div id="<?php echo $layout['modalID']; ?>" class="modal-content"><?php
-	if ( isset($layout['modalTitle']) ) include 'modal.title.php';
-	if ( isset($layout['modalNav']) ) include 'modal.nav.php';
+	include 'modal.header.php';
 	include 'modal.body.php';
 	include 'modal.footer.php';
 	// avoid showing in other layout
