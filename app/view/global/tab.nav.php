@@ -21,9 +21,11 @@
 								<string name="url" />
 								<string name="navHeader" />
 								<string name="divider" comments="before|after" />
+								<string name="className" />
 							</structure>
 						</array>
 						<boolean name="active" />
+						<string name="className" />
 					</structure>
 				</array>
 			</structure>
@@ -60,7 +62,7 @@ if ( $tabLayout['style'] == 'tab' ) {
 	<!-- nav : tabs -->
 	<?php if ( !empty($tabLayout['nav']) ) : ?>
 		<?php foreach ( $tabLayout['nav'] as $t ) : ?>
-			<li class="<?php if ( !empty($t['active']) ) echo 'active'; ?> <?php if ( !empty($t['menus']) ) echo 'dropdown'; ?>">
+			<li class="<?php if ( !empty($t['active']) ) echo 'active'; ?> <?php if ( !empty($t['menus']) ) echo 'dropdown'; ?> <?php if ( isset($t['className']) ) echo $t['className']; ?>">
 				<!-- show drop-down then url -->
 				<a <?php if ( !empty($t['menus']) ) : ?>class="dropdown-toggle" data-toggle="dropdown" href="#"<?php elseif ( !empty($t['url']) ) : ?>href="<?php echo $t['url']; ?>"<?php endif; ?>>
 					<!-- buttons -->
@@ -91,21 +93,21 @@ if ( $tabLayout['style'] == 'tab' ) {
 						<?php foreach ( $t['menus'] as $m ) : ?>
 							<!-- divider -->
 							<?php if ( !empty($m['divider']) and stripos($m['divider'], 'before') !== false ) : ?>
-								<li class="divider"></i>
+								<li class="divider <?php if ( !empty($m['className']) ) echo $m['className']; ?>"></i>
 							<?php endif; ?>
 							<!-- header -->
 							<?php if ( !empty($m['navHeader']) ) : ?>
-								<li class="dropdown-header"><?php echo $m['navHeader']; ?></li>
+								<li class="dropdown-header <?php if ( !empty($m['className']) ) echo $m['className']; ?>"><?php echo $m['navHeader']; ?></li>
 							<?php endif; ?>
 							<!-- menu item -->
 							<?php if ( !empty($m['name']) ) : ?>
-								<li class="<?php if ( !empty($m['active']) ) echo 'active'; ?>">
+								<li class="<?php if ( !empty($m['active']) ) echo 'active'; ?> <?php if ( !empty($m['className']) ) echo $m['className']; ?>">
 									<a <?php if ( !empty($m['url']) ) : ?>href="<?php echo $m['url']; ?>"<?php endif; ?> <?php if ( !empty($m['newWindow']) ) : ?>target="_blank"<?php endif; ?>><?php echo $m['name']; ?></a>
 								</li>
 							<?php endif; ?>
 							<!-- divider -->
 							<?php if ( !empty($m['divider']) and stripos($m['divider'], 'after') !== false ) : ?>
-								<li class="divider"></i>
+								<li class="divider <?php if ( !empty($m['className']) ) echo $m['className']; ?>"></i>
 							<?php endif; ?>
 						<?php endforeach; ?>
 					</ul>
