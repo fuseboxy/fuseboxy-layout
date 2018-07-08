@@ -12,6 +12,7 @@
 					<structure name="+">
 						<string name="name" />
 						<string name="url" />
+						<string name="navHeader" />
 						<structure name="button" comments="single button only">
 							<string name="~buttonName~" value="~buttonURL~" />
 						</structure>
@@ -62,6 +63,9 @@ if ( $tabLayout['style'] == 'tab' ) {
 	<!-- nav : tabs -->
 	<?php if ( !empty($tabLayout['nav']) ) : ?>
 		<?php foreach ( $tabLayout['nav'] as $t ) : ?>
+			<?php if ( !empty($t['navHeader']) ) : ?>
+				<li class="nav-header"><h6 class="text-muted"><?php echo $t['navHeader']; ?></h6></li>
+			<?php endif; ?>
 			<li class="<?php if ( !empty($t['active']) ) echo 'active'; ?> <?php if ( !empty($t['menus']) ) echo 'dropdown'; ?> <?php if ( isset($t['className']) ) echo $t['className']; ?>">
 				<!-- show drop-down then url -->
 				<a <?php if ( !empty($t['menus']) ) : ?>class="dropdown-toggle" data-toggle="dropdown" href="#"<?php elseif ( !empty($t['url']) ) : ?>href="<?php echo $t['url']; ?>"<?php endif; ?>>
