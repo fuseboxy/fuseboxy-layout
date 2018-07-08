@@ -62,17 +62,20 @@ if ( $tabLayout['style'] == 'tab' ) {
 	<?php endif; ?>
 	<!-- nav : tabs -->
 	<?php if ( !empty($tabLayout['nav']) ) : ?>
-		<?php foreach ( $tabLayout['nav'] as $t ) : ?>
-			<?php if ( !empty($t['navHeader']) ) : ?>
-				<li class="nav-header"><h6 class="text-muted"><?php echo $t['navHeader']; ?></h6></li>
+		<?php foreach ( $tabLayout['nav'] as $i => $tab ) : ?>
+			<?php if ( !empty($tab['navHeader']) ) : ?>
+				<li class="nav-header">
+					<?php if ( $i != 0 ) : ?><br /><?php endif; ?>
+					<h6 class="text-muted"><?php echo $tab['navHeader']; ?></h6>
+				</li>
 			<?php endif; ?>
-			<li class="<?php if ( !empty($t['active']) ) echo 'active'; ?> <?php if ( !empty($t['menus']) ) echo 'dropdown'; ?> <?php if ( isset($t['className']) ) echo $t['className']; ?>">
+			<li class="<?php if ( !empty($tab['active']) ) echo 'active'; ?> <?php if ( !empty($tab['menus']) ) echo 'dropdown'; ?> <?php if ( isset($tab['className']) ) echo $tab['className']; ?>">
 				<!-- show drop-down then url -->
-				<a <?php if ( !empty($t['menus']) ) : ?>class="dropdown-toggle" data-toggle="dropdown" href="#"<?php elseif ( !empty($t['url']) ) : ?>href="<?php echo $t['url']; ?>"<?php endif; ?>>
+				<a <?php if ( !empty($tab['menus']) ) : ?>class="dropdown-toggle" data-toggle="dropdown" href="#"<?php elseif ( !empty($tab['url']) ) : ?>href="<?php echo $tab['url']; ?>"<?php endif; ?>>
 					<!-- buttons -->
-					<?php if ( isset($t['button']) ) : ?>
+					<?php if ( isset($tab['button']) ) : ?>
 						<div class="pull-right" style="margin-left: 1em;">
-							<?php foreach ( $t['button'] as $buttonName => $buttonURL ) : ?>
+							<?php foreach ( $tab['button'] as $buttonName => $buttonURL ) : ?>
 								<button
 									class="btn btn-xs btn-default"
 									data-url="<?php echo $buttonURL; ?>"
@@ -85,16 +88,16 @@ if ( $tabLayout['style'] == 'tab' ) {
 						</div>
 					<?php endif; ?>
 					<!-- item name -->
-					<?php echo $t['name']; ?>
+					<?php echo $tab['name']; ?>
 					<!-- arrow for dropdown -->
-					<?php if ( !empty($t['menus']) ) : ?>
+					<?php if ( !empty($tab['menus']) ) : ?>
 						<span class="caret"></span>
 					<?php endif; ?>
 				</a>
 				<!-- dropdown menu -->
-				<?php if ( !empty($t['menus']) ) : ?>
+				<?php if ( !empty($tab['menus']) ) : ?>
 					<ul class="dropdown-menu">
-						<?php foreach ( $t['menus'] as $m ) : ?>
+						<?php foreach ( $tab['menus'] as $m ) : ?>
 							<!-- divider -->
 							<?php if ( !empty($m['divider']) and stripos($m['divider'], 'before') !== false ) : ?>
 								<li class="divider <?php if ( !empty($m['className']) ) echo $m['className']; ?>"></i>
