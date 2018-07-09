@@ -41,7 +41,7 @@
 			<?php endif; ?>
 			<!-- submenu -->
 			<?php if ( isset($m['menus']) ) : ?>
-				<li class="<?php echo ( $level == 1 ) ? 'dropdown' : 'dropdown-menu'; ?> <?php if ( !empty($m['className']) ) echo $m['className']; ?> <?php if ( !empty($m['active']) ) echo 'active'; ?>">
+				<li class="<?php echo ( $level == 1 ) ? 'dropdown' : 'dropdown-submenu'; ?> <?php if ( !empty($m['className']) ) echo $m['className']; ?> <?php if ( !empty($m['active']) ) echo 'active'; ?>">
 					<?php if ( $level == 1 ) : ?>
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $m['name']; ?> <b class="caret"></b></a>
 					<?php else : ?>
