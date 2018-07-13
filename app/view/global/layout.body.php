@@ -25,6 +25,7 @@ if ( empty($layout['width']) or $layout['width'] == 'normal' ) {
 <div id="global-layout">
 	<!-- header -->
 	<?php include 'layout.topflash.php'; ?>
+	<?php include 'layout.header.nav.php'; ?>
 	<?php include 'layout.header.php'; ?>
 	<!-- content -->
 	<div id="content" class="<?php echo $contentClass; ?>" style="<?php echo $contentStyle; ?>">
