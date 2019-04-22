@@ -13,6 +13,7 @@
 						<string name="name" />
 						<string name="url" />
 						<string name="navHeader" />
+						<string name="remark" />
 						<structure name="button" comments="single button only">
 							<string name="~buttonName~" value="~buttonURL~" />
 						</structure>
@@ -21,6 +22,7 @@
 								<string name="name" />
 								<string name="url" />
 								<string name="navHeader" />
+								<string name="remark" />
 								<string name="divider" comments="before|after" />
 								<string name="className" />
 							</structure>
@@ -87,8 +89,10 @@ if ( $tabLayout['style'] == 'tab' ) {
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>
-					<!-- item name -->
-					<?php echo $tab['name']; ?>
+					<!-- tab name -->
+					<span><?php echo $tab['name']; ?></span>
+					<!-- tab remark -->
+					<?php if ( !empty($tab['remark']) ) : ?>&nbsp;<em class='text-muted'>(<?php echo $tab['remark']; ?>)</em><?php endif; ?>
 					<!-- arrow for dropdown -->
 					<?php if ( !empty($tab['menus']) ) : ?>
 						<span class="caret"></span>
@@ -110,6 +114,7 @@ if ( $tabLayout['style'] == 'tab' ) {
 							<?php if ( !empty($m['name']) ) : ?>
 								<li class="<?php if ( !empty($m['active']) ) echo 'active'; ?> <?php if ( !empty($m['className']) ) echo $m['className']; ?>">
 									<a <?php if ( !empty($m['url']) ) : ?>href="<?php echo $m['url']; ?>"<?php endif; ?> <?php if ( !empty($m['newWindow']) ) : ?>target="_blank"<?php endif; ?>><?php echo $m['name']; ?></a>
+									<?php if ( !empty($m['remark']) ) : ?>&nbsp;<em class='text-muted'>(<?php echo $m['remark']; ?>)</em><?php endif; ?>
 								</li>
 							<?php endif; ?>
 							<!-- divider -->
