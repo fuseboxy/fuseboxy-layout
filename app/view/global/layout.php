@@ -1,18 +1,18 @@
 <?php
-$layout['metaTitle'] = 'HTML TITLE';
-$layout['brand'] = 'BRAND NAME';
+$layout['metaTitle'] = '';  // html title
+$layout['brand'] = ''; // brand name
 
 
 // left menu
-$arguments['nav'] = array(
+/*$arguments['nav'] = array(
 	array('name' => 'Home', 'url' => '#', 'active' => true),
 	array('name' => 'About Us', 'url' => '#'),
 	array('name' => 'Contact', 'url' => '#'),
-);
+);*/
 
 
 // right menu
-$arguments['navRight'] = array(
+/*$arguments['navRight'] = array(
 	// settings
 	array(
 		'name' => '<i class="fa fa-cog"></i>',
@@ -40,7 +40,7 @@ $arguments['navRight'] = array(
 			array('name' => '<i class="fa fa-power-off"></i> Sign Out', 'url' => '#', 'divider' => 'before'),
 		),
 	),
-);
+);*/
 
 
 // display altogether
