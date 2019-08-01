@@ -16,30 +16,28 @@
 	</io>
 </fusedoc>
 */ ?>
-<header id="header" class="navbar navbar-default navbar-fixed-top" <?php if ( isset($arguments['topFlash']) ) : ?>style="top: 34px;"<?php endif; ?>>
+<header id="header" class="navbar navbar-expand-sm navbar-light bg-light">
 	<!-- logo -->
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
-			<i class="fa fa-bars"></i>
-		</button>
-		<?php if ( !empty($layout['brand']) ) : ?>
-			<?php if ( isset($xfa['brand']) ) : ?>
-				<a href="<?php echo F::url($xfa['brand']); ?>" class="navbar-brand"><?php echo $layout['brand']; ?></a>
-			<?php else : ?>
-				<span class="navbar-brand"><?php echo $layout['brand']; ?></span>
-			<?php endif; ?>
+	<?php if ( !empty($layout['brand']) ) : ?>
+		<?php if ( isset($xfa['brand']) ) : ?>
+			<a href="<?php echo F::url($xfa['brand']); ?>" class="navbar-brand"><?php echo $layout['brand']; ?></a>
+		<?php else : ?>
+			<span class="navbar-brand"><?php echo $layout['brand']; ?></span>
 		<?php endif; ?>
-	</div>
+	<?php endif; ?>
+	<!-- expand button -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 	<!-- menu -->
 	<nav id="nav" class="navbar-collapse collapse">
 		<!-- left menu -->
 		<?php if ( !empty($arguments['nav']) ) : ?>
-			<ul class="nav navbar-nav"><?php layoutHeaderNav($arguments['nav']); ?></ul>
+			<div class="navbar-nav"><?php layoutHeaderNav($arguments['nav']); ?></ul>
 		<?php endif; ?>
 		<!-- right menu -->
 		<?php if ( !empty($arguments['navRight']) ) : ?>
-			<ul class="nav navbar-nav navbar-right" style="margin-right: 20px;"><?php layoutHeaderNav($arguments['navRight']); ?></ul>
+			<ul class="navbar-nav navbar-right" style="margin-right: 20px;"><?php layoutHeaderNav($arguments['navRight']); ?></ul>
 		<?php endif; ?>
 	</nav>
 </header>
-<div id="header-placeholder" class="navbar">&nbsp;</div>
