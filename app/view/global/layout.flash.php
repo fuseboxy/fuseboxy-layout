@@ -4,7 +4,7 @@
 		<in>
 			<string name="flash" scope="$arguments|$_SESSION" />
 			<structure name="flash" scope="$arguments|$_SESSION">
-				<string name="type" optional="yes" default="warning" comments="success|info|warning|danger" />
+				<string name="type" optional="yes" default="primary" comments="primary|secondary|success|info|warning|danger|light|dark" />
 				<string name="icon" optional="yes" />
 				<string name="title" optional="yes" />
 				<string name="message" />
@@ -25,7 +25,7 @@ if ( isset($arguments['flash']) ) {
 		$arguments['flash'] = array('message' => $arguments['flash']);
 	}
 	if ( empty($arguments['flash']['type']) ) {
-		$arguments['flash']['type'] = 'warning';
+		$arguments['flash']['type'] = 'primary';
 	}
 }
 ?>

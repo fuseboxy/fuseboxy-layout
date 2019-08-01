@@ -5,7 +5,7 @@
 			<string name="topFlash" scope="$arguments|$_SESSION" />
 			<structure name="topFlash" scope="$arguments|$_SESSION">
 				<string name="icon" optional="yes" />
-				<string name="type" optional="yes" default="warning" comments="success|info|warning|danger" />
+				<string name="type" optional="yes" default="primary" comments="primary|secondary|success|info|warning|danger|light|dark" />
 				<string name="title" optional="yes" />
 				<string name="message" />
 			</structure>
@@ -25,23 +25,20 @@ if ( isset($arguments['topFlash']) ) {
 		$arguments['topFlash'] = array('message' => $arguments['topFlash']);
 	}
 	if ( empty($arguments['topFlash']['type']) ) {
-		$arguments['topFlash']['type'] = 'warning';
+		$arguments['topFlash']['type'] = 'primary';
 	}
 }
 ?>
 <?php if ( isset($arguments['topFlash']) ) : ?>
-	<div
-		id="top-flash"
-		class="text-center btn btn-<?php echo $arguments['topFlash']['type']; ?>"
-		style="border-radius: 0; margin-bottom: 0; position: fixed; top: 0; width: 100%; z-index: 1030;"
-	>
-		<?php if ( !empty($arguments['topFlash']['icon']) ) : ?>
-			<i class="<?php echo $arguments['topFlash']['icon']; ?>"></i>
-		<?php endif; ?>
-		<?php if ( !empty($arguments['topFlash']['title']) ) : ?>
-			<strong><?php echo $arguments['topFlash']['title']; ?></strong>
-		<?php endif; ?>
-		<?php echo $arguments['topFlash']['message']; ?>
+	<div id="top-flash" class="navbar-dark bg-<?php echo $arguments['topFlash']['type']; ?>">
+		<div class="container py-2 text-center <?php echo ( $arguments['topFlash']['type'] == 'light' ) ? 'text-muted' : 'text-white'; ?>">
+			<?php if ( !empty($arguments['topFlash']['icon']) ) : ?>
+				<i class="<?php echo $arguments['topFlash']['icon']; ?>"></i>
+			<?php endif; ?>
+			<?php if ( !empty($arguments['topFlash']['title']) ) : ?>
+				<strong><?php echo $arguments['topFlash']['title']; ?></strong>
+			<?php endif; ?>
+			<?php echo $arguments['topFlash']['message']; ?>
+		</div>
 	</div>
-	<div id="top-flash-placeholder" class="btn btn-block">&nbsp;</div>
 <?php endif; ?>
