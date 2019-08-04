@@ -4,10 +4,10 @@ class TestFuseboxyLayout extends UnitTestCase {
 
 	function __construct() {
 		if ( !class_exists('Framework') ) {
-			include dirname(__FILE__).'/utility-layout/framework/1.0.2/fuseboxy.php';
+			include dirname(__FILE__).'/utility-layout/framework/1.0.4/fuseboxy.php';
 		}
 		if ( !class_exists('F') ) {
-			include dirname(__FILE__).'/utility-layout/framework/1.0.2/F.php';
+			include dirname(__FILE__).'/utility-layout/framework/1.0.4/F.php';
 		}
 		if ( !class_exists('phpQuery') ) {
 			include dirname(__FILE__).'/utility-layout/phpquery/0.9.5/phpQuery.php';
