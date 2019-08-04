@@ -57,6 +57,49 @@ if ( $tabLayout['style'] == 'tab' ) {
 ?>
 
 
+<?php /*
+
+<ul class="nav nav-pills nav-justified">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+
+*/ ?>
+
+
 <ul class="<?php echo $tabNavClass; ?>" style="<?php echo $tabNavStyle; ?>">
 	<!-- nav : header -->
 	<?php if ( !empty($tabLayout['header']) ) : ?>
@@ -71,9 +114,31 @@ if ( $tabLayout['style'] == 'tab' ) {
 					<h6 class="text-muted"><?php echo $tab['navHeader']; ?></h6>
 				</li>
 			<?php endif; ?>
-			<li class="<?php if ( !empty($tab['active']) ) echo 'active'; ?> <?php if ( !empty($tab['menus']) ) echo 'dropdown'; ?> <?php if ( isset($tab['className']) ) echo $tab['className']; ?>">
+			<!-- menu item -->
+			<?php
+				$itemClass = array('nav-item');
+				if ( !empty($tab['active'])   ) $itemClass[] = 'active';
+				if ( !empty($tab['menus'])    ) $itemClass[] = 'dropdown';
+				if ( isset($tab['className']) ) $itemClass[] = $tab['className'];
+			?>
+			<li class="<?php echo implode(' ', $itemClass); ?>">
 				<!-- show drop-down then url -->
-				<a <?php if ( !empty($tab['menus']) ) : ?>class="dropdown-toggle" data-toggle="dropdown" href="#"<?php elseif ( !empty($tab['url']) ) : ?>href="<?php echo $tab['url']; ?>"<?php endif; ?>>
+				<?php
+					$linkClass = array('nav-link');
+					if ( !empty($tab['menus']) ) $linkClass = 'dropdown-toggle';
+				?>
+				<a 
+					class="<?php echo implode(' ', $linkClass); ?>"
+					<?php if ( !empty($tab['menus']) ) : ?>
+						href="#"
+						data-toggle="dropdown"
+						role="button"
+						aria-haspopup="true"
+						aria-expanded="false"
+					<?php elseif ( !empty($tab['url']) ) : ?>
+						href="<?php echo $tab['url']; ?>"
+					<?php endif; ?>
+				>
 					<!-- buttons -->
 					<?php if ( isset($tab['button']) ) : ?>
 						<div class="pull-right" style="margin-left: 1em;">
@@ -110,9 +175,9 @@ if ( $tabLayout['style'] == 'tab' ) {
 							<?php if ( !empty($m['navHeader']) ) : ?>
 								<li class="dropdown-header <?php if ( !empty($m['className']) ) echo $m['className']; ?>"><?php echo $m['navHeader']; ?></li>
 							<?php endif; ?>
-							<!-- menu item -->
+							<!-- item -->
 							<?php if ( !empty($m['name']) ) : ?>
-								<li class="<?php if ( !empty($m['active']) ) echo 'active'; ?> <?php if ( !empty($m['className']) ) echo $m['className']; ?>">
+								<li class="dropdown-item <?php if ( !empty($m['active']) ) echo 'active'; ?> <?php if ( !empty($m['className']) ) echo $m['className']; ?>">
 									<a <?php if ( !empty($m['url']) ) : ?>href="<?php echo $m['url']; ?>"<?php endif; ?> <?php if ( !empty($m['newWindow']) ) : ?>target="_blank"<?php endif; ?>><?php echo $m['name']; ?></a>
 									<?php if ( !empty($m['remark']) ) : ?>&nbsp;<em class='text-muted'>(<?php echo $m['remark']; ?>)</em><?php endif; ?>
 								</li>

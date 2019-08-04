@@ -52,6 +52,10 @@ $tabLayout['position'] = isset($tabLayout['position']) ? $tabLayout['position'] 
 $tabLayout['navWidth'] = isset($tabLayout['navWidth']) ? $tabLayout['navWidth'] : 2;
 
 
+// fix config typo
+if ( substr($tabLayout['style'], 0, -1) == 's' ) $tabLayout['style'] = rtrim($tabLayout['style'], 's');
+
+
 // display
 include 'tab.body.php';
 
