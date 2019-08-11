@@ -7,27 +7,33 @@
 		<in>
 			<string name="content" scope="$layout" />
 			<structure name="$tabLayout">
-				<string name="style" comments="tab|pill" default="tab" />
+				<string name="style" comments="tabs|pills" default="tabs" />
 				<string name="position" comments="left|right|top" default="left" />
+				<boolean name="justify" optional="yes" default="false" />
 				<string name="header" optional="yes" />
 				<string name="footer" optional="yes" />
 				<array name="nav">
 					<structure name="+">
 						<string name="name" />
-						<string name="url" optional="yes" />
+						<string name="url" optinonal="yes" />
 						<boolean name="active" optional="yes" />
-						<structure name="button" optional="yes">
-							<string name="~button name~" comments="url" />
+						<boolean name="disabled" optional="yes" />
+						<string name="remark" optinonal="yes" />
+						<string name="class" optional="yes" />
+						<string name="style" optional="yes" />
+						<string name="linkClass" optional="yes" />
+						<string name="linkStyle" optional="yes" />
+						<structure name="button" optinonal="yes" comments="single button only">
+							<string name="~buttonName~" value="~buttonURL~" />
 						</structure>
-						<array name="menus">
+						<array name="menus" optinonal="yes">
 							<structure name="+">
-								<string name="name" optional="yes" />
-								<string name="url" optional="yes" />
-								<string name="navHeader" optional="yes" />
-								<list name="divider" optional="yes" delim=",">
-									<string name="before|after" />
-								</list>
-								<boolean name="active" />
+								<string name="name" />
+								<string name="url" />
+								<string name="navHeader" />
+								<string name="remark" />
+								<string name="divider" comments="before|after" />
+								<string name="className" />
 							</structure>
 						</array>
 					</structure>
@@ -35,33 +41,36 @@
 				<number name="navWidth" optional="yes" default="2" comments="12-base grid layout" />
 			</structure>
 			<!-- show below elements in tab-layout, then unset them to avoid showing in global layout again -->
-			<string name="title" scope="$layout" optional="yes" />
+			<string_or_array name="title" scope="$layout" optional="yes" />
 			<array name="breadcrumb" scope="$arguments" optional="yes" />
 			<string name="flash" scope="$arguments" optional="yes" />
 			<array name="pagination" scope="$arguments" optional="yes" />
 		</in>
-		<out />
+		<out>
+			<structure name="$tabLayout">
+				<string name="orientation" comments="vertical|horizontal" />
+			</structure>
+		</out>
 	</io>
 </fusedoc>
 */
-
 // layout config default
 $tabLayout = isset($tabLayout) ? $tabLayout : array();
-$tabLayout['style'] = isset($tabLayout['style']) ? $tabLayout['style'] : 'tab';
+$tabLayout['style'] = isset($tabLayout['style']) ? $tabLayout['style'] : 'tabs';
 $tabLayout['position'] = isset($tabLayout['position']) ? $tabLayout['position'] : 'left';
+$tabLayout['justify'] = isset($tabLayout['justify']) ? $tabLayout['justify'] : false;
 $tabLayout['navWidth'] = isset($tabLayout['navWidth']) ? $tabLayout['navWidth'] : 2;
-
-
-// fix config typo
-if ( substr($tabLayout['style'], 0, -1) == 's' ) $tabLayout['style'] = rtrim($tabLayout['style'], 's');
-
+// adjust config
+if ( substr($tabLayout['style'], -1) != 's' ) $tabLayout['style'] .= 's';
+$tabLayout['orientation'] = in_array($tabLayout['position'], array('left','right')) ? 'vertical' : 'horizontal';
 
 // display
 include 'tab.body.php';
 
-
 // clear layout items to avoid showing in global layout again
-if ( isset($layout['title']) ) unset($layout['title']);
+if ( isset($layout['title'])         ) unset($layout['title']);
 if ( isset($arguments['breadcrumb']) ) unset($arguments['breadcrumb']);
-if ( isset($arguments['flash']) ) unset($arguments['flash']);
+if ( isset($arguments['flash'])      ) unset($arguments['flash']);
 if ( isset($arguments['pagination']) ) unset($arguments['pagination']);
+
+
