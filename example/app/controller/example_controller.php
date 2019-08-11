@@ -2,6 +2,13 @@
 switch ($fusebox->action) :
 
 	case 'index':
+		F::redirect('example.left');
+		break;
+
+	case 'left':
+	case 'right':
+	case 'top':
+	case 'bottom':
 		ob_start();
 		include F::config('appPath').'view/example/index.php';
 		$layout['content'] = ob_get_clean();
@@ -14,8 +21,7 @@ switch ($fusebox->action) :
 			'Level #2',
 		);
 		// title
-		$layout['title'] = 'This is title';
-		$layout['subTitle'] = 'This is sub-title';
+		$layout['title'] = array('This is title', 'This is sub-title', 'This is sub-sub-title');
 		// layout
 		$layout['width'] = 'full';
 		include F::config('appPath').'view/example/layout.php';
