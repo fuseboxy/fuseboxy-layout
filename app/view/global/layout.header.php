@@ -28,6 +28,7 @@
 	<!-- menu -->
 	<nav id="nav" class="navbar-collapse collapse">
 		<?php if ( !empty($arguments['nav']) ) : ?>
+			<?php include 'layout.header.nav.php'; ?>
 			<ul class="navbar-nav"><?php layoutHeaderNav($arguments['nav']); ?></ul>
 		<?php endif; ?>
 		<?php if ( !empty($arguments['navRight']) ) : ?>
