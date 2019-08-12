@@ -28,7 +28,7 @@ if ( empty($layout['width']) or $layout['width'] == 'normal' ) {
 	<?php include 'layout.header.nav.php'; ?>
 	<?php include 'layout.header.php'; ?>
 	<!-- content -->
-	<div id="content" class="<?php echo $contentClass; ?>" style="<?php echo $contentStyle; ?>">
+	<div id="content" class="<?php echo $contentClass; ?> p-4" style="<?php echo $contentStyle; ?>">
 		<?php include 'layout.flash.php'; ?>
 		<?php include 'layout.title.php'; ?>
 		<?php include 'layout.breadcrumb.php'; ?>
