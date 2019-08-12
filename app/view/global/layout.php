@@ -32,7 +32,7 @@ $layout['brand'] = ''; // brand name
 	),
 	// logout
 	array(
-		'name' => "<img src='//ssl.gstatic.com/accounts/ui/avatar_2x.png' class='img-rounded' style='height: 32px; width: 32px; margin: -10px 0;' />",
+		'name' => "<img src='//ssl.gstatic.com/accounts/ui/avatar_2x.png' class='rounded' style='height: 32px; width: 32px; margin: -10px 0;' />",
 		'menus' => array(
 			array('navHeader' => '<strong>{USERNAME}</strong>', 'divider' => 'after'),
 			array('name' => 'Update Profile', 'url' => '#'),
