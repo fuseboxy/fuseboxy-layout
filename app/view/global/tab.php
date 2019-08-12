@@ -9,23 +9,29 @@
 			<structure name="$tabLayout">
 				<string name="style" comments="tabs|pills" default="tabs" />
 				<string name="position" comments="left|right|top" default="left" />
-				<boolean name="justify" optional="yes" default="false" />
+				<boolean name="justify" optional="yes" default="false" comments="true|false|fill|center|end" />
 				<string name="header" optional="yes" />
 				<string name="footer" optional="yes" />
 				<array name="nav">
 					<structure name="+">
 						<string name="name" />
+						<string name="remark" optinonal="yes" />
 						<string name="url" optinonal="yes" />
 						<boolean name="active" optional="yes" />
 						<boolean name="disabled" optional="yes" />
-						<string name="remark" optinonal="yes" />
 						<string name="class" optional="yes" />
 						<string name="style" optional="yes" />
 						<string name="linkClass" optional="yes" />
 						<string name="linkStyle" optional="yes" />
-						<structure name="button" optinonal="yes" comments="single button only">
-							<string name="~buttonName~" value="~buttonURL~" />
-						</structure>
+						<!-- button -->
+						<array name="buttons" optional="yes">
+							<structure name="+">
+								<string name="name" />
+								<string name="url" />
+								<string name="class" />
+							</structure>
+						</array>
+						<!-- dropdown -->
 						<array name="menus" optinonal="yes">
 							<structure name="+">
 								<string name="name" />
@@ -61,7 +67,7 @@ $tabLayout['position'] = isset($tabLayout['position']) ? $tabLayout['position'] 
 $tabLayout['justify'] = isset($tabLayout['justify']) ? $tabLayout['justify'] : false;
 $tabLayout['navWidth'] = isset($tabLayout['navWidth']) ? $tabLayout['navWidth'] : 2;
 // adjust config
-if ( substr($tabLayout['style'], -1) != 's' ) $tabLayout['style'] .= 's';
+if ( in_array($tabLayout['style'], array('tab','pill')) ) $tabLayout['style'] .= 's';
 $tabLayout['orientation'] = in_array($tabLayout['position'], array('left','right')) ? 'vertical' : 'horizontal';
 
 // display
