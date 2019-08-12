@@ -61,6 +61,7 @@ if ( $tabLayout['justify'] === true ) {
 			// menu item
 			$itemClass = array('nav-item');
 			if ( !empty($tab['class']) ) $itemClass[] = $tab['class'];
+			$itemClass[] = ( $tabLayout['orientation'] == 'vertical' ) ? 'mb-1' : 'mr-1';
 			// display menu item
 			?><li class="<?php echo implode(' ', $itemClass); ?>"><?php
 				// buttons (for vertical orientation)
