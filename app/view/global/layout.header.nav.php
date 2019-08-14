@@ -48,7 +48,7 @@ if ( !function_exists('layoutHeaderNav') ) {
 			if ( $level == 1               ) $itemClass[] = 'nav-item';
 			if ( !empty($item['active'])   ) $itemClass[] = 'active';
 			if ( !empty($item['disabled']) ) $itemClass[] = 'disabled';
-			if ( !empty($item['menus'])    ) $itemClass[] = 'dropdown';
+			if ( !empty($item['menus'])    ) $itemClass[] = ( $level == 1 ) ? 'dropdown' : 'dropdown-submenu';
 			if ( !empty($item['class'])    ) $itemClass[] = $item['class'];
 			// divider (before)
 			if ( in_array('before', $item['divider']) ) :

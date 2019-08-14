@@ -2,7 +2,7 @@
 // 3rd-level layout (pill)
 $tabLayout = array(
 	'style' => 'pills',
-	'position' => $fusebox->action,
+	'position' => F::is('*.right') ? $fusebox->action : 'left',
 	'nav' => array(
 		array('name' => 'Normal example', 'url' => '#normal-example', 'active' => true),
 		array('name' => 'Dropdown example', 'url' => '#dropdown-example', 'menus' => array(
@@ -28,12 +28,12 @@ $layout['content'] = ob_get_clean();
 $tabLayout = array(
 	'style' => 'tabs',
 	'position' => $fusebox->action,
-	'justify' => F::is('*.top,*.bottom'),
 	'nav' => array(
-		array('name' => 'Left Tab', 'url' => F::url('example.left'), 'active' => F::is('*.left')),
-		array('name' => 'Right Tab', 'url' => F::url('example.right'), 'active' => F::is('*.right')),
-		array('name' => 'Top Tab', 'url' => F::url('example.top'), 'active' => F::is('*.top')),
-		array('name' => 'Bottom Tab', 'url' => F::url('example.bottom'), 'active' => F::is('*.bottom')),
+		array('name' => 'Left Tab',     'url' => F::url('example.left'),   'active' => F::is('*.left')),
+		array('name' => 'Right Tab',    'url' => F::url('example.right'),  'active' => F::is('*.right')),
+		array('name' => 'Top Tab',      'url' => F::url('example.top'),    'active' => F::is('*.top')),
+		array('name' => 'Bottom Tab',   'url' => F::url('example.bottom'), 'active' => F::is('*.bottom')),
+		array('name' => 'Disabled Tab', 'url' => F::url('example'),        'disabled' => true),
 	),
 );
 ob_start();
