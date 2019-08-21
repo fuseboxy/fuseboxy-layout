@@ -14,13 +14,15 @@ $layout['brand'] = ''; // brand name
 // right menu
 /*$arguments['navRight'] = array(
 	// settings
-	array(
+	( class_exists('Auth') and Auth::activeUserInRole('SUPER,ADMIN') ) ? array(
 		'name' => '<i class="fa fa-cog"></i>',
 		'menus' => array(
 			array('navHeader' => '<strong>SETTINGS</strong>', 'divider' => 'after'),
-			array('name' => 'User Management', 'url' => '#'),
+			array('name' => 'User Management', 'url' => F::url('user'), 'active' => F::is('user.*')),
+			array('name' => 'System Settings', 'url' => F::url('enum'), 'active' => F::is('enum.*')),
+			array('name' => 'Audit Log',      'url' => F::url('log'),  'active' => F::is('log.*')),
 		),
-	),
+	) : null,
 	// user-sim
 	array(
 		'name' => '<i class="fa fa-eye-slash"></i>',
@@ -31,15 +33,15 @@ $layout['brand'] = ''; // brand name
 		),
 	),
 	// logout
-	array(
+	( class_exists('Auth') and Auth::user() ) ? array(
 		'name' => "<img src='//ssl.gstatic.com/accounts/ui/avatar_2x.png' class='rounded' style='height: 32px; width: 32px; margin: -10px 0;' />",
 		'menus' => array(
-			array('navHeader' => '<strong>{USERNAME}</strong>', 'divider' => 'after'),
-			array('name' => 'Update Profile', 'url' => '#'),
-			array('name' => 'Change Password', 'url' => '#'),
-			array('name' => '<i class="fa fa-power-off"></i> Sign Out', 'url' => '#', 'divider' => 'before'),
+			array('navHeader' => '<strong>'.Auth::user('username').'</strong>', 'divider' => 'after'),
+			array('name' => 'Update Profile', 'url' => F::url('account.profile'), 'active' => F::is('account.profile')),
+			array('name' => 'Change Password', 'url' => F::url('account.password'), 'active' => F::is('account.password')),
+			array('name' => '<i class="fa fa-power-off"></i> Sign Out', 'url' => F::url('auth.logout'), 'divider' => 'before'),
 		),
-	),
+	) : null,
 );*/
 
 
