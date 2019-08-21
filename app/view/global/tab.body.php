@@ -13,7 +13,6 @@
 	</io>
 </fusedoc>
 */
-
 // content class
 $tabContentClass = 'tab-content ';
 if ( $tabLayout['position'] != 'top' ) {

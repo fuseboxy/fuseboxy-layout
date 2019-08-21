@@ -32,6 +32,9 @@
 	</io>
 </fusedoc>
 */
+// function for menu rendering
+require_once 'layout.header.nav.php';
+
 // class combination for nav
 $tabNavClass = array('nav');
 if ( !empty($tabLayout['style']) ) {
@@ -70,7 +73,6 @@ if ( $tabLayout['justify'] === true ) {
 				endif;
 				// dropdown menu
 				if ( !empty($tab['menus']) ) :
-					include 'layout.header.nav.php';
 					?><ul class="dropdown-menu"><?php layoutHeaderNav($tab['menus'], 2); ?></ul><?php
 				endif;
 				// link styling

@@ -15,7 +15,10 @@
 		<out />
 	</io>
 </fusedoc>
-*/ ?>
+*/
+// function for menu rendering
+require_once 'layout.header.nav.php';
+?>
 <header id="header" class="navbar navbar-expand-sm navbar-light bg-light">
 	<!-- logo -->
 	<?php if ( !empty($layout['brand']) ) : ?>
@@ -28,7 +31,6 @@
 	<!-- menu -->
 	<nav id="nav" class="navbar-collapse collapse">
 		<?php if ( !empty($arguments['nav']) ) : ?>
-			<?php include 'layout.header.nav.php'; ?>
 			<ul class="navbar-nav"><?php layoutHeaderNav($arguments['nav']); ?></ul>
 		<?php endif; ?>
 		<?php if ( !empty($arguments['navRight']) ) : ?>
