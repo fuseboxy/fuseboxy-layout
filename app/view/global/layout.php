@@ -4,11 +4,9 @@ $layout['brand'] = ''; // brand name
 
 
 // left menu
-/*$arguments['nav'] = array(
-	array('name' => 'Home', 'url' => '#', 'active' => true),
-	array('name' => 'About Us', 'url' => '#'),
-	array('name' => 'Contact', 'url' => '#'),
-);*/
+$arguments['nav'] = array(
+	array('name' => 'Home', 'url' => F::url('home'), 'active' => F::is('home.*')),
+);
 
 
 // right menu
