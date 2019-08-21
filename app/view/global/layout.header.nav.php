@@ -63,6 +63,7 @@ if ( !function_exists('layoutHeaderNav') ) {
 				$linkClass = array();
 				$linkClass[] =  ( $level == 1 ) ? 'nav-link' : 'dropdown-item';
 				if ( !empty($item['menus']) ) $linkClass[] = 'dropdown-toggle';
+				if ( !empty($item['linkClass']) ) $linkClass[] = $item['linkClass'];
 				// default link
 				$item['url'] = isset($item['url']) ? $item['url'] : '#';
 				// display nav link
