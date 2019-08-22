@@ -46,11 +46,11 @@ if ( !function_exists('layoutHeaderNav') ) {
 				endif;
 				// nav item
 				$itemClass = array();
-				if ( $level == 1               ) $itemClass[] = 'nav-item';
-				if ( !empty($item['active'])   ) $itemClass[] = 'active';
+				if ( $level == 1 ) $itemClass[] = 'nav-item';
+				if ( !empty($item['active']) and $level == 1 ) $itemClass[] = 'active';
 				if ( !empty($item['disabled']) ) $itemClass[] = 'disabled';
-				if ( !empty($item['menus'])    ) $itemClass[] = ( $level == 1 ) ? 'dropdown' : 'dropdown-submenu';
-				if ( !empty($item['class'])    ) $itemClass[] = $item['class'];
+				if ( !empty($item['menus']) ) $itemClass[] = ( $level == 1 ) ? 'dropdown' : 'dropdown-submenu';
+				if ( !empty($item['class']) ) $itemClass[] = $item['class'];
 				// divider (before)
 				if ( in_array('before', $item['divider']) ) :
 					?><li class="dropdown-divider"></li><?php
@@ -63,6 +63,7 @@ if ( !function_exists('layoutHeaderNav') ) {
 					// nav link
 					$linkClass = array();
 					$linkClass[] =  ( $level == 1 ) ? 'nav-link' : 'dropdown-item';
+					if ( !empty($item['active']) and $level > 1 ) $linkClass[] = 'active';
 					if ( !empty($item['menus']) ) $linkClass[] = 'dropdown-toggle';
 					if ( !empty($item['linkClass']) ) $linkClass[] = $item['linkClass'];
 					// default link
