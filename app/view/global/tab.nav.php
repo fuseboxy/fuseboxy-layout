@@ -61,55 +61,57 @@ if ( $tabLayout['justify'] === true ) {
 	// nav items
 	if ( !empty($tabLayout['nav']) ) :
 		foreach ( $tabLayout['nav'] as $i => $tab ) :
-			// menu item
-			$itemClass = array('nav-item');
-			if ( !empty($tab['class']) ) $itemClass[] = $tab['class'];
-			$itemClass[] = ( $tabLayout['orientation'] == 'vertical' ) ? 'mb-1' : 'mr-1';
-			// display menu item
-			?><li class="<?php echo implode(' ', $itemClass); ?>"><?php
-				// buttons (for vertical orientation)
-				if ( !empty($tab['buttons']) and $tabLayout['orientation'] == 'vertical' ) :
-					?><div class="float-right"><?php include 'tab.nav.button.php'; ?></div><?php
-				endif;
-				// dropdown menu
-				if ( !empty($tab['menus']) ) :
-					?><ul class="dropdown-menu"><?php layoutHeaderNav($tab['menus'], 2); ?></ul><?php
-				endif;
-				// link styling
-				$linkClass = array('nav-link');
-				if ( !empty($tab['active']) ) $linkClass[] = 'active';
-				if ( !empty($tab['disabled']) ) $linkClass[] = 'disabled';
-				if ( !empty($tab['linkClass']) ) $linkClass[] = $tab['linkClass'];
-				if ( !empty($tab['menus']) ) $linkClass[] = 'dropdown-toggle';
-				if ( !empty($tab['buttons']) and $tabLayout['orientation'] == 'horizontal' ) $linkClass[] = 'd-inline-block';
-				// display menu link
-				?><a 
-					class="<?php echo implode(' ', $linkClass); ?>"
-					<?php if ( !empty($tab['url']) ) : ?>
-						href="<?php echo $tab['url']; ?>"
-					<?php endif; ?>
-					<?php if ( !empty($tab['newWindow']) ) : ?>
-						target="_blank"
-					<?php endif; ?>
-					<?php if ( !empty($tab['menus']) ) : ?>
-						data-toggle="dropdown"
-						role="button"
-						aria-haspopup="true"
-						aria-expanded="false"
-					<?php endif; ?>
-				><?php
-					// tab name
-					 ?><span><?php echo $tab['name']; ?></span><?php
-					// tab remark
-					if ( !empty($tab['remark']) ) :
-						?><em class="small ml-2 <?php echo empty($tab['active']) ? 'text-muted' : 'text-light'; ?>">(<?php echo $tab['remark']; ?>)</em><?php
+			if ( !empty($tab) ) :
+				// menu item
+				$itemClass = array('nav-item');
+				if ( !empty($tab['class']) ) $itemClass[] = $tab['class'];
+				$itemClass[] = ( $tabLayout['orientation'] == 'vertical' ) ? 'mb-1' : 'mr-1';
+				// display menu item
+				?><li class="<?php echo implode(' ', $itemClass); ?>"><?php
+					// buttons (for vertical orientation)
+					if ( !empty($tab['buttons']) and $tabLayout['orientation'] == 'vertical' ) :
+						?><div class="float-right"><?php include 'tab.nav.button.php'; ?></div><?php
 					endif;
-				?></a><!--/.nav-link--><?php
-				// buttons (for horizontal orientation)
-				if ( !empty($tab['buttons']) and $tabLayout['orientation'] == 'horizontal' ) :
-					?><div class="d-inline-block"><?php include 'tab.nav.button.php'; ?></div><?php
-				endif;
-			?></li><!--/.nav-item--><?php
+					// dropdown menu
+					if ( !empty($tab['menus']) ) :
+						?><ul class="dropdown-menu"><?php layoutHeaderNav($tab['menus'], 2); ?></ul><?php
+					endif;
+					// link styling
+					$linkClass = array('nav-link');
+					if ( !empty($tab['active']) ) $linkClass[] = 'active';
+					if ( !empty($tab['disabled']) ) $linkClass[] = 'disabled';
+					if ( !empty($tab['linkClass']) ) $linkClass[] = $tab['linkClass'];
+					if ( !empty($tab['menus']) ) $linkClass[] = 'dropdown-toggle';
+					if ( !empty($tab['buttons']) and $tabLayout['orientation'] == 'horizontal' ) $linkClass[] = 'd-inline-block';
+					// display menu link
+					?><a 
+						class="<?php echo implode(' ', $linkClass); ?>"
+						<?php if ( !empty($tab['url']) ) : ?>
+							href="<?php echo $tab['url']; ?>"
+						<?php endif; ?>
+						<?php if ( !empty($tab['newWindow']) ) : ?>
+							target="_blank"
+						<?php endif; ?>
+						<?php if ( !empty($tab['menus']) ) : ?>
+							data-toggle="dropdown"
+							role="button"
+							aria-haspopup="true"
+							aria-expanded="false"
+						<?php endif; ?>
+					><?php
+						// tab name
+						 ?><span><?php echo $tab['name']; ?></span><?php
+						// tab remark
+						if ( !empty($tab['remark']) ) :
+							?><em class="small ml-2 <?php echo empty($tab['active']) ? 'text-muted' : 'text-light'; ?>">(<?php echo $tab['remark']; ?>)</em><?php
+						endif;
+					?></a><!--/.nav-link--><?php
+					// buttons (for horizontal orientation)
+					if ( !empty($tab['buttons']) and $tabLayout['orientation'] == 'horizontal' ) :
+						?><div class="d-inline-block"><?php include 'tab.nav.button.php'; ?></div><?php
+					endif;
+				?></li><!--/.nav-item--><?php
+			endif; // if-tab
 		endforeach; // foreach-nav
 	endif; // if-has-nav
 	// nav footer
