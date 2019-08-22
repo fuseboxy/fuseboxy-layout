@@ -20,7 +20,7 @@ $arguments['nav'] = array(
 			array('name' => 'System Settings', 'url' => F::url('enum'), 'active' => F::is('enum.*')),
 			array('name' => 'Audit Log',      'url' => F::url('log'),  'active' => F::is('log.*')),
 		),
-	) : null,
+	) : false,
 	// user-sim
 	( class_exists('Sim') and class_exists('Auth') and Auth::userInRole('SUPER') ) ? call_user_func(function(){
 		$simMenus = array( array('navHeader' => 'USER SIMULATION', 'divider' => 'after') );
@@ -31,8 +31,8 @@ $arguments['nav'] = array(
 			'name' => '<i class="fa fa-mask"></i>'.( Sim::user() ? ' ' : '' ).Sim::user('username'),
 			'menus' => $simMenus,
 			'active' => Sim::user(),
-		) : null;
-	}) : null,
+		) : false;
+	}) : false,
 	// logout
 	( class_exists('Auth') and Auth::user()  ) ? array(
 		'name' => '<i class="fa fa-user"></i>',
@@ -42,7 +42,7 @@ $arguments['nav'] = array(
 			array('name' => 'Change Password', 'url' => F::url('account.password'), 'active' => F::is('account.password')),
 			array('name' => '<i class="fa fa-power-off"></i> Sign Out', 'url' => F::url('auth.logout'), 'divider' => 'before'),
 		),
-	) : null,
+	) : false,
 );*/
 
 
