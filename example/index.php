@@ -10,6 +10,6 @@ header("X-UA-Compatible: IE=Edge");
 session_name('FUSEBOXY-GLOBAL-LAYOUT-EXAMPLE');
 session_start();
 // load framework and run!
-include '../test/utility-layout/framework/1.0.4/fuseboxy.php';
+include '../test/utility-layout/framework/1.0.6/fuseboxy.php';
 Framework::$configPath = __DIR__.'/app/config/fusebox_config.php';
 Framework::run();
