@@ -32,9 +32,6 @@
 	</io>
 </fusedoc>
 */
-// function for menu rendering
-require_once 'layout.header.nav.php';
-
 // class combination for nav
 $tabNavClass = array('nav');
 if ( !empty($tabLayout['style']) ) {
@@ -52,8 +49,10 @@ if ( $tabLayout['justify'] === true ) {
 } elseif ( $tabLayout['justify'] == 'fill' ) {
 	$tabNavClass[] = 'nav-fill';
 }
-?>
-<ul class="<?php echo implode(' ', $tabNavClass); ?>" role="navigation"><?php
+
+
+// display
+?><ul class="<?php echo implode(' ', $tabNavClass); ?>" role="navigation"><?php
 	// nav header
 	if ( !empty($tabLayout['header']) ) :
 		?><li class="nav-header nav-item mb-3"><?php echo $tabLayout['header']; ?></li><?php

@@ -33,22 +33,24 @@ $tabContentClass[] = 'col-' . ( $tabLayout['orientation'] == 'vertical' ? (12-$t
 if ( $tabLayout['position'] == 'right'  ) $tabContentClass[] = 'order-first';
 if ( $tabLayout['position'] == 'top'    ) $tabContentClass[] = 'pt-3';
 if ( $tabLayout['position'] == 'bottom' ) $tabContentClass[] = 'pb-3';
-?>
 
-<div class="<?php echo implode(' ', $tabLayoutClass); ?>">
-	<?php if ( $tabLayout['position'] != 'bottom' ) : ?>
-		<div class="<?php echo implode(' ', $tabNavClass); ?>"><?php include 'tab.nav.php'; ?></div>
-	<?php endif; ?>
-	<div class="<?php echo implode(' ', $tabContentClass); ?>">
-		<div class="tab-pane active" role="tabpanel"><?php
+
+// display
+?><div class="<?php echo implode(' ', $tabLayoutClass); ?>"><?php
+	include 'layout.header.nav.php';
+	if ( $tabLayout['position'] != 'bottom' ) :
+		?><div class="<?php echo implode(' ', $tabNavClass); ?>"><?php include 'tab.nav.php'; ?></div><?php
+	endif;
+	?><div class="<?php echo implode(' ', $tabContentClass); ?>"><?php
+		?><div class="tab-pane active" role="tabpanel"><?php
 			include 'layout.title.php';
 			include 'layout.breadcrumb.php';
 			include 'layout.flash.php';
-			if ( !empty($layout['content']) ) echo "<div>{$layout['content']}</div>";
+			if ( !empty($layout['content']) ) echo $layout['content'];
 			include 'layout.pagination.php';
-		?></div>
-	</div>
-	<?php if ( $tabLayout['position'] == 'bottom' ) : ?>
-		<div class="<?php echo implode(' ', $tabNavClass); ?>"><?php include 'tab.nav.php'; ?></div>
-	<?php endif; ?>
-</div>
+		?></div><?php
+	?></div><?php
+	if ( $tabLayout['position'] == 'bottom' ) :
+		?><div class="<?php echo implode(' ', $tabNavClass); ?>"><?php include 'tab.nav.php'; ?></div><?php
+	endif;
+?></div>
