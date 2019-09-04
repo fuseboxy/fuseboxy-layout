@@ -25,6 +25,10 @@
 			<span class="navbar-brand"><?php echo $layout['brand']; ?></span>
 		<?php endif; ?>
 	<?php endif; ?>
+	<!-- expand button -->
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 	<!-- menu -->
 	<nav id="nav" class="navbar-collapse collapse">
 		<?php if ( !empty($arguments['nav']) ) : ?>
@@ -35,10 +39,4 @@
 			<style type="text/css">.ml-auto .dropdown-menu { left: auto !important; right: 0; }</style>
 		<?php endif; ?>
 	</nav>
-	<!-- expand button -->
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
 </header>
-
-
