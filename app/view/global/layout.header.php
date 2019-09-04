@@ -15,10 +15,7 @@
 		<out />
 	</io>
 </fusedoc>
-*/
-// function for menu rendering
-require_once 'layout.header.nav.php';
-?>
+*/ ?>
 <header id="header" class="navbar navbar-expand-sm navbar-light bg-light">
 	<!-- logo -->
 	<?php if ( !empty($layout['brand']) ) : ?>
