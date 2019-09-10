@@ -7,18 +7,22 @@ $layout['brand'] = 'Global Layout'; // brand name
 $arguments['nav'] = array(
 	array('name' => 'Example', 'url' => F::url('example'), 'active' => true),
 	array('name' => 'Single Level Dropdown', 'url' => '#', 'menus' => array(
-		array('name' => 'Dropdown #1'),
-		array('name' => 'Dropdown #2'),
-		array('name' => 'Dropdown #3'),
+		array('name' => 'Item 1', 'navHeader' => 'Nav Header', 'divider' => 'before'),
+		array('name' => 'Item 2'),
+		array('name' => 'Item 3'),
 	)),
 	array('name' => 'Multiple Levels Dropdown', 'menus' => array(
-		array('name' => 'Dropdown #1', 'navHeader' => 'Level #1', 'divider' => 'before', 'menus' => array(
-			array('name' => 'Sub-Dropdown #1', 'navHeader' => 'Level #2'),
-			array('name' => 'Sub-Dropdown #2'),
-			array('name' => 'Sub-Dropdown #3'),
+		array('name' => 'Level 1', 'menus' => array(
+			array('name' => 'Level 2'),
+			array('name' => 'Level 2'),
+			array('name' => 'Level 2', 'menus' => array(
+				array('name' => 'Level 3'),
+				array('name' => 'Level 3'),
+				array('name' => 'Level 3'),
+			)),
 		)),
-		array('name' => 'Dropdown #2'),
-		array('name' => 'Dropdown #3'),
+		array('name' => 'Level 1'),
+		array('name' => 'Level 1'),
 	)),
 );
 
