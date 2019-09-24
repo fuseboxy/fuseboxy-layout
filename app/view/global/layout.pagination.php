@@ -46,7 +46,7 @@ if ( isset($arguments['pagination']) ) :
 	$url_without_page = str_ireplace("?page={$arguments['page']}", '', $url_without_page);
 	// display
 	if ( $visible_end > 1 ) :
-		?><ul class="pagination">
+		?><ul class="pagination mt-5">
 			<!-- FIRST -->
 			<?php if ( $arguments['page'] > 1 ) : ?>
 				<li class="page-item first"><a class="page-link" href="<?php echo "{$url_without_page}&amp;page=1"; ?>">&laquo; First</a></li>
