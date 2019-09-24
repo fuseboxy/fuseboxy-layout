@@ -32,6 +32,9 @@
 	</io>
 </fusedoc>
 */
+// function for menu rendering
+require_once 'layout.header.nav.php';
+
 // class combination for nav
 $tabNavClass = array('nav');
 if ( !empty($tabLayout['style']) ) {
@@ -49,10 +52,8 @@ if ( $tabLayout['justify'] === true ) {
 } elseif ( $tabLayout['justify'] == 'fill' ) {
 	$tabNavClass[] = 'nav-fill';
 }
-
-
-// display
-?><ul class="<?php echo implode(' ', $tabNavClass); ?>" role="navigation"><?php
+?>
+<ul class="<?php echo implode(' ', $tabNavClass); ?>" role="navigation"><?php
 	// nav header
 	if ( !empty($tabLayout['header']) ) :
 		?><li class="nav-header nav-item mb-3"><?php echo $tabLayout['header']; ?></li><?php
@@ -102,7 +103,9 @@ if ( $tabLayout['justify'] === true ) {
 						 ?><span><?php echo $tab['name']; ?></span><?php
 						// tab remark
 						if ( !empty($tab['remark']) ) :
-							?><em class="small ml-2 <?php echo empty($tab['active']) ? 'text-muted' : 'text-light'; ?>">(<?php echo $tab['remark']; ?>)</em><?php
+							?><em class="small ml-2 <?php if ( $tabLayout['style'] == 'tabs' or empty($tab['active']) ) echo 'text-muted'; ?>">
+								(<?php echo $tab['remark']; ?>)
+							</em><?php
 						endif;
 					?></a><!--/.nav-link--><?php
 					// buttons (for horizontal orientation)
