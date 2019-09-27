@@ -25,7 +25,7 @@ $arguments['nav'] = array(
 	( class_exists('Sim') and class_exists('Auth') and Auth::userInRole('SUPER') ) ? call_user_func(function(){
 		$simMenus = array( array('navHeader' => 'USER SIMULATION', 'divider' => 'after') );
 		$simUsers = R::find('user', "id != ? AND role != 'SUPER' AND IFNULL(disabled, 0) = 0 ORDER BY username ASC", array(Auth::user('id')));
-		foreach ( $simUsers as $u ) $simMenus[] = array('name' => $u->username, 'url' => F::url("auth.start-sim&user_id={$u->id}"));
+		foreach ( $simUsers as $u ) $simMenus[] = array('name' => $u->username, 'url' => F::url("auth.start-sim&user_id={$u->id}"), 'active' => (Sim::user('username') == $u->username));
 		if ( Sim::user() ) $simMenus[] = array('name' => '<i class="fa fa-sign-out-alt"></i> End Sim', 'url' => F::url('auth.end-sim'), 'divider' => 'before');
 		return $simUsers ? array(
 			'name' => '<i class="fa fa-mask"></i>'.( Sim::user() ? ' ' : '' ).Sim::user('username'),
