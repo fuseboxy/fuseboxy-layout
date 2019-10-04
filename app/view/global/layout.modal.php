@@ -1,34 +1,30 @@
-<div id="global-modal" class="modal fade" data-background="static" data-nocache tabindex="-1" role="dialog" aria-hidden="true">
+<div id="global-modal" class="modal fade" data-background="static" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<h1 class="text-center"><i class="fa fa-spinner fa-spin">&nbsp;</i></h1>
 		</div>
 	</div>
 </div>
 
 
-<div id="global-modal-max" class="modal fade" data-background="static" data-nocache tabindex="-1" role="dialog" aria-hidden="true">
+<div id="global-modal-max" class="modal fade" data-background="static" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-max">
 		<div class="modal-content">
-			<h1 class="text-center"><i class="fa fa-spinner fa-spin">&nbsp;</i></h1>
 		</div>
 	</div>
 </div>
 
 
-<div id="global-modal-lg" class="modal fade" data-background="static" data-nocache tabindex="-1" role="dialog" aria-hidden="true">
+<div id="global-modal-lg" class="modal fade" data-background="static" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<h1 class="text-center"><i class="fa fa-spinner fa-spin">&nbsp;</i></h1>
 		</div>
 	</div>
 </div>
 
 
-<div id="global-modal-sm" class="modal fade" data-background="static" data-nocache tabindex="-1" role="dialog" aria-hidden="true">
+<div id="global-modal-sm" class="modal fade" data-background="static" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-			<h1 class="text-center"><i class="fa fa-spinner fa-spin">&nbsp;</i></h1>
 		</div>
 	</div>
 </div>
@@ -52,10 +48,10 @@
 	<div class="modal-dialog modal-max">
 		<div class="modal-content">
 			<div class="modal-header">
+				<h5 class="modal-title">&nbsp;</h5>
 				<button type="button" class="close" data-dismiss="modal">
 					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 				</button>
-				<h4 class="modal-title">&nbsp;</h4>
 			</div>
 			<div class="modal-body" style="height: 700px; padding: 0;">
 				<iframe name="global-modal-title-iframe" src="about:blank" style="border: none; height: 100%; width: 100%;"></iframe>
