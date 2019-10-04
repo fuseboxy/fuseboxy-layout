@@ -3,7 +3,7 @@
 	<io>
 		<in>
 			<array name="$menus">
-				<structure name="$item">
+				<structure name="+">
 					<string name="name" />
 					<string name="remark" optinonal="yes" />
 					<string name="url" optinonal="yes" />
@@ -17,9 +17,11 @@
 					<string name="linkStyle" optional="yes" />
 					<!-- utilities for dropdown -->
 					<string name="navHeader" optional="yes" />
-					<array name="divider">
+					<array name="divider" optional="yes">
 						<string name="+" comments="before|after" />
 					</array>
+					<!-- sub menu (if any) -->
+					<array name="menus" optional="yes" />
 				</structure>
 			</array>
 			<number name="$level" optional="yes" default="1" />
