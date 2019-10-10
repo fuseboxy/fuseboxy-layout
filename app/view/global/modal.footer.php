@@ -11,9 +11,9 @@
 </fusedoc>
 */ ?>
 <div class="modal-footer"><?php
-	if ( isset($layout['modalFooter']) ) {
+	if ( isset($layout['modalFooter']) ) :
 		echo $layout['modalFooter'];
-	} else {
-		?><button type="button" class="btn btn-default" data-dismiss="modal">Close</button><?php
-	}
+	else :
+		?><button type="button" class="btn btn-light" data-dismiss="modal">Close</button><?php
+	endif;
 ?></div>
