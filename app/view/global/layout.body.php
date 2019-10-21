@@ -27,17 +27,17 @@ if ( empty($layout['width']) or $layout['width'] == 'normal' ) {
 	include 'layout.header.nav.php';
 	include 'layout.header.php';
 	// content
-	?><div 
+	?><main 
 		id="content" 
-		class="<?php echo implode(' ', $contentClass); ?>" 
-		style="<?php echo implode(' ', $contentStyle); ?>"
+		<?php if ( !empty($contentClass) ) : ?>class="<?php echo implode(' ', $contentClass); ?>"<?php endif; ?>
+		<?php if ( !empty($contentStyle) ) : ?>style="<?php echo implode(' ', $contentStyle); ?>"<?php endif; ?>
 	><?php
 		include 'layout.flash.php';
 		include 'layout.title.php';
 		include 'layout.breadcrumb.php';
 		if ( !empty($layout['content']) ) echo $layout['content'];
 		include 'layout.pagination.php';
-	?></div><?php
+	?></main><?php
 	// footer
 	include 'layout.footer.php';
 ?></div>
