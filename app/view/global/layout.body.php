@@ -10,16 +10,16 @@
 	</io>
 </fusedoc>
 */
-$contentClass = '';
-$contentStyle = '';
+$contentClass = array('p-4');
+$contentStyle = array();
 if ( empty($layout['width']) or $layout['width'] == 'normal' ) {
-	$contentClass = 'container';
+	$contentClass[] = 'container';
 } elseif ( $layout['width'] == 'full' ) {
-	$contentClass = 'w-100';
+	$contentClass[] = 'w-100';
 } elseif ( $layout['width'] == 'narrow' ) {
-	$contentClass = 'w-25';
+	$contentClass[] = 'w-25';
 } else {
-	$contentStyle = "width: {$layout['width']}";	
+	$contentStyle[] = "width: {$layout['width']};";	
 }
 ?><div id="global-layout"><?php
 	// header
@@ -27,7 +27,11 @@ if ( empty($layout['width']) or $layout['width'] == 'normal' ) {
 	include 'layout.header.nav.php';
 	include 'layout.header.php';
 	// content
-	?><div id="content" class="<?php echo $contentClass; ?>" style="<?php echo $contentStyle; ?>"><?php
+	?><div 
+		id="content" 
+		class="<?php echo implode(' ', $contentClass); ?>" 
+		style="<?php echo implode(' ', $contentStyle); ?>"
+	><?php
 		include 'layout.flash.php';
 		include 'layout.title.php';
 		include 'layout.breadcrumb.php';
