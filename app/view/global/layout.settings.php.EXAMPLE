@@ -1,12 +1,16 @@
 <?php /*
 <fusedoc>
 	<io>
-		<in>
+		<in />
+		<out>
 			<structure name="$layout">
 				<string name="metaTitle" comments="showing at browser tab" />
-				<string name="brand" comments="showing at header" />
+				<string name="logo|brand" optional="yes" />
+				<structure name="logo|brand" optional="yes">
+					<string name="~breakpoint~" comments="empty is the default" />
+				</structure>
 			</structure>
-			<structure name="nav|right">
+			<structure name="nav|navRight" scope="$arguments">
 				<string name="name" />
 				<string name="url" optinonal="yes" />
 				<boolean name="active" optional="yes" />
@@ -26,8 +30,7 @@
 				<!-- sub menu (if any) -->
 				<array name="menus" optional="yes" />
 			</structure>
-		</in>
-		<out />
+		</out>
 	</io>
 </fusedoc>
 */
@@ -36,6 +39,7 @@ $layout['metaTitle'] = '';
 
 
 // brand name
+$layout['logo'] = '';
 $layout['brand'] = '';
 
 
