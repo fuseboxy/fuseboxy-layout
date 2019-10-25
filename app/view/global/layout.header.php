@@ -76,10 +76,10 @@
 	// menu
 	?><nav id="nav" class="navbar-collapse collapse"><?php
 		if ( !empty($arguments['nav']) ) :
-			?><ul class="navbar-nav"><?php layoutHeaderNav($arguments['nav']); ?></ul><?php
+			?><ul class="navbar-nav left"><?php layoutHeaderNav($arguments['nav']); ?></ul><?php
 		endif;
 		if ( !empty($arguments['navRight']) ) :
-			?><ul class="navbar-nav ml-auto"><?php layoutHeaderNav($arguments['navRight']); ?></ul><?php
+			?><ul class="navbar-nav right ml-auto"><?php layoutHeaderNav($arguments['navRight']); ?></ul><?php
 			?><style type="text/css">.ml-auto .dropdown-menu { left: auto !important; right: 0; }</style><?php
 		endif;
 	?></nav><?php
