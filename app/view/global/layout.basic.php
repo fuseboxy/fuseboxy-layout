@@ -27,6 +27,7 @@
 		<script src="<?php echo F::config('baseUrl'); ?>js/fuseboxy.scaffold.js"></script>
 	<?php endif; ?>
 	<script src="<?php echo $fusebox->config['baseUrl']; ?>js/main.js"></script>
+	<?php if ( class_exists('Captcha') and F::is('auth.*') ) Captcha::renderClientAPI(); ?>
 </head>
 <body data-controller="<?php echo $fusebox->controller; ?>" data-action="<?php echo $fusebox->action; ?>">
 <?php if ( isset($layout['content']) ) echo $layout['content']; ?>
