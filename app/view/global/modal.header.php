@@ -36,8 +36,8 @@ if ( isset($layout['modalTitle']) and is_string($layout['modalTitle']) ) {
 // modal title
 if ( !empty($layout['modalTitle']) ) :
 	?><div class="modal-header"><?php
-		?><div class="modal-title <?php echo $layout['modalTitle']['class']; ?>"><?php echo $layout['modalTitle']['title']; ?></div>
-		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		?><div class="modal-title <?php echo $layout['modalTitle']['class']; ?>"><?php echo $layout['modalTitle']['title']; ?></div><?php
+		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
 	?></div><?php
 endif;
 
