@@ -42,6 +42,10 @@ if ( !function_exists('layoutHeaderNav') ) {
 				} elseif ( is_string($item['divider']) ) {
 					$item['divider'] = array($item['divider']);
 				}
+				// divider (if any)
+				if ( in_array('before', $item['divider']) ) :
+					?><li class="dropdown-divider"></li><?php
+				endif;
 				// header (if any)
 				if ( !empty($item['navHeader']) ) :
 					?><li class="dropdown-header h6"><?php echo $item['navHeader']; ?></li><?php 
@@ -53,10 +57,6 @@ if ( !function_exists('layoutHeaderNav') ) {
 				if ( !empty($item['disabled']) ) $itemClass[] = 'disabled';
 				if ( !empty($item['menus']) ) $itemClass[] = ( $level == 1 ) ? 'dropdown' : 'dropdown-submenu';
 				if ( !empty($item['class']) ) $itemClass[] = $item['class'];
-				// divider (if any)
-				if ( in_array('before', $item['divider']) ) :
-					?><li class="dropdown-divider"></li><?php
-				endif;
 				// display nav item (when necessary)
 				if ( !empty($item['name']) ) :
 					?><li 
