@@ -1,33 +1,11 @@
-<div id="global-modal" class="modal fade" data-background="static" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
+<?php foreach ( ['sm','md','lg','xl','max'] as $size ) : ?>
+	<div id="global-modal-<?php echo $size; ?>" class="modal fade" data-background="static" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-<?php echo $size; ?>">
+			<div class="modal-content">
+			</div>
 		</div>
 	</div>
-</div>
-
-
-<div id="global-modal-max" class="modal fade" data-background="static" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-max">
-		<div class="modal-content">
-		</div>
-	</div>
-</div>
-
-
-<div id="global-modal-lg" class="modal fade" data-background="static" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-		</div>
-	</div>
-</div>
-
-
-<div id="global-modal-sm" class="modal fade" data-background="static" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-		</div>
-	</div>
-</div>
+<?php endforeach; ?>
 
 
 <div id="global-modal-iframe" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
