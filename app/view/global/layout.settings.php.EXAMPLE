@@ -11,7 +11,8 @@
 				</structure>
 			</structure>
 			<structure name="nav|navRight" scope="$arguments">
-				<string name="name" />
+				<string name="icon" optional="yes" />
+				<string name="name" optional="yes" />
 				<string name="url" optinonal="yes" />
 				<boolean name="active" optional="yes" />
 				<string name="remark" optinonal="yes" />
@@ -53,7 +54,7 @@ $arguments['nav'] = array(
 $arguments['navRight'] = array(
 	// settings
 	( class_exists('Auth') and Auth::activeUserInRole('SUPER,ADMIN') ) ? array(
-		'name' => '<i class="fa fa-cog"></i>',
+		'icon' => 'fa fa-cog',
 		'menus' => array(
 			array('navHeader' => 'SETTINGS', 'divider' => 'after'),
 			array('name' => 'User Management', 'url' => F::url('user'), 'active' => F::is('user.*')),
@@ -68,12 +69,13 @@ $arguments['navRight'] = array(
 		$prev = false;
 		foreach ( $simUsers as $u ) {
 			if ( empty($prev) or $prev->role != $u->role ) $simMenus[] = array('navHeader' => "<small>{$u->role}</small>", 'divider' => 'before');
-			$simMenus[] = array('name' => $u->username, 'url' => F::url("auth.start-sim&user_id={$u->id}"), 'active' => (Sim::user('username') == $u->username));
+			$simMenus[] = array('name' => $u->username, 'url' => F::url("sim.start&user_id={$u->id}"), 'active' => (Sim::user('username') == $u->username));
 			$prev = $u;
 		}
-		if ( Sim::user() ) $simMenus[] = array('name' => '<i class="fa fa-sign-out-alt"></i> End Sim', 'url' => F::url('sim.end'), 'divider' => 'before');
+		if ( Sim::user() ) $simMenus[] = array('icon' => 'fa fa-sign-out-alt mr-1', 'name' => 'End Sim', 'url' => F::url('sim.end'), 'divider' => 'before');
 		return $simUsers ? array(
-			'name' => '<i class="fa fa-mask"></i>'.( Sim::user() ? ' ' : '' ).Sim::user('username'),
+			'icon' => 'fa fa-mask',
+			'name' => Sim::user('username'),
 			'menus' => $simMenus,
 			'active' => Sim::user(),
 			'linkClass' => Sim::user() ? 'text-primary' : false,
@@ -81,12 +83,12 @@ $arguments['navRight'] = array(
 	}) : false,
 	// logout
 	( class_exists('Auth') and Auth::user()  ) ? array(
-		'name' => '<i class="fa fa-user"></i>',
+		'icon' => 'fa fa-user',
 		'menus' => array(
 			array('navHeader' => Auth::user('username'), 'divider' => 'after'),
 			array('name' => 'Update Profile', 'url' => F::url('account.profile'), 'active' => F::is('account.profile')),
 			array('name' => 'Change Password', 'url' => F::url('account.password'), 'active' => F::is('account.password')),
-			array('name' => '<i class="fa fa-power-off"></i> Sign Out', 'url' => F::url('auth.logout'), 'divider' => 'before'),
+			array('icon' => 'fa fa-power-off mr-1', 'name' => 'Sign Out', 'url' => F::url('auth.logout'), 'divider' => 'before'),
 		),
 	) : false,
 );
