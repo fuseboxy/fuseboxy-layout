@@ -11,6 +11,7 @@
 					<boolean name="disabled" optional="yes" />
 					<boolean name="newWindow" optional="yes" />
 					<!-- custom styling -->
+					<string name="icon" optional="yes" />
 					<string name="class" optional="yes" />
 					<string name="style" optional="yes" />
 					<string name="linkClass" optional="yes" />
@@ -58,7 +59,7 @@ if ( !function_exists('layoutHeaderNav') ) {
 				if ( !empty($item['menus']) ) $itemClass[] = ( $level == 1 ) ? 'dropdown' : 'dropdown-submenu';
 				if ( !empty($item['class']) ) $itemClass[] = $item['class'];
 				// display nav item (when necessary)
-				if ( !empty($item['name']) ) :
+				if ( !empty($item['name']) or !empty($item['icon']) ) :
 					?><li 
 						class="<?php echo implode(' ', $itemClass); ?>"
 						<?php if ( !empty($item['style']) ) : ?>style="<?php echo $item['style']; ?>" <?php endif; ?>
@@ -78,7 +79,14 @@ if ( !function_exists('layoutHeaderNav') ) {
 							<?php if ( !empty($item['linkStyle']) ) : ?>style="<?php echo $item['linkStyle']; ?>"<?php endif; ?>
 							<?php if ( !empty($item['newWindow']) ) : ?>target="_blank"<?php endif; ?>
 							<?php if ( !empty($item['menus']) ) : ?>role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <?php endif; ?>
-						><?php if ( !empty($item['name']) ) echo $item['name']; ?></a><?php
+						><?php
+							if ( !empty($item['icon']) ) :
+								?><i class="<?php echo $item['icon']; ?>"></i><?php
+							endif;
+							if ( !empty($item['name']) ) :
+								?> <span><?php echo $item['name']; ?></span><?php
+							endif;
+						?></a><?php
 						// has submenu
 						if ( !empty($item['menus']) ) :
 							?><ul class="dropdown-menu"><?php layoutHeaderNav($item['menus'], $level+1); ?></ul><?php
