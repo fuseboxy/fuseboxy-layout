@@ -71,11 +71,12 @@ $arguments['navRight'] = array(
 			$simMenus[] = array('name' => $u->username, 'url' => F::url("auth.start-sim&user_id={$u->id}"), 'active' => (Sim::user('username') == $u->username));
 			$prev = $u;
 		}
-		if ( Sim::user() ) $simMenus[] = array('name' => '<i class="fa fa-sign-out-alt"></i> End Sim', 'url' => F::url('auth.end-sim'), 'divider' => 'before');
+		if ( Sim::user() ) $simMenus[] = array('name' => '<i class="fa fa-sign-out-alt"></i> End Sim', 'url' => F::url('sim.end'), 'divider' => 'before');
 		return $simUsers ? array(
 			'name' => '<i class="fa fa-mask"></i>'.( Sim::user() ? ' ' : '' ).Sim::user('username'),
 			'menus' => $simMenus,
 			'active' => Sim::user(),
+			'linkClass' => Sim::user() ? 'text-primary' : false,
 		) : false;
 	}) : false,
 	// logout
