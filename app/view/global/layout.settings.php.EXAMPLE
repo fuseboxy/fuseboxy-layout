@@ -63,24 +63,15 @@ $arguments['navRight'] = array(
 		),
 	) : false,
 	// user-sim
-	( class_exists('Sim') and class_exists('Auth') and Auth::userInRole('SUPER') ) ? call_user_func(function(){
-		$simMenus = array( array('navHeader' => 'USER SIMULATION') );
-		$simUsers = R::find('user', "id != ? AND role != 'SUPER' AND IFNULL(disabled, 0) = 0 ORDER BY role, username", array(Auth::user('id')));
-		$prev = false;
-		foreach ( $simUsers as $u ) {
-			if ( empty($prev) or $prev->role != $u->role ) $simMenus[] = array('navHeader' => "<small>{$u->role}</small>", 'divider' => 'before');
-			$simMenus[] = array('name' => $u->username, 'url' => F::url("sim.start&user_id={$u->id}"), 'active' => (Sim::user('username') == $u->username));
-			$prev = $u;
-		}
-		if ( Sim::user() ) $simMenus[] = array('icon' => 'fa fa-sign-out-alt mr-1', 'name' => 'End Sim', 'url' => F::url('sim.end'), 'divider' => 'before');
-		return $simUsers ? array(
-			'icon' => 'fa fa-mask',
-			'name' => Sim::user('username'),
-			'menus' => $simMenus,
-			'active' => Sim::user(),
-			'linkClass' => Sim::user() ? 'text-primary' : false,
-		) : false;
-	}) : false,
+	( class_exists('Sim') and class_exists('Auth') and Auth::userInRole('SUPER') ) ? array(
+		'icon' => 'fa fa-mask',
+		'name' => Sim::user('username'),
+		'url' => F::url('sim.dropdown'),
+		'active' => Sim::user(),
+		'class' => 'dropdown',
+		'linkClass' => Sim::user() ? 'text-primary dropdown-toggle' : 'dropdown-toggle',
+		'linkAttr' => array('data-toggle' => 'ajax-dropdown'),
+	) : false,
 	// logout
 	( class_exists('Auth') and Auth::user()  ) ? array(
 		'icon' => 'fa fa-user',
