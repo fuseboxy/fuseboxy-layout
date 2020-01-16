@@ -13,9 +13,14 @@
 					<!-- custom styling -->
 					<string name="icon" optional="yes" />
 					<string name="class" optional="yes" />
-					<string name="style" optional="yes" />
 					<string name="linkClass" optional="yes" />
-					<string name="linkStyle" optional="yes" />
+					<!-- custom attributes -->
+					<structure name="attr" optional="yes">
+						<string name="~attrName~" value="~attrValue~" />
+					</structure>
+					<structure name="linkAttr" optional="yes">
+						<string name="~attrName~" value="~attrValue~" />
+					</structure>
 					<!-- utilities for dropdown -->
 					<string name="navHeader" optional="yes" />
 					<array name="divider" optional="yes">
@@ -31,20 +36,20 @@
 	</io>
 </fusedoc>
 */
-if ( !function_exists('layoutHeaderNav') ) {
+if ( !function_exists('layoutHeaderNav') ) :
 	function layoutHeaderNav($menus, $level=1) {
-		foreach ( $menus as $item ) {
-			if ( !empty($item) ) {
-				// fix variables
-				if ( empty($item['divider']) ) {
-					$item['divider'] = array();
-				} elseif ( $item['divider'] === true ) {
-					$item['divider'] = array('after');
-				} elseif ( is_string($item['divider']) ) {
-					$item['divider'] = array($item['divider']);
-				}
+		foreach ( $menus as $item ) :
+			if ( !empty($item) ) :
+				// fix variable
+				if ( empty($item['divider']) ) :
+					$itemDivider = array();
+				elseif ( $item['divider'] === true ) :
+					$itemDivider = array('after');
+				elseif ( is_string($item['divider']) ) :
+					$itemDivider = array_filter( explode(',', str_replace('|', ',', $item['divider']) ) );
+				endif;
 				// divider (if any)
-				if ( in_array('before', $item['divider']) ) :
+				if ( in_array('before', $itemDivider) ) :
 					?><li class="dropdown-divider"></li><?php
 				endif;
 				// header (if any)
@@ -53,36 +58,40 @@ if ( !function_exists('layoutHeaderNav') ) {
 				endif;
 				// nav item
 				$itemClass = array();
-				if ( $level == 1 ) $itemClass[] = 'nav-item';
+				if ( $level == 1                             ) $itemClass[] = 'nav-item';
 				if ( !empty($item['active']) and $level == 1 ) $itemClass[] = 'active';
-				if ( !empty($item['disabled']) ) $itemClass[] = 'disabled';
-				if ( !empty($item['menus']) ) $itemClass[] = ( $level == 1 ) ? 'dropdown' : 'dropdown-submenu';
-				if ( !empty($item['class']) ) $itemClass[] = $item['class'];
+				if ( !empty($item['menus'])                  ) $itemClass[] = ( $level == 1 ) ? 'dropdown' : 'dropdown-submenu';
+				if ( !empty($item['disabled'])               ) $itemClass[] = 'disabled';
+				if ( !empty($item['class'])                  ) $itemClass[] = $item['class'];
+				if ( !empty($item['attr']['class'])          ) $itemClass[] = $item['attr']['class'];
 				// display nav item (when necessary)
 				if ( !empty($item['name']) or !empty($item['icon']) ) :
 					?><li 
 						class="<?php echo implode(' ', $itemClass); ?>"
-						<?php if ( !empty($item['style']) ) : ?>style="<?php echo $item['style']; ?>" <?php endif; ?>
+						<?php if ( !empty($item['attr']) ) foreach ( $item['attr'] as $key => $val ) if ( $key != 'class' ) echo "{$key}='{$val}' "; ?>
 					><?php
 						// nav link
 						$linkClass = array();
 						$linkClass[] =  ( $level == 1 ) ? 'nav-link' : 'dropdown-item';
 						if ( !empty($item['active']) and $level > 1 ) $linkClass[] = 'active';
-						if ( !empty($item['menus']) ) $linkClass[] = 'dropdown-toggle';
-						if ( !empty($item['linkClass']) ) $linkClass[] = $item['linkClass'];
+						if ( !empty($item['menus'])                 ) $linkClass[] = 'dropdown-toggle';
+						if ( !empty($item['linkClass'])             ) $linkClass[] = $item['linkClass'];
+						if ( !empty($item['linkAttr']['class'])     ) $linkClass[] = $item['linkAttr']['class'];
 						// default link
 						$item['url'] = isset($item['url']) ? $item['url'] : '#';
 						// display nav link
 						?><a 
 							href="<?php echo $item['url']; ?>" 
 							class="<?php echo implode(' ', $linkClass); ?>" 
-							<?php if ( !empty($item['linkStyle']) ) : ?>style="<?php echo $item['linkStyle']; ?>"<?php endif; ?>
 							<?php if ( !empty($item['newWindow']) ) : ?>target="_blank"<?php endif; ?>
 							<?php if ( !empty($item['menus']) ) : ?>role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <?php endif; ?>
+							<?php if ( !empty($item['linkAttr']) ) foreach ( $item['linkAttr'] as $key => $val ) if ( $key != 'class' ) echo "{$key}='{$val}' "; ?>
 						><?php
+							// menu icon
 							if ( !empty($item['icon']) ) :
 								?><i class="<?php echo $item['icon']; ?>"></i><?php
 							endif;
+							// menu name
 							if ( !empty($item['name']) ) :
 								?> <span><?php echo $item['name']; ?></span><?php
 							endif;
@@ -94,10 +103,10 @@ if ( !function_exists('layoutHeaderNav') ) {
 					?></li><?php
 				endif; // if-item-name
 				// divider (if any)
-				if ( in_array('after', $item['divider']) ) :
+				if ( in_array('after', $itemDivider) ) :
 					?><li class="dropdown-divider"></li><?php
 				endif;
-			} // if-item
-		} // foreach-item
+			endif; // if-item
+		endforeach; // foreach-item
 	} // function
-} // if-function-exists
+endif; // if-function-exists
