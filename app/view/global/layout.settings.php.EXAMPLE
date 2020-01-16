@@ -59,7 +59,7 @@ $arguments['navRight'] = array(
 			array('navHeader' => 'SETTINGS', 'divider' => 'after'),
 			array('name' => 'User Management', 'url' => F::url('user'), 'active' => F::is('user.*')),
 			array('name' => 'System Settings', 'url' => F::url('enum'), 'active' => F::is('enum.*')),
-			array('name' => 'Audit Log',      'url' => F::url('log'),  'active' => F::is('log.*')),
+			array('name' => 'Audit Log', 'url' => F::url('log'), 'active' => F::is('log.*')),
 		),
 	) : false,
 	// user-sim
@@ -79,7 +79,7 @@ $arguments['navRight'] = array(
 			array('navHeader' => Auth::user('username'), 'divider' => 'after'),
 			array('name' => 'Update Profile', 'url' => F::url('account.profile'), 'active' => F::is('account.profile')),
 			array('name' => 'Change Password', 'url' => F::url('account.password'), 'active' => F::is('account.password')),
-			array('icon' => 'fa fa-power-off mr-1', 'name' => 'Sign Out', 'url' => F::url('auth.logout'), 'divider' => 'before'),
+			array('name' => 'Sign Out', 'url' => F::url('auth.logout'), 'icon' => 'fa fa-power-off mr-1', 'divider' => 'before'),
 		),
 	) : false,
 );
