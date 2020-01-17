@@ -33,7 +33,7 @@
 </fusedoc>
 */
 // function for menu rendering
-require_once 'layout.header.nav.php';
+require_once F::config('appPath').'view/global/layout.header.nav.php';
 
 // class combination for nav
 $tabNavClass = array('nav');
