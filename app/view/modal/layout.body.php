@@ -11,7 +11,7 @@
 </fusedoc>
 */ ?>
 <div class="modal-body"><?php
-	include 'layout.flash.php';
+	include F::config('appPath').'global/layout.flash.php';
 	// avoid showing in other layout
 	if ( isset($arguments['flash']) ) unset($arguments['flash']);
 	// display content specified

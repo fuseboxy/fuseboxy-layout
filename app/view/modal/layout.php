@@ -22,7 +22,7 @@
 $layout['modalID'] = isset($layout['modalID']) ? $layout['modalID'] : ('modal-'.uniqid());
 ?>
 <div id="<?php echo $layout['modalID']; ?>" class="modal-content"><?php
-	include 'modal.header.php';
-	include 'modal.body.php';
-	include 'modal.footer.php';
+	include 'layout.header.php';
+	include 'layout.body.php';
+	include 'layout.footer.php';
 ?></div>
