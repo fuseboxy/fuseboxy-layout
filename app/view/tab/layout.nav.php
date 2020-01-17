@@ -70,7 +70,7 @@ if ( $tabLayout['justify'] === true ) {
 				?><li class="<?php echo implode(' ', $itemClass); ?>"><?php
 					// buttons (for vertical orientation)
 					if ( !empty($tab['buttons']) and $tabLayout['orientation'] == 'vertical' ) :
-						?><div class="float-right"><?php include 'tab.nav.button.php'; ?></div><?php
+						?><div class="float-right"><?php include 'layout.nav.button.php'; ?></div><?php
 					endif;
 					// dropdown menu
 					if ( !empty($tab['menus']) ) :
@@ -110,7 +110,7 @@ if ( $tabLayout['justify'] === true ) {
 					?></a><!--/.nav-link--><?php
 					// buttons (for horizontal orientation)
 					if ( !empty($tab['buttons']) and $tabLayout['orientation'] == 'horizontal' ) :
-						?><div class="d-inline-block"><?php include 'tab.nav.button.php'; ?></div><?php
+						?><div class="d-inline-block"><?php include 'layout.nav.button.php'; ?></div><?php
 					endif;
 				?></li><!--/.nav-item--><?php
 			endif; // if-tab
