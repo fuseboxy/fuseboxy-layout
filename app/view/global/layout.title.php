@@ -15,12 +15,12 @@
 */
 if ( !empty($layout['title']) ) :
 	if ( is_string($layout['title']) ) $layout['title'] = array($layout['title']);
-	?><h2 class="page-header border-bottom"><?php
+	?><h1 class="page-header border-bottom mb-4"><?php
 		foreach ( $layout['title'] as $level => $title ) :
 			// deeper the level smaller the title
 			for ( $i=0; $i<$level; $i++ ) $title = "<small>{$title}</small>";
 			// display this level of title
 			echo "<span class='mr-3'>{$title}</span>";
 		endforeach;
-	?></h2><?php
+	?></h1><?php
 endif;
