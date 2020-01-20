@@ -13,15 +13,14 @@
 	</io>
 </fusedoc>
 */
-?>
-<?php if ( !empty($layout['title']) ) : ?>
-	<?php if ( is_string($layout['title']) ) $layout['title'] = array($layout['title']); ?>
-	<h1 class="page-header"><?php
+if ( !empty($layout['title']) ) :
+	if ( is_string($layout['title']) ) $layout['title'] = array($layout['title']);
+	?><h2 class="page-header border-bottom"><?php
 		foreach ( $layout['title'] as $level => $title ) :
-			for ( $i=0; $i<$level; $i++ ) :
-				$title = " <small>{$title}</small>";
-			endfor;
-			echo $title;
+			// deeper the level smaller the title
+			for ( $i=0; $i<$level; $i++ ) $title = "<small>{$title}</small>";
+			// display this level of title
+			echo "<span class='mr-3'>{$title}</span>";
 		endforeach;
-	?></h1>
-<?php endif; ?>
+	?></h2><?php
+endif;
