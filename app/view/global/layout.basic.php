@@ -23,7 +23,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-		<script src="<?php echo F::config('baseUrl'); ?>lib/simple-ajax-uploader/2.6.7/SimpleAjaxUploader.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/simple-ajax-uploader@2.6.7/SimpleAjaxUploader.js"></script>
 		<script src="<?php echo F::config('baseUrl'); ?>js/fuseboxy.scaffold.js"></script>
 	<?php endif; ?>
 	<?php if ( class_exists('Captcha') and F::is('auth.*') ) Captcha::renderClientAPI(); ?>
