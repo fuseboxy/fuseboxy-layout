@@ -28,15 +28,15 @@ if ( isset($arguments['flash']) ) {
 		$arguments['flash']['type'] = 'primary';
 	}
 }
-?>
-<?php if ( isset($arguments['flash']) ) : ?>
-	<div id="flash" class="alert alert-<?php echo $arguments['flash']['type']; ?>">
-		<?php if ( !empty($arguments['flash']['icon']) ) : ?>
-			<i class="<?php echo $arguments['flash']['icon']; ?>"></i>
-		<?php endif; ?>
-		<?php if ( !empty($arguments['flash']['title']) ) : ?>
-			<strong><?php echo $arguments['flash']['title']; ?></strong>
-		<?php endif; ?>
-		<?php echo $arguments['flash']['message']; ?>
-	</div>
-<?php endif; ?>
+// display (when necessary)
+if ( isset($arguments['flash']) ) :
+	?><div id="flash" class="alert alert-<?php echo $arguments['flash']['type']; ?>"><?php
+		if ( !empty($arguments['flash']['icon']) ) :
+			?><i class="<?php echo $arguments['flash']['icon']; ?>"></i><?php
+		endif;
+		if ( !empty($arguments['flash']['title']) ) :
+			?><strong><?php echo $arguments['flash']['title']; ?></strong><?php
+		endif;
+		echo $arguments['flash']['message'];
+	?></div><?php
+endif;
