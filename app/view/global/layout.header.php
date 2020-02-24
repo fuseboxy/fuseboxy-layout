@@ -22,7 +22,7 @@
 */ ?>
 <header id="header" class="navbar navbar-expand-sm navbar-light bg-light"><?php
 	// logo & brand
-	?><a href="<?php echo F::url( F::config('defaultCommand') ); ?>" class="navbar-brand"><?php
+	?><a href="<?php echo F::url(); ?>" class="navbar-brand"><?php
 		// logo
 		if ( !empty($layout['logo']) ) :
 			if ( is_string($layout['logo']) ) $layout['logo'] = array($layout['logo']);
