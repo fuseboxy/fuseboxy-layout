@@ -9,9 +9,9 @@
 		<out />
 	</io>
 </fusedoc>
-*/ ?>
-<?php if ( isset($arguments['breadcrumb']) ) : ?>
-	<nav aria-label="breadcrumb">
+*/
+if ( isset($arguments['breadcrumb']) ) :
+	?><nav id="breadcrumb" aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="<?php echo F::url(); ?>"><i class="fa fa-home"></i></a></li>
 			<?php foreach ( $arguments['breadcrumb'] as $key => $val ) : ?>
@@ -22,5 +22,5 @@
 				<?php endif; ?>
 			<?php endforeach; ?>
 		</ol>
-	</nav>
-<?php endif; ?>
+	</nav><?php
+endif;
