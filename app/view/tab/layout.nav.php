@@ -103,9 +103,9 @@ if ( $tabLayout['justify'] === true ) {
 						 ?><span><?php echo $tab['name']; ?></span><?php
 						// tab remark
 						if ( !empty($tab['remark']) ) :
-							?><em class="small ml-2 <?php if ( $tabLayout['style'] == 'tabs' or empty($tab['active']) ) echo 'text-muted'; ?>">
-								(<?php echo $tab['remark']; ?>)
-							</em><?php
+							?><em
+								class="small ml-2 <?php if ( $tabLayout['style'] == 'tabs' or empty($tab['active']) ) echo 'text-muted'; ?>"
+							>(<?php echo $tab['remark']; ?>)</em><?php
 						endif;
 					?></a><!--/.nav-link--><?php
 					// buttons (for horizontal orientation)
