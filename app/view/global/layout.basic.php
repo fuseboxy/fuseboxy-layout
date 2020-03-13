@@ -14,7 +14,9 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 	<?php endif; ?>
-	<link rel="stylesheet" href="<?php echo F::config('baseUrl'); ?>css/main.css" />
+	<?php if ( is_file( F::config('baseDir').'css/main.css' ) ) : ?>
+		<link rel="stylesheet" href="<?php echo F::config('baseUrl'); ?>css/main.css" />
+	<?php endif; ?>
 	<!-- script -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -27,7 +29,9 @@
 		<script src="<?php echo F::config('baseUrl'); ?>js/fuseboxy.scaffold.js"></script>
 	<?php endif; ?>
 	<?php if ( class_exists('Captcha') and F::is('auth.*') ) Captcha::renderClientAPI(); ?>
-	<script src="<?php echo F::config('baseUrl'); ?>js/main.js"></script>
+	<?php if ( is_file( F::config('baseDir').'js/main.js' ) ) : ?>
+		<script src="<?php echo F::config('baseUrl'); ?>js/main.js"></script>
+	<?php endif; ?>
 </head>
 <body data-controller="<?php echo $fusebox->controller; ?>" data-action="<?php echo $fusebox->action; ?>">
 <?php if ( isset($layout['content']) ) echo $layout['content']; ?>
