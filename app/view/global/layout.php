@@ -12,15 +12,19 @@
 */
 
 // title & nav
-if ( file_exists(__DIR__.'/layout.settings.php') ) include 'layout.settings.php';
+if ( is_file( F::appPath('view/global/layout.settings.php') ) {
+	include F::appPath('view/global/layout.settings.php');
+} else {
+	include F::appPath('view/global/layout.settings.php.DEFAULT');
+}
 
 
 // display
 ob_start();
-include 'layout.body.php';
-include 'layout.modal.php';
+include F::appPath('view/global/layout.body.php');
+include F::appPath('view/global/layout.modal.php');
 $layout['content'] = ob_get_clean();
 
 
 // wrap by HTML & BODY
-include 'layout.basic.php';
+include F::appPath('view/global/layout.basic.php');

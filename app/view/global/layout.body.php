@@ -23,21 +23,21 @@ if ( empty($layout['width']) or $layout['width'] == 'normal' ) {
 }
 ?><div id="global-layout"><?php
 	// header
-	include 'layout.topflash.php';
-	include 'layout.header.nav.php';
-	include 'layout.header.php';
+	include F::appPath('view/global/layout.topflash.php');
+	include F::appPath('view/global/layout.header.nav.php');
+	include F::appPath('view/global/layout.header.php');
 	// content
 	?><main 
 		id="content" 
 		<?php if ( !empty($contentClass) ) : ?>class="<?php echo implode(' ', $contentClass); ?>"<?php endif; ?>
 		<?php if ( !empty($contentStyle) ) : ?>style="<?php echo implode(' ', $contentStyle); ?>"<?php endif; ?>
 	><?php
-		include 'layout.flash.php';
-		include 'layout.title.php';
-		include 'layout.breadcrumb.php';
+		include F::appPath('view/global/layout.flash.php');
+		include F::appPath('view/global/layout.title.php');
+		include F::appPath('view/global/layout.breadcrumb.php');
 		if ( !empty($layout['content']) ) echo $layout['content'];
-		include 'layout.pagination.php';
+		include F::appPath('view/global/layout.pagination.php');
 	?></main><?php
 	// footer
-	include 'layout.footer.php';
+	include F::appPath('view/global/layout.footer.php');
 ?></div>

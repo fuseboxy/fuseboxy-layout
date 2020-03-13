@@ -71,7 +71,7 @@ if ( in_array($tabLayout['style'], array('tab','pill')) ) $tabLayout['style'] .=
 $tabLayout['orientation'] = in_array($tabLayout['position'], array('left','right')) ? 'vertical' : 'horizontal';
 
 // display
-include 'layout.body.php';
+include F::appPath('view/tab/layout.body.php');
 
 // clear layout items to avoid showing in global layout again
 if ( isset($layout['title'])         ) unset($layout['title']);

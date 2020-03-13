@@ -37,20 +37,24 @@ if ( $tabLayout['position'] == 'bottom' ) $tabContentClass[] = 'pb-3';
 
 // display
 ?><div class="<?php echo implode(' ', $tabLayoutClass); ?>"><?php
-	include F::config('appPath').'view/global/layout.header.nav.php';
+	include F::appPath('view/global/layout.header.nav.php');
 	if ( $tabLayout['position'] != 'bottom' ) :
-		?><div class="<?php echo implode(' ', $tabNavClass); ?>"><?php include 'layout.nav.php'; ?></div><?php
+		?><div class="<?php echo implode(' ', $tabNavClass); ?>"><?php
+			include F::appPath('view/tab/layout.nav.php');
+		?></div><?php
 	endif;
 	?><div class="<?php echo implode(' ', $tabContentClass); ?>"><?php
 		?><div class="tab-pane active" role="tabpanel"><?php
-			include F::config('appPath').'view/global/layout.title.php';
-			include F::config('appPath').'view/global/layout.breadcrumb.php';
-			include F::config('appPath').'view/global/layout.flash.php';
+			include F::appPath('view/global/layout.title.php');
+			include F::appPath('view/global/layout.breadcrumb.php');
+			include F::appPath('view/global/layout.flash.php');
 			if ( !empty($layout['content']) ) echo $layout['content'];
-			include F::config('appPath').'view/global/layout.pagination.php';
+			include F::appPath('view/global/layout.pagination.php');
 		?></div><?php
 	?></div><?php
 	if ( $tabLayout['position'] == 'bottom' ) :
-		?><div class="<?php echo implode(' ', $tabNavClass); ?>"><?php include 'layout.nav.php'; ?></div><?php
+		?><div class="<?php echo implode(' ', $tabNavClass); ?>"><?php
+			include F::appPath('view/tab/layout.nav.php');
+		?></div><?php
 	endif;
 ?></div>
