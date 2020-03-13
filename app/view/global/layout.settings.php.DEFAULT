@@ -41,7 +41,7 @@ $layout['metaTitle'] = '';
 
 // brand name
 $layout['logo'] = '';
-$layout['brand'] = '';
+$layout['brand'] = 'Fuseboxy Layout';
 
 
 // left menu
