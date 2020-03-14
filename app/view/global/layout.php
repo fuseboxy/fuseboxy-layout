@@ -10,11 +10,9 @@
 	</io>
 </fusedoc>
 */
+// title & nav
 $customSettings  = F::appPath('view/global/layout.settings.php');
 $defaultSettings = F::appPath('view/global/layout.settings.php.DEFAULT');
-
-
-// title & nav
 include is_file($customSettings) ? $customSettings : $defaultSettings;
 
 
