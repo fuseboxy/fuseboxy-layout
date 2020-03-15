@@ -1,6 +1,6 @@
 {
-	"name": "henrygotmojo/fuseboxy-layout",
-	"description": "Fuseboxy Global Layout",
+	"name": "fuseboxy/fuseboxy-layout",
+	"description": "Fuseboxy Layout - Global Layout, Tab Layout, etc.",
 	"license": "MIT",
 	"require": {}
 }
