@@ -5,7 +5,6 @@
 			<array name="$menus">
 				<structure name="+">
 					<string name="name" />
-					<string name="remark" optinonal="yes" />
 					<string name="url" optinonal="yes" />
 					<boolean name="active" optional="yes" />
 					<boolean name="disabled" optional="yes" />

@@ -17,9 +17,7 @@
 						<boolean name="disabled" optional="yes" />
 						<string name="remark" optinonal="yes" />
 						<string name="class" optional="yes" />
-						<string name="style" optional="yes" />
 						<string name="linkClass" optional="yes" />
-						<string name="linkStyle" optional="yes" />
 						<!-- button -->
 						<array name="buttons" optional="yes" />
 						<!-- dropdown -->
