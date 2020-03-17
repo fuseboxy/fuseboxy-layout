@@ -12,10 +12,12 @@
 					<structure name="+">
 						<string name="name" />
 						<string name="url" optional="yes" />
-						<boolean name="newWindow" optional="yes" />
+						<boolean name="active" optional="yes" />
+						<boolean name="disabled" optional="yes" />
+						<string name="remark" optional="yes" />
 						<string name="class" optional="yes" />
 						<string name="linkClass" optional="yes" />
-						<boolean name="active" optional="yes" />
+						<boolean name="newWindow" optional="yes" />
 					</structure>
 				</array>
 			</structure>
@@ -63,7 +65,8 @@ if ( !empty($layout['modalNav']) ) :
 				?><li class="<?php echo implode(' ', $itemClass); ?>"><?php
 					// nav link
 					$linkClass = array('nav-link');
-				if ( !empty($item['active']) ) $linkClass[] = 'active';
+					if ( !empty($item['active'])    ) $linkClass[] = 'active';
+					if ( !empty($item['disabled'])  ) $linkClass[] = 'disabled';
 					if ( !empty($item['linkClass']) ) $linkClass[] = $item['linkClass'];
 					// display link
 					?><a
@@ -78,7 +81,16 @@ if ( !empty($layout['modalNav']) ) :
 							data-toggle-transition="none"
 							data-target="[id^=global-modal].modal.show .modal-content"
 						<?php endif; ?>
-					><?php if ( isset($item['name']) ) echo $item['name']; ?></a><?php
+					><?php
+						// name
+						if ( isset($item['name']) ) :
+							?><span><?php echo $item['name']; ?></span><?php
+						endif;
+						// remark
+						if ( !empty($item['remark']) ) :
+							?><em class="ml-2 small text-muted">(<?php echo $item['remark']; ?>)</em><?php
+						endif;
+					?></a><?php
 				?></li><?php
 			endforeach;
 		?></ul><!--/.nav-tabs--><?php
