@@ -88,7 +88,7 @@ if ( !empty($layout['modalNav']) ) :
 						endif;
 						// remark
 						if ( !empty($item['remark']) ) :
-							?><em class="ml-2 small text-muted">(<?php echo $item['remark']; ?>)</em><?php
+							?><em class="ml-1 small text-muted">(<?php echo $item['remark']; ?>)</em><?php
 						endif;
 					?></a><?php
 				?></li><?php
