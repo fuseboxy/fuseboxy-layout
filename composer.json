@@ -2,5 +2,6 @@
 	"name": "fuseboxy/fuseboxy-layout",
 	"description": "Fuseboxy Layout - Global Layout, Tab Layout, etc.",
 	"license": "MIT",
-	"require": {}
+    "type": "fuseboxy-module",
+    "require": { "fuseboxy/fuseboxy-installer": "*" }
 }
