@@ -12,7 +12,7 @@
 */
 // title & nav
 $customSettings  = F::appPath('view/global/layout.settings.php');
-$defaultSettings = F::appPath('view/global/layout.settings.php.DEFAULT');
+$defaultSettings = F::appPath('view/global/layout.settings.php-default');
 include is_file($customSettings) ? $customSettings : $defaultSettings;
 
 
@@ -23,5 +23,5 @@ include F::appPath('view/global/layout.modal.php');
 $layout['content'] = ob_get_clean();
 
 
-// wrap by HTML & BODY
-include F::appPath('view/global/layout.basic.php');
+// wrap by html
+include F::appPath('view/global/layout.html.php');
