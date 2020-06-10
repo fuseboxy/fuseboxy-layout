@@ -6,7 +6,7 @@
 			<structure name="flash" scope="$arguments|$_SESSION">
 				<string name="type" optional="yes" default="primary" comments="primary|secondary|success|info|warning|danger|light|dark" />
 				<string name="icon" optional="yes" />
-				<string name="title" optional="yes" />
+				<string name="heading" optional="yes" />
 				<string name="message" />
 			</structure>
 		</in>
@@ -32,11 +32,11 @@ if ( isset($arguments['flash']) ) {
 if ( isset($arguments['flash']) ) :
 	?><div id="flash" class="alert alert-<?php echo $arguments['flash']['type']; ?>"><?php
 		if ( !empty($arguments['flash']['icon']) ) :
-			?><i class="<?php echo $arguments['flash']['icon']; ?>"></i><?php
+			?><span class="mr-1"><i class="<?php echo $arguments['flash']['icon']; ?>"></i></span><?php
 		endif;
-		if ( !empty($arguments['flash']['title']) ) :
-			?><strong><?php echo $arguments['flash']['title']; ?></strong><?php
+		if ( !empty($arguments['flash']['heading']) ) :
+			?><span class="mr-1"><strong><?php echo $arguments['flash']['heading']; ?></strong></span><?php
 		endif;
-		echo $arguments['flash']['message'];
+		?><span><?php echo $arguments['flash']['message']; ?></span><?php
 	?></div><?php
 endif;
