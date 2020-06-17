@@ -58,40 +58,42 @@ if ( !empty($layout['modalNav']) ) :
 	?><div class="modal-header pb-0"><?php
 		?><ul class="nav nav-tabs" style="margin-bottom: -1px;"><?php
 			foreach ( $layout['modalNav'] as $item ) :
-				// nav item
-				$itemClass = array('nav-item mr-1');
-				if ( !empty($item['class']) ) $itemClass[] = $item['class'];
-				// display item
-				?><li class="<?php echo implode(' ', $itemClass); ?>"><?php
-					// nav link
-					$linkClass = array('nav-link');
-					if ( !empty($item['active'])    ) $linkClass[] = 'active';
-					if ( !empty($item['disabled'])  ) $linkClass[] = 'disabled';
-					if ( !empty($item['linkClass']) ) $linkClass[] = $item['linkClass'];
-					// display link
-					?><a
-						class="<?php echo implode(' ', $linkClass); ?>"
-						<?php if ( !empty($item['url']) ) : ?>
-							href="<?php echo $item['url']; ?>"
-						<?php endif; ?>
-						<?php if ( !empty($item['url']) and !empty($item['newWindow']) ) : ?>
-							target="_blank"
-						<?php elseif ( !empty($item['url']) ) : ?>
-							data-toggle="ajax-load"
-							data-toggle-transition="none"
-							data-target="[id^=global-modal].modal.show .modal-content"
-						<?php endif; ?>
-					><?php
-						// name
-						if ( isset($item['name']) ) :
-							?><span><?php echo $item['name']; ?></span><?php
-						endif;
-						// remark
-						if ( !empty($item['remark']) ) :
-							?><em class="ml-1 small text-muted">(<?php echo $item['remark']; ?>)</em><?php
-						endif;
-					?></a><?php
-				?></li><?php
+				if ( !empty($item) ) :
+					// nav item
+					$itemClass = array('nav-item mr-1');
+					if ( !empty($item['class']) ) $itemClass[] = $item['class'];
+					// display item
+					?><li class="<?php echo implode(' ', $itemClass); ?>"><?php
+						// nav link
+						$linkClass = array('nav-link');
+						if ( !empty($item['active'])    ) $linkClass[] = 'active';
+						if ( !empty($item['disabled'])  ) $linkClass[] = 'disabled';
+						if ( !empty($item['linkClass']) ) $linkClass[] = $item['linkClass'];
+						// display link
+						?><a
+							class="<?php echo implode(' ', $linkClass); ?>"
+							<?php if ( !empty($item['url']) ) : ?>
+								href="<?php echo $item['url']; ?>"
+							<?php endif; ?>
+							<?php if ( !empty($item['url']) and !empty($item['newWindow']) ) : ?>
+								target="_blank"
+							<?php elseif ( !empty($item['url']) ) : ?>
+								data-toggle="ajax-load"
+								data-toggle-transition="none"
+								data-target="[id^=global-modal].modal.show .modal-content"
+							<?php endif; ?>
+						><?php
+							// name
+							if ( isset($item['name']) ) :
+								?><span><?php echo $item['name']; ?></span><?php
+							endif;
+							// remark
+							if ( !empty($item['remark']) ) :
+								?><em class="ml-1 small text-muted">(<?php echo $item['remark']; ?>)</em><?php
+							endif;
+						?></a><?php
+					?></li><?php
+				endif;
 			endforeach;
 		?></ul><!--/.nav-tabs--><?php
 		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
