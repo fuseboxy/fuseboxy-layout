@@ -58,7 +58,7 @@ if ( $tabLayout['justify'] === true ) {
 	endif;
 	// nav items
 	if ( !empty($tabLayout['nav']) ) :
-		foreach ( $tabLayout['nav'] as $i => $tab ) :
+		foreach ( $tabLayout['nav'] as $tab ) :
 			if ( !empty($tab) ) :
 				// menu item
 				$itemClass = array('nav-item');
