@@ -6,6 +6,7 @@
 				<structure name="+">
 					<string name="name" />
 					<string name="url" optinonal="yes" />
+					<string name="remark" optional="yes" />
 					<boolean name="active" optional="yes" />
 					<boolean name="disabled" optional="yes" />
 					<boolean name="newWindow" optional="yes" />
@@ -93,6 +94,10 @@ if ( !function_exists('layoutHeaderNav') ) :
 							// menu name
 							if ( !empty($item['name']) ) :
 								?> <span><?php echo $item['name']; ?></span><?php
+							endif;
+							// remark
+							if ( !empty($item['remark']) ) :
+								?><em class="ml-1 small text-muted">(<?php echo $item['remark']; ?>)</em><?php
 							endif;
 						?></a><?php
 						// has submenu
