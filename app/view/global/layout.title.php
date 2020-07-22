@@ -20,7 +20,7 @@ if ( isset($layout['title']) and is_string($layout['title']) ) $layout['title'] 
 
 // default
 if ( !isset($layout['title']['tag']) ) $layout['title']['tag'] = 'h1';
-if ( !isset($layout['title']['class']) ) $layout['title']['class'] = 'page-header border-bottom mb-4';
+if ( !isset($layout['title']['class']) ) $layout['title']['class'] = 'page-header mb-4';
 
 // display
 if ( !empty($layout['title']['message']) ) :
