@@ -56,7 +56,7 @@ endif;
 // modal nav
 if ( !empty($layout['modalNav']) ) :
 	?><div class="modal-header pb-0"><?php
-		?><ul class="nav nav-tabs" style="margin-bottom: -1px;"><?php
+		?><ul class="nav nav-tabs border-bottom-0"><?php
 			foreach ( $layout['modalNav'] as $item ) :
 				if ( !empty($item) ) :
 					// nav item
