@@ -53,7 +53,7 @@ $arguments['nav'] = array(
 // right menu
 $arguments['navRight'] = array(
 	// settings
-	( class_exists('Auth') and Auth::activeUserInRole('SUPER,ADMIN') ) ? array(
+	( class_exists('Auth') and Auth::userInRole('SUPER,ADMIN') ) ? array(
 		'icon' => 'fa fa-cog',
 		'menus' => array(
 			array('navHeader' => 'SETTINGS', 'divider' => 'after'),
@@ -73,10 +73,10 @@ $arguments['navRight'] = array(
 		'linkAttr' => array('data-toggle' => 'ajax-dropdown'),
 	) : false,
 	// logout
-	( class_exists('Auth') and Auth::user()  ) ? array(
+	( class_exists('Auth') and Auth::user() ) ? array(
 		'icon' => 'fa fa-user',
 		'menus' => array(
-			array('navHeader' => Auth::user('username'), 'divider' => 'after'),
+			array('navHeader' => Auth::actualUser('username'), 'divider' => 'after'),
 			array('name' => 'Update Profile', 'url' => F::url('account.profile'), 'active' => F::is('account.profile')),
 			array('name' => 'Change Password', 'url' => F::url('account.password'), 'active' => F::is('account.password')),
 			array('name' => 'Sign Out', 'url' => F::url('auth.logout'), 'icon' => 'fa fa-power-off mr-1', 'divider' => 'before'),
