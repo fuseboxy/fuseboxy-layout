@@ -63,7 +63,7 @@ $arguments['navRight'] = array(
 		),
 	) : false,
 	// user-sim
-	( class_exists('Sim') and class_exists('Auth') and Auth::userInRole('SUPER') ) ? array(
+	( class_exists('Sim') and class_exists('Auth') and Auth::actualUserInRole('SUPER') ) ? array(
 		'icon' => 'fa fa-mask',
 		'name' => Sim::user('username'),
 		'url' => F::url('sim.dropdown'),
