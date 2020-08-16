@@ -6,13 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<!-- style -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" />
-	<link rel="stylesheet" href="https://cdn.statically.io/bb/henrygotmojo/bootstrap-extend/4.1.2/bootstrap.extend.css" />
+	<link rel="stylesheet" href="https://cdn.statically.io/bb/henrygotmojo/bootstrap-extend/4.2/bootstrap.extend.css" />
 	<?php if ( class_exists('Scaffold') ) : ?>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" />
 		<style type="text/css">.note-editable * { font-size: 14px !important; line-height: inherit !important; }</style>
 	<?php endif; ?>
 	<?php if ( is_file( F::config('baseDir').'css/main.css' ) ) : ?>
@@ -20,12 +20,12 @@
 	<?php endif; ?>
 	<!-- script -->
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-	<script src="https://cdn.statically.io/bb/henrygotmojo/bootstrap-extend/4.1.2/bootstrap.extend.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.statically.io/bb/henrygotmojo/bootstrap-extend/4.2/bootstrap.extend.js"></script>
 	<?php if ( class_exists('Scaffold') ) : ?>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/simple-ajax-uploader@2.6.7/SimpleAjaxUploader.js"></script>
 		<script src="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-scaffold-js/2.1.1/fuseboxy.scaffold.js"></script>
 	<?php endif; ?>
