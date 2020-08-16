@@ -1,8 +1,15 @@
-<?php foreach ( ['sm','md','lg','xl','max'] as $size ) : ?>
-	<div id="global-modal-<?php echo $size; ?>" class="modal fade" data-backdrop="true" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-<?php echo $size; ?>">
-			<div class="modal-content">
-			</div>
-		</div>
-	</div>
-<?php endforeach; ?>
+<?php /*
+<fusedoc>
+	<description>
+		create empty modals in different size
+	</description>
+	<io />
+</fusedoc>
+*/
+foreach ( ['max','xl','lg','md','sm','xs'] as $size ) :
+	?><div id="global-modal-<?php echo $size; ?>" class="modal fade" data-backdrop="true" tabindex="-1" role="dialog" aria-hidden="true"><?php
+		?><div class="modal-dialog modal-<?php echo $size; ?>"><?php
+			?><div class="modal-content"></div><?php
+		?></div><?php
+	?></div><?php
+endforeach;
