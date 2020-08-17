@@ -66,11 +66,11 @@ $arguments['navRight'] = array(
 	( class_exists('Sim') and class_exists('Auth') and Auth::actualUserInRole('SUPER') ) ? array(
 		'icon' => 'fa fa-mask',
 		'name' => Sim::user('username'),
-		'url' => F::url('sim.dropdown&align=right'),
+		'url' => F::url('sim.dropdown'),
 		'active' => Sim::user(),
 		'class' => 'dropdown',
 		'linkClass' => Sim::user() ? 'text-primary dropdown-toggle' : 'dropdown-toggle',
-		'linkAttr' => array('data-toggle' => 'ajax-dropdown'),
+		'linkAttr' => array('data-toggle' => 'ajax-dropdown', 'data-align' => 'right'),
 	) : false,
 	// logout
 	( class_exists('Auth') and Auth::user() ) ? array(
