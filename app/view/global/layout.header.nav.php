@@ -31,13 +31,14 @@
 				</structure>
 			</array>
 			<number name="$level" optional="yes" default="1" />
+			<string name="$align" comments="left|right" default="left" />
 		</in>
 		<out />
 	</io>
 </fusedoc>
 */
 if ( !function_exists('layoutHeaderNav') ) :
-	function layoutHeaderNav($menus, $level=1) {
+	function layoutHeaderNav($menus, $level=1, $align='left') {
 		foreach ( $menus as $item ) :
 			if ( !empty($item) ) :
 				// fix variable
@@ -102,7 +103,9 @@ if ( !function_exists('layoutHeaderNav') ) :
 						?></a><?php
 						// has submenu
 						if ( !empty($item['menus']) ) :
-							?><ul class="dropdown-menu"><?php layoutHeaderNav($item['menus'], $level+1); ?></ul><?php
+							?><ul class="dropdown-menu <?php if ( $align == 'right' ) echo 'dropdown-menu-right'; ?>"><?php
+								layoutHeaderNav($item['menus'], $level+1, $align);
+							?></ul><?php
 						endif;
 					?></li><?php
 				endif; // if-item-name

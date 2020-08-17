@@ -79,8 +79,7 @@
 			?><ul class="navbar-nav left"><?php layoutHeaderNav($arguments['nav']); ?></ul><?php
 		endif;
 		if ( !empty($arguments['navRight']) ) :
-			?><ul class="navbar-nav right ml-auto"><?php layoutHeaderNav($arguments['navRight']); ?></ul><?php
-			?><style type="text/css">.ml-auto .dropdown-menu { left: auto !important; right: 0; }</style><?php
+			?><ul class="navbar-nav right ml-auto"><?php layoutHeaderNav($arguments['navRight'], 1, 'right'); ?></ul><?php
 		endif;
 	?></nav><?php
 ?></header>
