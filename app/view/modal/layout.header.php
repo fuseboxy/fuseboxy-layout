@@ -2,22 +2,21 @@
 <fusedoc>
 	<io>
 		<in>
-			<structure name="$layout">
-				<string name="modalHeader" optional="yes" />
-				<structure name="modalTitle" optional="yes">
+			<structure name="$modalLayout">
+				<string name="header" optional="yes" />
+				<structure name="title" optional="yes">
 					<string name="title" />
-					<string name="class" optional="yes" default="h5" />
-				</structure> 
-				<array name="modalNav" optional="yes">
+					<string name="class" />
+				</structure>
+				<array name="nav">
 					<structure name="+">
 						<string name="name" />
-						<string name="url" optional="yes" />
-						<boolean name="active" optional="yes" />
-						<boolean name="disabled" optional="yes" />
-						<string name="remark" optional="yes" />
-						<string name="class" optional="yes" />
-						<string name="linkClass" optional="yes" />
-						<boolean name="newWindow" optional="yes" />
+						<string name="url" />
+						<string name="remark" />
+						<string name="class" />
+						<string name="linkClass" />
+						<boolean name="active" />
+						<boolean name="disabled" />
 					</structure>
 				</array>
 			</structure>

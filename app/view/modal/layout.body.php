@@ -2,9 +2,8 @@
 <fusedoc>
 	<io>
 		<in>
-			<structure name="$layout">
-				<string name="modalBody" optional="yes" />
-			</structure>
+			<string name="flash" scope="$arguments" />
+			<string name="content" scope="$layout" />
 		</in>
 		<out />
 	</io>

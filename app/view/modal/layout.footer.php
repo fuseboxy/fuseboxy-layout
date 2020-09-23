@@ -2,8 +2,8 @@
 <fusedoc>
 	<io>
 		<in>
-			<structure name="$layout">
-				<string name="modalFooter" optional="yes" />
+			<structure name="$modalLayout">
+				<string name="footer" optional="yes" />
 			</structure>
 		</in>
 		<out />

@@ -5,15 +5,28 @@
 	</description>
 	<io>
 		<in>
-			<structure name="$layout">
-				<string name="modalID" optional="yes" />
-				<string name="modalTitle" optional="yes" />
-				<string name="modalTitleSize" optional="yes" />
-				<string name="modalHeader" optional="yes" />
-				<array  name="modalNav" optional="yes" />
-				<string name="modalBody" optional="yes" />
-				<string name="modalFooter" optional="yes" />
+			<structure name="$modalLayout">
+				<string name="elementID" optional="yes" />
+				<string name="header" optional="yes" />
+				<structure name="title" optional="yes">
+					<string name="title" />
+					<string name="class" />
+				</structure>
+				<array name="nav">
+					<structure name="+">
+						<string name="name" />
+						<string name="url" />
+						<string name="remark" />
+						<string name="class" />
+						<string name="linkClass" />
+						<boolean name="active" />
+						<boolean name="disabled" />
+					</structure>
+				</array>
+				<string name="footer" optional="yes" />
 			</structure>
+			<string name="flash" scope="$arguments" />
+			<string name="content" scope="$layout" />
 		</in>
 		<out />
 	</io>
