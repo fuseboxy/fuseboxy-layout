@@ -4,8 +4,9 @@
 		<in>
 			<structure name="$modalLayout">
 				<string name="header" optional="yes" />
+				<string name="title" optional="yes" />
 				<structure name="title" optional="yes">
-					<string name="title" />
+					<string name="text" />
 					<string name="class" />
 				</structure>
 				<array name="nav">
@@ -16,7 +17,7 @@
 						<string name="class" />
 						<string name="linkClass" />
 						<boolean name="active" />
-						<boolean name="disabled" />
+						<boolean name="newWindow" />
 					</structure>
 				</array>
 			</structure>
@@ -25,38 +26,30 @@
 	</io>
 </fusedoc>
 */
-// fix parameter
-if ( isset($layout['modalTitle']) and is_string($layout['modalTitle']) ) {
-	$layout['modalTitle'] = array(
-		'title' => $layout['modalTitle'],
-		'class' => 'h5',
-	);
-}
-
-
-// modal title
-if ( !empty($layout['modalTitle']) ) :
+// display (user-defined) modal header, or...
+if ( !empty($modalLayout['header']) ) :
 	?><div class="modal-header"><?php
-		?><div class="modal-title <?php echo $layout['modalTitle']['class']; ?>"><?php echo $layout['modalTitle']['title']; ?></div><?php
+		echo $modalLayout['header'];
 		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
 	?></div><?php
-endif;
 
 
-// modal header
-if ( !empty($layout['modalHeader']) ) :
+// display modal title, or...
+elseif ( !empty($modalLayout['title']) ) :
+	if ( is_string($modalLayout['title']) ) :
+		$modalLayout['title'] = array( 'text' => $modalLayout['title'], 'class' => 'h5');
+	endif;
 	?><div class="modal-header"><?php
-		echo $layout['modalHeader'];
+		?><div class="modal-title <?php echo $modalLayout['title']['class']; ?>"><?php echo $modalLayout['title']['title']; ?></div><?php
 		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
 	?></div><?php
-endif;
 
 
-// modal nav
-if ( !empty($layout['modalNav']) ) :
+// display modal nav
+elseif ( !empty($modalLayout['nav']) ) :
 	?><div class="modal-header pb-0"><?php
 		?><ul class="nav nav-tabs border-bottom-0"><?php
-			foreach ( $layout['modalNav'] as $item ) :
+			foreach ( $modalLayout['nav'] as $item ) :
 				if ( !empty($item) ) :
 					// nav item
 					$itemClass = array('nav-item mr-1');
@@ -66,7 +59,6 @@ if ( !empty($layout['modalNav']) ) :
 						// nav link
 						$linkClass = array('nav-link');
 						if ( !empty($item['active'])    ) $linkClass[] = 'active';
-						if ( !empty($item['disabled'])  ) $linkClass[] = 'disabled';
 						if ( !empty($item['linkClass']) ) $linkClass[] = $item['linkClass'];
 						// display link
 						?><a
@@ -97,4 +89,6 @@ if ( !empty($layout['modalNav']) ) :
 		?></ul><!--/.nav-tabs--><?php
 		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
 	?></div><!--/.modal-header--><?php
+
+
 endif;

@@ -14,5 +14,5 @@
 	// avoid showing in other layout
 	if ( isset($arguments['flash']) ) unset($arguments['flash']);
 	// display content specified
-	if ( isset($layout['modalBody']) ) echo $layout['modalBody'];
+	if ( isset($layout['content']) ) echo $layout['content'];
 ?></div>
