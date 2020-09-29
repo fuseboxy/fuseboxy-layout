@@ -18,6 +18,12 @@
 						<string name="remark" optinonal="yes" />
 						<string name="class" optional="yes" />
 						<string name="linkClass" optional="yes" />
+						<structure name="attr" optional="yes">
+							<string name="~attrName~" value="~attrValue~" />
+						</structure>
+						<structure name="linkAttr" optional="yes">
+							<string name="~attrName~" value="~attrValue~" />
+						</structure>
 						<!-- button -->
 						<array name="buttons" optional="yes" />
 						<!-- dropdown -->
@@ -63,6 +69,7 @@ if ( $tabLayout['justify'] === true ) {
 				// menu item
 				$itemClass = array('nav-item');
 				if ( !empty($tab['class']) ) $itemClass[] = $tab['class'];
+				if ( !empty($tab['attr']['class']) ) $itemClass[] = $tab['attr']['class'];
 				$itemClass[] = ( $tabLayout['orientation'] == 'vertical' ) ? 'mb-1' : 'mr-1';
 				// display menu item
 				?><li class="<?php echo implode(' ', $itemClass); ?>"><?php
@@ -76,12 +83,15 @@ if ( $tabLayout['justify'] === true ) {
 					if ( !empty($tab['menus']) ) :
 						?><ul class="dropdown-menu"><?php layoutHeaderNav($tab['menus'], 2); ?></ul><?php
 					endif;
+					// display custom attribute
+					if ( !empty($tab['attr']) ) foreach ( $tab['attr'] as $key => $val ) if ( $key != 'class' ) echo $key.'="'.$val.'" ';
 					// link styling
 					$linkClass = array('nav-link');
+					if ( !empty($tab['menus']) ) $linkClass[] = 'dropdown-toggle';
 					if ( !empty($tab['active']) ) $linkClass[] = 'active';
 					if ( !empty($tab['disabled']) ) $linkClass[] = 'disabled';
 					if ( !empty($tab['linkClass']) ) $linkClass[] = $tab['linkClass'];
-					if ( !empty($tab['menus']) ) $linkClass[] = 'dropdown-toggle';
+					if ( !empty($tab['linkAttr']['class']) ) $itemClass[] = $tab['linkAttr']['class'];
 					if ( !empty($tab['buttons']) and $tabLayout['orientation'] == 'horizontal' ) $linkClass[] = 'd-inline-block';
 					// display menu link
 					?><a 
@@ -98,6 +108,7 @@ if ( $tabLayout['justify'] === true ) {
 							aria-haspopup="true"
 							aria-expanded="false"
 						<?php endif; ?>
+						<?php if ( !empty($tab['linkAttr']) ) foreach ( $tab['linkAttr'] as $key => $val ) if ( $key != 'class' ) echo $key.'="'.$val.'" '; ?>
 					><?php
 						// tab name
 						 ?><span><?php echo $tab['name']; ?></span><?php
