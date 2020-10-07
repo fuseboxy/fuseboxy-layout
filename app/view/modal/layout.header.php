@@ -71,7 +71,7 @@ elseif ( !empty($modalLayout['nav']) ) :
 							<?php elseif ( !empty($item['url']) ) : ?>
 								data-toggle="ajax-load"
 								data-toggle-transition="none"
-								data-target="[id^=global-modal].modal.show .modal-content"
+								data-target="[id^=global-modal].modal.show:last .modal-content"
 							<?php endif; ?>
 						><?php
 							// name
