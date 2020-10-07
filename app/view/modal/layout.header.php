@@ -40,7 +40,7 @@ elseif ( !empty($modalLayout['title']) ) :
 		$modalLayout['title'] = array( 'text' => $modalLayout['title'], 'class' => 'h5');
 	endif;
 	?><div class="modal-header"><?php
-		?><div class="modal-title <?php echo $modalLayout['title']['class']; ?>"><?php echo $modalLayout['title']['title']; ?></div><?php
+		?><div class="modal-title <?php echo $modalLayout['title']['class']; ?>"><?php echo $modalLayout['title']['text']; ?></div><?php
 		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
 	?></div><?php
 
