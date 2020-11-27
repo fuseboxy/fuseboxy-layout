@@ -14,7 +14,6 @@
 <div class="modal-footer"><?php
 	// default footer
 	if ( !isset($modalLayout['footer']) ) :
-		ob_start();
 		// execution time
 		if ( isset($GLOBALS['startTick']) ) :
 			$et = round(microtime(true)*1000-$GLOBALS['startTick']);
@@ -22,8 +21,8 @@
 		endif;
 		// button
 		?><button type="button" class="btn btn-light" data-dismiss="modal">Close</button><?php
-		$modalLayout['footer'] = ob_get_clean();
+	// custom footer
+	else :
+		echo $modalLayout['footer'];
 	endif;
-	// display
-	echo $modalLayout['footer']
 ?></div>
