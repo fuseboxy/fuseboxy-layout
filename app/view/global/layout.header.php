@@ -5,6 +5,9 @@
 			<structure name="config" scope="$fusebox">
 				<string name="defaultCommand" />
 			</structure>
+			<structure name="$xfa">
+				<string name="brand" optional="yes" />
+			</structure>
 			<structure name="$layout">
 				<string name="logo|brand" optional="yes" />
 				<structure name="logo|brand" optional="yes">
@@ -21,48 +24,54 @@
 </fusedoc>
 */ ?>
 <header id="header" class="navbar navbar-expand-sm navbar-light bg-light"><?php
-	// logo & brand
-	?><a href="<?php echo F::url(); ?>" class="navbar-brand"><?php
-		// logo
-		if ( !empty($layout['logo']) ) :
-			if ( is_string($layout['logo']) ) $layout['logo'] = array($layout['logo']);
-			foreach ( $layout['logo'] as $thisBreakpoints => $logoPath ) :
-				// hide @ other breakpoints
-				$otherBreakpoints = array_diff( array_keys($layout['logo']), array($thisBreakpoints) );
-				$otherBreakpoints = explode(' ', implode(' ', $otherBreakpoints));
-				// show @ this breakpoints
-				$thisBreakpoints = explode(' ', $thisBreakpoints);
-				// prepare class
-				$logoClass = array();
-				foreach ( $thisBreakpoints  as $breakpoint ) $logoClass[] = empty($breakpoint) ? 'd-inline-block' : "d-{$breakpoint}-inline-block";
-				foreach ( $otherBreakpoints as $breakpoint ) $logoClass[] = empty($breakpoint) ? 'd-none' : "d-{$breakpoint}-none";
-				if ( !empty($layout['brand']) ) $logoClass[] = 'pr-4';
-				// display
-				if ( !empty($logoPath) ) :
-					?><img class="<?php echo implode(' ', $logoClass); ?>" src="<?php echo $logoPath; ?>" alt="" /><?php
-				endif;
-			endforeach;
-		endif;
-		// brand
-		if ( !empty($layout['brand']) ) :
-			if ( is_string($layout['brand']) ) $layout['brand'] = array($layout['brand']);
-			foreach ( $layout['brand'] as $thisBreakpoints => $brandName ) :
-				// hide @ other breakpoints
-				$otherBreakpoints = array_diff( array_keys($layout['brand']), array($thisBreakpoints) );
-				$otherBreakpoints = explode(' ', implode(' ', $otherBreakpoints));
-				// show @ this breakpoints
-				$thisBreakpoints = explode(' ', $thisBreakpoints);
-				// prepare class
-				$brandClass = array();
-				foreach ( $thisBreakpoints  as $breakpoint ) $brandClass[] = empty($breakpoint) ? 'd-inline-block' : "d-{$breakpoint}-inline-block";
-				foreach ( $otherBreakpoints as $breakpoint ) $brandClass[] = empty($breakpoint) ? 'd-none' : "d-{$breakpoint}-none";
-				// display
-				if ( !empty($brandName) ) :
-					?><span class="<?php echo implode(' ', $brandClass); ?>"><?php echo $brandName; ?></span><?php
-				endif;
-			endforeach;
-		endif;
-	?></a><?php
+	ob_start();
+	// logo
+	if ( !empty($layout['logo']) ) :
+		if ( is_string($layout['logo']) ) $layout['logo'] = array($layout['logo']);
+		foreach ( $layout['logo'] as $thisBreakpoints => $logoPath ) :
+			// hide @ other breakpoints
+			$otherBreakpoints = array_diff( array_keys($layout['logo']), array($thisBreakpoints) );
+			$otherBreakpoints = explode(' ', implode(' ', $otherBreakpoints));
+			// show @ this breakpoints
+			$thisBreakpoints = explode(' ', $thisBreakpoints);
+			// prepare class
+			$logoClass = array();
+			foreach ( $thisBreakpoints  as $breakpoint ) $logoClass[] = empty($breakpoint) ? 'd-inline-block' : "d-{$breakpoint}-inline-block";
+			foreach ( $otherBreakpoints as $breakpoint ) $logoClass[] = empty($breakpoint) ? 'd-none' : "d-{$breakpoint}-none";
+			if ( !empty($layout['brand']) ) $logoClass[] = 'pr-4';
+			// display
+			if ( !empty($logoPath) ) :
+				?><img class="<?php echo implode(' ', $logoClass); ?>" src="<?php echo $logoPath; ?>" alt="" /><?php
+			endif;
+		endforeach;
+	endif;
+	// brand
+	if ( !empty($layout['brand']) ) :
+		if ( is_string($layout['brand']) ) $layout['brand'] = array($layout['brand']);
+		foreach ( $layout['brand'] as $thisBreakpoints => $brandName ) :
+			// hide @ other breakpoints
+			$otherBreakpoints = array_diff( array_keys($layout['brand']), array($thisBreakpoints) );
+			$otherBreakpoints = explode(' ', implode(' ', $otherBreakpoints));
+			// show @ this breakpoints
+			$thisBreakpoints = explode(' ', $thisBreakpoints);
+			// prepare class
+			$brandClass = array();
+			foreach ( $thisBreakpoints  as $breakpoint ) $brandClass[] = empty($breakpoint) ? 'd-inline-block' : "d-{$breakpoint}-inline-block";
+			foreach ( $otherBreakpoints as $breakpoint ) $brandClass[] = empty($breakpoint) ? 'd-none' : "d-{$breakpoint}-none";
+			// display
+			if ( !empty($brandName) ) :
+				?><span class="<?php echo implode(' ', $brandClass); ?>"><?php echo $brandName; ?></span><?php
+			endif;
+		endforeach;
+	endif;
+	// wrap by link (when necessary)
+	if ( isset($xfa['brand']) ) :
+		?><a href="<?php echo F::url($xfa['brand']); ?>" class="navbar-brand"><?php echo ob_get_clean(); ?></a><?php
+	elseif ( $xfa['brand'] !== false ) :
+		?><a href="<?php echo F::url(); ?>" class="navbar-brand"><?php echo ob_get_clean(); ?></a><?php
+	else :
+		?><span class="navbar-brand"><?php echo ob_get_clean(); ?></span><?php
+	endif;
 	// hamburger button
 	?><button 
 		class="navbar-toggler" 
