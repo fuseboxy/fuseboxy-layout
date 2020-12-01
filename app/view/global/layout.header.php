@@ -38,7 +38,7 @@
 			$logoClass = array();
 			foreach ( $thisBreakpoints  as $breakpoint ) $logoClass[] = empty($breakpoint) ? 'd-inline-block' : "d-{$breakpoint}-inline-block";
 			foreach ( $otherBreakpoints as $breakpoint ) $logoClass[] = empty($breakpoint) ? 'd-none' : "d-{$breakpoint}-none";
-			if ( !empty($layout['brand']) ) $logoClass[] = 'pr-4';
+			if ( !empty($layout['brand']) ) $logoClass[] = 'mr-2';
 			// display
 			if ( !empty($logoPath) ) :
 				?><img class="<?php echo implode(' ', $logoClass); ?>" src="<?php echo $logoPath; ?>" alt="" /><?php
