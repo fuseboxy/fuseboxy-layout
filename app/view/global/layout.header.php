@@ -24,7 +24,12 @@
 </fusedoc>
 */ ?>
 <header id="header" class="navbar navbar-expand-sm navbar-light bg-light"><?php
-	ob_start();
+	// wrap by link (when necessary)
+	if ( isset($xfa['brand']) and $xfa['brand'] === false ) :
+		?><span class="navbar-brand"><?php
+	else :
+		?><a href="<?php echo F::url( isset($xfa['brand']) ? $xfa['brand'] : '' ); ?>" class="navbar-brand"><?php
+	endif;
 	// logo
 	if ( !empty($layout['logo']) ) :
 		if ( is_string($layout['logo']) ) $layout['logo'] = array($layout['logo']);
@@ -65,13 +70,12 @@
 		endforeach;
 	endif;
 	// wrap by link (when necessary)
-	if ( !empty($xfa['brand']) ) :
-		?><a href="<?php echo F::url($xfa['brand']); ?>" class="navbar-brand"><?php echo ob_get_clean(); ?></a><?php
-	elseif ( !isset($xfa['brand']) or $xfa['brand'] !== false ) :
-		?><a href="<?php echo F::url(); ?>" class="navbar-brand"><?php echo ob_get_clean(); ?></a><?php
+	if ( isset($xfa['brand']) and $xfa['brand'] === false ) :
+		?></span><!--/.navbar-brand--><?php
 	else :
-		?><span class="navbar-brand"><?php echo ob_get_clean(); ?></span><?php
+		?></a><!--/.navbar-brand--><?php
 	endif;
+
 	// hamburger button
 	?><button 
 		class="navbar-toggler" 
