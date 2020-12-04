@@ -27,7 +27,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/simple-ajax-uploader@2.6.7/SimpleAjaxUploader.js"></script>
-		<script src="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-scaffold-js/2.1.1/fuseboxy.scaffold.js"></script>
+		<script src="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-scaffold-js/2.1.2/fuseboxy.scaffold.js"></script>
 	<?php endif; ?>
 	<?php if ( class_exists('Captcha') and F::is('auth.*') ) Captcha::renderClientAPI(); ?>
 	<?php if ( is_file( F::config('baseDir').'js/main.js' ) ) : ?>
