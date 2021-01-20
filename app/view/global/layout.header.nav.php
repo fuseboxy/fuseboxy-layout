@@ -3,9 +3,9 @@
 	<io>
 		<in>
 			<array name="$menus">
-				<structure name="+">
-					<string name="name" />
-					<string name="url" optinonal="yes" />
+				<structure name="~menuNameOptional~">
+					<string name="name" optional="yes" />
+					<string name="url" optional="yes" />
 					<string name="remark" optional="yes" />
 					<boolean name="active" optional="yes" />
 					<boolean name="disabled" optional="yes" />
@@ -39,7 +39,11 @@
 */
 if ( !function_exists('layoutHeaderNav') ) :
 	function layoutHeaderNav($menus, $level=1, $align='left') {
-		foreach ( $menus as $item ) :
+		foreach ( $menus as $itemKey => $item ) :
+			// fix menu (when necessary)
+			if ( is_string($item) ) $item = array('name' => $item);
+			elseif ( !is_numeric($itemKey) and empty($item['name']) ) $item['name'] = $itemKey;
+			// display menu item (when necessary)
 			if ( !empty($item) ) :
 				// fix variable
 				if ( empty($item['divider']) ) :

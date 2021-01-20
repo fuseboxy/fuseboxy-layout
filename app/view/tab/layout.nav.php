@@ -10,9 +10,9 @@
 				<string name="header" optional="yes" />
 				<string name="footer" optional="yes" />
 				<array name="nav">
-					<structure name="+">
-						<string name="name" />
-						<string name="url" optinonal="yes" />
+					<structure name="~tabNameOptional~">
+						<string name="name" optional="yes" />
+						<string name="url" optional="yes" />
 						<boolean name="active" optional="yes" />
 						<boolean name="disabled" optional="yes" />
 						<string name="remark" optinonal="yes" />
@@ -64,7 +64,11 @@ if ( $tabLayout['justify'] === true ) {
 	endif;
 	// nav items
 	if ( !empty($tabLayout['nav']) ) :
-		foreach ( $tabLayout['nav'] as $tab ) :
+		foreach ( $tabLayout['nav'] as $tabKey => $tab ) :
+			// fix tab (when necessary)
+			if ( is_string($tab) ) $tab = array('name' => $tab);
+			elseif ( !is_numeric($tabKey) and empty($tab['name']) ) $tab['name'] = $tabKey;
+			// display tab (when necessary)
 			if ( !empty($tab) ) :
 				// menu item
 				$itemClass = array('nav-item');

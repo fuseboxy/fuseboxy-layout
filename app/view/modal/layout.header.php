@@ -10,7 +10,7 @@
 					<string name="class" />
 				</structure>
 				<array name="nav">
-					<structure name="+">
+					<structure name="~menuNameOptional~">
 						<string name="name" />
 						<string name="url" />
 						<string name="remark" />
@@ -49,7 +49,11 @@ elseif ( !empty($modalLayout['title']) ) :
 elseif ( !empty($modalLayout['nav']) ) :
 	?><div class="modal-header pb-0"><?php
 		?><ul class="nav nav-tabs border-bottom-0"><?php
-			foreach ( $modalLayout['nav'] as $item ) :
+			foreach ( $modalLayout['nav'] as $itemKey => $item ) :
+				// fix menu (when necessary)
+				if ( is_string($item) ) $item = array('name' => $item);
+				elseif ( !is_numeric($itemKey) and empty($item['name']) ) $item['name'] = $itemKey;
+				// display menu item (when necessary)
 				if ( !empty($item) ) :
 					// nav item
 					$itemClass = array('nav-item mr-1');
