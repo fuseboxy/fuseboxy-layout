@@ -47,6 +47,8 @@ if ( isset($arguments['pagination']) ) :
 		$url_without_page = str_ireplace("&showAll={$arguments['showAll']}", '', $url_without_page);
 		$url_without_page = str_ireplace("?showAll={$arguments['showAll']}", '', $url_without_page);
 	}
+	// remove duplicate ampersand
+	$url_without_page = str_replace('&&', '&', $url_without_page);
 	// display
 	?><div id="pagination" class="mt-4"><?php
 		if ( $visible_end > 1 ) :
