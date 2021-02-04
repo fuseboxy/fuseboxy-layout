@@ -51,7 +51,7 @@ if ( isset($arguments['pagination']) ) :
 	?><div id="pagination" class="mt-4"><?php
 		if ( $visible_end > 1 ) :
 			// pagination (if multiple pages)
-			?><ul class="pagination float-left mr-4"><?php
+			?><ul class="pagination float-left"><?php
 				// first
 				if ( $arguments['page'] > 1 ) :
 					?><li class="page-item first"><a class="page-link" href="<?php echo "{$url_without_page}&amp;page=1"; ?>">&laquo; First</a></li><?php
@@ -105,9 +105,9 @@ if ( isset($arguments['pagination']) ) :
 		endif; // if-multiple-pages
 		// show all button (when necessary)
 		if ( $page_count > 1 or !empty($arguments['showAll']) ) :
-			$btnLink = empty($arguments['showAll']) ? "{$url_without_page}&showAll=1" : $url_without_page;
+			$btnLink = empty($arguments['showAll']) ? "{$url_without_page}&amp;showAll=1" : $url_without_page;
 			$btnText = empty($arguments['showAll']) ? 'Show all' : "Show {$arguments['pagination']['recordPerPage']} per page";
-			?><a href="<?php echo $btnLink; ?>" class="btn btn-primary border-white"><?php echo $btnText; ?></em></a><?php
+			?><a href="<?php echo $btnLink; ?>" class="btn btn-primary border-0 ml-3"><?php echo $btnText; ?></em></a><?php
 		endif;
 	?></div><!--/#pagination--><?php
 endif; // if-has-pagination
