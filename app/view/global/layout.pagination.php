@@ -38,17 +38,13 @@ if ( isset($arguments['pagination']) ) :
 	$next_batch = min($arguments['page'] + $arguments['pagination']['pageVisible'], $page_count);
 	if ( $prev_batch == $visible_start ) unset($prev_batch);
 	if ( $next_batch == $visible_end   ) unset($next_batch);
-	// preserve all url params except current page
-	$url_without_page = $_SERVER['REQUEST_URI'];
-	$url_without_page = str_ireplace("&page={$arguments['page']}", '', $url_without_page);
-	$url_without_page = str_ireplace("?page={$arguments['page']}", '', $url_without_page);
-	// remove show-all flag (when necessary)
-	if ( isset($arguments['showAll']) ) {
-		$url_without_page = str_ireplace("&showAll={$arguments['showAll']}", '', $url_without_page);
-		$url_without_page = str_ireplace("?showAll={$arguments['showAll']}", '', $url_without_page);
-	}
-	// remove duplicate ampersand
-	$url_without_page = str_replace('&&', '&', $url_without_page);
+	// prepare clean url
+	// ===> preserve all url params except current page
+	// ===> remove show-all flag (when necessary)
+	parse_str($_SERVER['QUERY_STRING'], $qs);
+	if ( isset($qs['page']) ) unset($qs['page']);
+	if ( isset($arguments['showAll']) and isset($qs['showAll']) ) unset($qs['showAll']);
+	$url_without_page = empty($qs) ? $fusebox->self : ($fusebox->self.'?'.http_build_query($qs));
 	// display
 	?><div id="pagination" class="mt-4"><?php
 		if ( $visible_end > 1 ) :
