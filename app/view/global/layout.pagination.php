@@ -105,7 +105,7 @@ if ( isset($arguments['pagination']) ) :
 		if ( $page_count > 1 or !empty($arguments['showAll']) ) :
 			$btnLink = empty($arguments['showAll']) ? "{$url_without_page}&amp;showAll=1" : $url_without_page;
 			$btnText = empty($arguments['showAll']) ? 'Show all' : "Show {$arguments['pagination']['recordPerPage']} per page";
-			?><a href="<?php echo $btnLink; ?>" class="btn btn-primary border-0 ml-3"><?php echo $btnText; ?></em></a><?php
+			?><a href="<?php echo $btnLink; ?>" class="btn btn-primary btn-show-all border-0 ml-3"><?php echo $btnText; ?></em></a><?php
 		endif;
 	?></div><!--/#pagination--><?php
 endif; // if-has-pagination
