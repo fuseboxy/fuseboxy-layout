@@ -38,20 +38,18 @@ if ( isset($arguments['pagination']) ) :
 	$next_batch = min($arguments['page'] + $arguments['pagination']['pageVisible'], $page_count);
 	if ( $prev_batch == $visible_start ) unset($prev_batch);
 	if ( $next_batch == $visible_end   ) unset($next_batch);
-	// preserve all url params except current page
-	$url_without_page = $_SERVER['REQUEST_URI'];
-	$url_without_page = str_ireplace("&page={$arguments['page']}", '', $url_without_page);
-	$url_without_page = str_ireplace("?page={$arguments['page']}", '', $url_without_page);
-	// remove show-all flag (when necessary)
-	if ( isset($arguments['showAll']) ) {
-		$url_without_page = str_ireplace("&showAll={$arguments['showAll']}", '', $url_without_page);
-		$url_without_page = str_ireplace("?showAll={$arguments['showAll']}", '', $url_without_page);
-	}
+	// prepare clean url
+	// ===> preserve all url params except current page
+	// ===> remove show-all flag (when necessary)
+	parse_str($_SERVER['QUERY_STRING'], $qs);
+	if ( isset($qs['page']) ) unset($qs['page']);
+	if ( isset($arguments['showAll']) and isset($qs['showAll']) ) unset($qs['showAll']);
+	$url_without_page = empty($qs) ? $fusebox->self : ($fusebox->self.'?'.http_build_query($qs));
 	// display
 	?><div id="pagination" class="mt-4"><?php
 		if ( $visible_end > 1 ) :
 			// pagination (if multiple pages)
-			?><ul class="pagination float-left mr-4"><?php
+			?><ul class="pagination float-left"><?php
 				// first
 				if ( $arguments['page'] > 1 ) :
 					?><li class="page-item first"><a class="page-link" href="<?php echo "{$url_without_page}&amp;page=1"; ?>">&laquo; First</a></li><?php
@@ -105,9 +103,9 @@ if ( isset($arguments['pagination']) ) :
 		endif; // if-multiple-pages
 		// show all button (when necessary)
 		if ( $page_count > 1 or !empty($arguments['showAll']) ) :
-			$btnLink = empty($arguments['showAll']) ? "{$url_without_page}&showAll=1" : $url_without_page;
+			$btnLink = empty($arguments['showAll']) ? "{$url_without_page}&amp;showAll=1" : $url_without_page;
 			$btnText = empty($arguments['showAll']) ? 'Show all' : "Show {$arguments['pagination']['recordPerPage']} per page";
-			?><a href="<?php echo $btnLink; ?>" class="btn btn-primary border-white"><?php echo $btnText; ?></em></a><?php
+			?><a href="<?php echo $btnLink; ?>" class="btn btn-primary btn-show-all border-0 ml-3"><?php echo $btnText; ?></em></a><?php
 		endif;
 	?></div><!--/#pagination--><?php
 endif; // if-has-pagination
