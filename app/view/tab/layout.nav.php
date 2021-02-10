@@ -63,7 +63,7 @@ if ( $tabLayout['justify'] === true ) {
 	// nav header
 	if ( !empty($tabLayout['header']) ) :
 		?><li class="nav-header nav-item mb-3"><?php
-			?><span <?php if ( !empty($tabLayout['headerClass']) ) : ?>class="<?php echo $tabLayout['headerClass']; ?>"><?php
+			?><span <?php if ( !empty($tabLayout['headerClass']) ) : ?>class="<?php echo $tabLayout['headerClass']; ?>"<?php endif; ?>><?php
 				echo $tabLayout['header'];
 			?></span><?php
 		?></li><?php
@@ -142,7 +142,7 @@ if ( $tabLayout['justify'] === true ) {
 	// nav footer
 	if ( !empty($tabLayout['footer']) ) :
 		?><li class="nav-footer nav-item mt-3"><?php
-			?><span <?php if ( !empty($tabLayout['footerClass']) ) : ?>class="<?php echo $tabLayout['footerClass']; ?>"><?php
+			?><span <?php if ( !empty($tabLayout['footerClass']) ) : ?>class="<?php echo $tabLayout['footerClass']; ?>"<?php endif; ?>><?php
 				echo $tabLayout['footer'];
 			?></span><?php
 		?></li><?php
