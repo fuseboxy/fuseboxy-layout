@@ -8,7 +8,9 @@
 				<string name="orientation" comments="vertical|horizontal" />
 				<boolean name="justify" optional="yes" default="false" comments="true|false|fill|center|end" />
 				<string name="header" optional="yes" />
+				<string name="headerClass" optional="yes" default="h4" />
 				<string name="footer" optional="yes" />
+				<string name="footerClass" optional="yes" />
 				<array name="nav">
 					<structure name="~tabNameOptional~">
 						<string name="name" optional="yes" />
@@ -60,7 +62,11 @@ if ( $tabLayout['justify'] === true ) {
 <ul class="<?php echo implode(' ', $tabNavClass); ?>" role="navigation"><?php
 	// nav header
 	if ( !empty($tabLayout['header']) ) :
-		?><li class="nav-header nav-item mb-3"><?php echo $tabLayout['header']; ?></li><?php
+		?><li class="nav-header nav-item mb-3"><?php
+			?><span <?php if ( !empty($tabLayout['headerClass']) ) : ?>class="<?php echo $tabLayout['headerClass']; ?>"><?php
+				echo $tabLayout['header'];
+			?></span><?php
+		?></li><?php
 	endif;
 	// nav items
 	if ( !empty($tabLayout['nav']) ) :
@@ -135,6 +141,10 @@ if ( $tabLayout['justify'] === true ) {
 	endif; // if-has-nav
 	// nav footer
 	if ( !empty($tabLayout['footer']) ) :
-		?><li class="nav-footer nav-item mt-3"><?php echo $tabLayout['footer']; ?></li><?php
+		?><li class="nav-footer nav-item mt-3"><?php
+			?><span <?php if ( !empty($tabLayout['footerClass']) ) : ?>class="<?php echo $tabLayout['footerClass']; ?>"><?php
+				echo $tabLayout['footer'];
+			?></span><?php
+		?></li><?php
 	endif;
 ?></ul>

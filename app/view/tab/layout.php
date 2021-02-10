@@ -11,7 +11,9 @@
 				<string name="position" comments="left|right|top" default="left" />
 				<boolean name="justify" optional="yes" default="false" comments="true|false|fill|center|end" />
 				<string name="header" optional="yes" />
+				<string name="headerClass" optional="yes" default="h4" />
 				<string name="footer" optional="yes" />
+				<string name="footerClass" optional="yes" />
 				<array name="nav">
 					<structure name="+">
 						<string name="name" />
