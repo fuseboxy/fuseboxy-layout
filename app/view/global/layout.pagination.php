@@ -52,50 +52,51 @@ if ( isset($arguments['pagination']) ) :
 			?><ul class="pagination float-left"><?php
 				// first
 				if ( $arguments['page'] > 1 ) :
-					?><li class="page-item first"><a class="page-link" href="<?php echo "{$url_without_page}&amp;page=1"; ?>">&laquo; First</a></li><?php
+					$url2go = $url_without_page.( ( strpos($url_without_page, '?') === false ) ? '?' : '&' ).'page=1';
+					?><li class="page-item first"><a class="page-link" href="<?php echo $url2go; ?>">&laquo; First</a></li><?php
 				else :
 					?><li class="page-item first disabled"><a class="page-link">&laquo; First</a></li><?php
 				endif;
 				// prev
 				if ( $arguments['page'] > 1 ) :
 					$prev = $arguments['page'] - 1;
-					?><li class="page-item prev"><a class="page-link" href="<?php echo "{$url_without_page}&amp;page={$prev}"; ?>">&lsaquo; Prev</a></li><?php
+					$url2go = $url_without_page.( ( strpos($url_without_page, '?') === false ) ? '?' : '&' ).'page='.$prev;
+					?><li class="page-item prev"><a class="page-link" href="<?php echo $url2go; ?>">&lsaquo; Prev</a></li><?php
 				else :
 					?><li class="page-item prev disabled"><a class="page-link">&lsaquo; Prev</a></li><?php
 				endif;
 				// more (prev)
 				if ( !empty($prev_batch) ) :
-					?><li class="page-item prev-batch">
-						<a class="page-link" href="<?php echo "{$url_without_page}&amp;page={$prev_batch}"; ?>">...</a>
-					</li><?php
+					$url2go = $url_without_page.( ( strpos($url_without_page, '?') === false ) ? '?' : '&' ).'page='.$prev_batch;
+					?><li class="page-item prev-batch"><a class="page-link" href="<?php echo $url2go; ?>">...</a></li><?php
 				endif;
 				// page
 				for ($i=$visible_start; $i<=$visible_end; $i++ ) :
 					$selected = ( !empty($arguments['page']) and $arguments['page'] == $i );
-					?><li class="page-item page-<?php echo $i; ?> <?php if ( $selected ) echo 'active'; ?>"><?php
-						if ( $selected ) :
-							?><a class="page-link"><?php echo $i; ?></a><?php
-						else :
-							?><a class="page-link" href="<?php echo "{$url_without_page}&amp;page={$i}"; ?>"><?php echo $i; ?></a><?php
-						endif;
-					?></li><?php
+					if ( $selected ) :
+						?><li class="page-item page-<?php echo $i; ?> active"><a class="page-link"><?php echo $i; ?></a></li><?php
+					else :
+						$url2go = $url_without_page.( ( strpos($url_without_page, '?') === false ) ? '?' : '&' ).'page='.$i;
+						?><li class="page-item page-<?php echo $i; ?>"><a class="page-link" href="<?php echo $url2go; ?>"><?php echo $i; ?></a></li><?php
+					endif;
 				endfor;
 				// more (next)
 				if ( !empty($next_batch) ) :
-					?><li class="page-item next-batch">
-						<a class="page-link" href="<?php echo "{$url_without_page}&amp;page={$next_batch}"; ?>">...</a>
-					</li><?php
+					$url2go = $url_without_page.( ( strpos($url_without_page, '?') === false ) ? '?' : '&' ).'page='.$next_batch;
+					?><li class="page-item next-batch"><a class="page-link" href="<?php echo $url2go; ?>">...</a></li><?php
 				endif;
 				// next
 				if ( $arguments['page'] < $page_count ) :
 					$next = $arguments['page'] + 1;
-					?><li class="page-item next"><a class="page-link" href="<?php echo "{$url_without_page}&amp;page={$next}"; ?>">Next &rsaquo;</a></li><?php
+					$url2go = $url_without_page.( ( strpos($url_without_page, '?') === false ) ? '?' : '&' ).'page='.$next;
+					?><li class="page-item next"><a class="page-link" href="<?php echo $url2go; ?>">Next &rsaquo;</a></li><?php
 				else :
 					?><li class="page-item next disabled"><a class="page-link">Next &rsaquo;</a></li><?php
 				endif;
 				// last
 				if ( $arguments['page'] < $page_count ) :
-					?><li class="page-item last"><a class="page-link" href="<?php echo "{$url_without_page}&amp;page={$page_count}"; ?>">Last &raquo;</a></li><?php
+					$url2go = $url_without_page.( ( strpos($url_without_page, '?') === false ) ? '?' : '&' ).'page='.$page_count;
+					?><li class="page-item last"><a class="page-link" href="<?php echo $url2go; ?>">Last &raquo;</a></li><?php
 				else :
 					?><li class="page-item last disabled"><a class="page-link">Last &raquo;</a></li><?php
 				endif;
@@ -103,7 +104,7 @@ if ( isset($arguments['pagination']) ) :
 		endif; // if-multiple-pages
 		// show all button (when necessary)
 		if ( $page_count > 1 or !empty($arguments['showAll']) ) :
-			$btnLink = empty($arguments['showAll']) ? "{$url_without_page}&amp;showAll=1" : $url_without_page;
+			$btnLink = empty($arguments['showAll']) ? ( $url_without_page.( ( strpos($url_without_page, '?') === false ) ? '?' : '&' ).'showAll=1' ) : $url_without_page;
 			$btnText = empty($arguments['showAll']) ? 'Show all' : "Show {$arguments['pagination']['recordPerPage']} per page";
 			?><a href="<?php echo $btnLink; ?>" class="btn btn-primary btn-show-all border-0 ml-3"><?php echo $btnText; ?></em></a><?php
 		endif;
