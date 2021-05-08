@@ -1,4 +1,4 @@
-Fuseboxy Global Layout
+Fuseboxy Layout (v2.x)
 ======================
 
 Pre-built global layout with handy navigation, flash message, breadcrumb, etc.
