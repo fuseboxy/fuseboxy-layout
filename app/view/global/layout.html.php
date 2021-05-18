@@ -23,7 +23,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/simple-ajax-uploader@2.6.7/SimpleAjaxUploader.js"></script>
 		<script src="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-scaffold-asset/2.1.3/fuseboxy.scaffold.js"></script><?php
 	endif;
-	if ( class_exists('Captcha') and F::is('auth.*') ) : echo Captcha::api();
+	if ( class_exists('Captcha') and F::is('auth.*') ) echo Captcha::api();
 	if ( is_file( F::config('baseDir').'css/main.css' ) ) :
 		?><link rel="stylesheet" href="<?php echo F::config('baseUrl'); ?>css/main.css" /><?php
 	endif;
