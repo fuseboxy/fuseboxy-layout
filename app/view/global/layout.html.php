@@ -31,7 +31,7 @@
 		?><script src="<?php echo F::config('baseUrl'); ?>js/main.js"></script><?php
 	endif;
 ?></head>
-<body data-controller="<?php echo $fusebox->controller; ?>" data-action="<?php echo $fusebox->action; ?>"><?php
+<body data-controller="<?php echo F::command('controller'); ?>" data-action="<?php echo F::command('action'); ?>"><?php
 if ( isset($layout['content']) ) echo $layout['content'];
 ?></body>
 </html>
