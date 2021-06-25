@@ -12,7 +12,7 @@
 	</io>
 </fusedoc>
 */
-$contentClass = $contentClass ?? 'p-4';
+$contentClass = $contentClass ?? 'py-4';
 $contentStyle = $contentStyle ?? '';
 if ( is_string($contentClass) ) $contentClass = array($contentClass);
 if ( is_string($contentStyle) ) $contentStyle = array($contentStyle);
