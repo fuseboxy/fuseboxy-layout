@@ -3,24 +3,24 @@
 	<io>
 		<in>
 			<structure name="$layout">
-				<string name="width" comments="normal|full|narrow|(specific)" />
+				<string name="width" comments="normal|full" />
 			</structure>
+			<array name="$contentClass" optional="yes" default="p-4" />
+			<array name="$contentStyle" optional="yes" />
 		</in>
 		<out />
 	</io>
 </fusedoc>
 */
-$contentClass = array('p-4');
-$contentStyle = array();
-if ( empty($layout['width']) or $layout['width'] == 'normal' ) {
-	$contentClass[] = 'container';
-} elseif ( $layout['width'] == 'full' ) {
-	$contentClass[] = 'w-100';
-} elseif ( $layout['width'] == 'narrow' ) {
-	$contentClass[] = 'w-25';
-} else {
-	$contentStyle[] = "width: {$layout['width']};";	
-}
+$contentClass = $contentClass ?? 'p-4';
+$contentStyle = $contentStyle ?? '';
+if ( is_string($contentClass) ) $contentClass = array($contentClass);
+if ( is_string($contentStyle) ) $contentStyle = array($contentStyle);
+// apply corresponding class for layout width
+if     ( !isset($layout['width'])     ) $contentClass[] = 'container';
+elseif ( $layout['width'] == 'normal' ) $contentClass[] = 'container';
+elseif ( $layout['width'] == 'full'   ) $contentClass[] = 'container-fluid';
+// display
 ?><div id="global-layout"><?php
 	// header
 	include F::appPath('view/global/layout.topflash.php');
