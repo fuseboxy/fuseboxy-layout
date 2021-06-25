@@ -13,6 +13,7 @@
 					<structure name="~menuNameOptional~">
 						<string name="name" />
 						<string name="url" />
+						<string name="icon" />
 						<string name="remark" />
 						<string name="class" />
 						<string name="linkClass" />
@@ -78,13 +79,19 @@ elseif ( !empty($modalLayout['nav']) ) :
 								data-target="[id^=global-modal].modal.show:last .modal-content"
 							<?php endif; ?>
 						><?php
-							// name
-							if ( isset($item['name']) ) :
-								?><span><?php echo $item['name']; ?></span><?php
+							// icon
+							if ( !empty($item['icon']) ) :
+								?><i class="<?php echo $item['icon']; ?>"></i><?php
 							endif;
+							// name
+							$itemNameClass = array();
+							if ( !empty($item['icon']) ) $itemNameClass[] = 'ml-2';
+							if ( !empty($item['remark']) ) $itemNameClass[] = 'mr-2';
+							 ?><span class="<?php echo implode(' ', $itemNameClass); ?>"><?php echo $item['name']; ?></span><?php
 							// remark
 							if ( !empty($item['remark']) ) :
-								?><em class="ml-1 small text-muted">(<?php echo $item['remark']; ?>)</em><?php
+								$itemRemarkClass = array('text-muted');
+								?><small class="<?php echo implode(' ', $itemRemarkClass); ?>">(<?php echo $item['remark']; ?>)</small><?php
 							endif;
 						?></a><?php
 					?></li><?php
