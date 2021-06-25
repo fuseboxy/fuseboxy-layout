@@ -99,7 +99,6 @@ if ( $tabLayout['justify'] === true ) {
 					if ( !empty($tab['attr']) ) foreach ( $tab['attr'] as $key => $val ) if ( $key != 'class' ) echo $key.'="'.$val.'" ';
 					// link styling
 					$linkClass = array('nav-link');
-					if ( !empty($tab['menus']) ) $linkClass[] = 'dropdown-toggle';
 					if ( !empty($tab['active']) ) $linkClass[] = 'active';
 					if ( !empty($tab['disabled']) ) $linkClass[] = 'disabled';
 					if ( !empty($tab['linkClass']) ) $linkClass[] = $tab['linkClass'];

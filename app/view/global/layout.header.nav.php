@@ -6,6 +6,7 @@
 				<structure name="~menuNameOptional~">
 					<string name="name" optional="yes" />
 					<string name="url" optional="yes" />
+					<string name="icon" optional="yes" />
 					<string name="remark" optional="yes" />
 					<boolean name="active" optional="yes" />
 					<boolean name="disabled" optional="yes" />
@@ -79,7 +80,6 @@ if ( !function_exists('layoutHeaderNav') ) :
 						$linkClass = array();
 						$linkClass[] =  ( $level == 1 ) ? 'nav-link' : 'dropdown-item';
 						if ( !empty($item['active']) and $level > 1 ) $linkClass[] = 'active';
-						if ( !empty($item['menus'])                 ) $linkClass[] = 'dropdown-toggle';
 						if ( !empty($item['linkClass'])             ) $linkClass[] = $item['linkClass'];
 						if ( !empty($item['linkAttr']['class'])     ) $linkClass[] = $item['linkAttr']['class'];
 						// default link
