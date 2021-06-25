@@ -61,7 +61,7 @@ $arguments['navRight'] = array(
 			array('name' => 'System Settings', 'url' => F::url('enum'), 'active' => F::is('enum.*')),
 			array('name' => 'Audit Log', 'url' => F::url('log'), 'active' => F::is('log.*')),
 		),
-		'linkClass' => F::is('user.*,enum.*,log.*') ? 'text-primary' : '',
+		'linkClass' => F::is('user.*,enum.*,log.*') ? 'text-primary dropdown-toggle' : 'dropdown-toggle',
 	) : false,
 	// user-sim
 	( class_exists('Sim') and class_exists('Auth') and Auth::actualUserInRole('SUPER') ) ? array(
@@ -82,6 +82,6 @@ $arguments['navRight'] = array(
 			array('name' => 'Change Password', 'url' => F::url('account.password'), 'active' => F::is('account.password')),
 			array('name' => 'Sign Out', 'url' => F::url('auth.logout'), 'icon' => 'fa fa-power-off mr-1', 'divider' => 'before'),
 		),
-		'linkClass' => F::is('account.*') ? 'text-primary' : '',
+		'linkClass' => F::is('account.*') ? 'text-primary dropdown-toggle' : 'dropdown-toggle',
 	) : false,
 );
