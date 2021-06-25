@@ -17,6 +17,7 @@
 						<string name="url" optional="yes" />
 						<boolean name="active" optional="yes" />
 						<boolean name="disabled" optional="yes" />
+						<string name="icon" optional="yes" />
 						<string name="remark" optinonal="yes" />
 						<string name="class" optional="yes" />
 						<string name="linkClass" optional="yes" />
@@ -121,13 +122,20 @@ if ( $tabLayout['justify'] === true ) {
 						<?php endif; ?>
 						<?php if ( !empty($tab['linkAttr']) ) foreach ( $tab['linkAttr'] as $key => $val ) if ( $key != 'class' ) echo $key.'="'.$val.'" '; ?>
 					><?php
+						// tab icon
+						if ( !empty($tab['icon']) ) :
+							?><i class="<?php echo $tab['icon']; ?>"></i><?php
+						endif;
 						// tab name
-						 ?><span><?php echo $tab['name']; ?></span><?php
+						$tabNameClass = array();
+						if ( !empty($tab['icon']) ) $tabNameClass[] = 'ml-2';
+						if ( !empty($tab['remark']) ) $tabNameClass[] = 'mr-2';
+						 ?><span class="<?php echo implode(' ', $tabNameClass); ?>"><?php echo $tab['name']; ?></span><?php
 						// tab remark
 						if ( !empty($tab['remark']) ) :
-							?><em
-								class="small ml-2 <?php if ( $tabLayout['style'] == 'tabs' or empty($tab['active']) ) echo 'text-muted'; ?>"
-							>(<?php echo $tab['remark']; ?>)</em><?php
+							$tabRemarkClass = array();
+							if ( $tabLayout['style'] == 'tabs' or empty($tab['active']) ) $tabRemarkClass[] = 'text-muted';
+							?><small class="<?php echo implode(' ', $tabRemarkClass); ?>">(<?php echo $tab['remark']; ?>)</small><?php
 						endif;
 					?></a><!--/.nav-link--><?php
 					// buttons (for horizontal orientation)
