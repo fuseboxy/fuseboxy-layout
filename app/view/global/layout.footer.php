@@ -1,5 +1,4 @@
-<footer id="footer" class="pb-5">
-	<hr />
+<footer id="footer" class="border-top pt-4 pb-5">
 	<div class="container-fluid small text-muted text-right"><?php
 		// execution time (when necessary)
 		if ( isset($GLOBALS['startTick']) ) :
