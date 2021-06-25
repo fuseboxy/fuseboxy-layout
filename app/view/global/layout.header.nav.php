@@ -98,11 +98,14 @@ if ( !function_exists('layoutHeaderNav') ) :
 							endif;
 							// menu name
 							if ( !empty($item['name']) ) :
-								?> <span><?php echo $item['name']; ?></span><?php
+								$itemNameClass = array();
+								if ( !empty($item['icon']) ) $itemNameClass[] = 'ml-2';
+								if ( !empty($item['remark']) ) $itemNameClass[] = 'mr-2';
+								 ?><span class="<?php echo implode(' ', $itemNameClass); ?>"><?php echo $item['name']; ?></span><?php
 							endif;
-							// remark
+							// menu remark
 							if ( !empty($item['remark']) ) :
-								?><em class="ml-1 small text-muted">(<?php echo $item['remark']; ?>)</em><?php
+								?><small class="text-muted">(<?php echo $item['remark']; ?>)</small><?php
 							endif;
 						?></a><?php
 						// has submenu

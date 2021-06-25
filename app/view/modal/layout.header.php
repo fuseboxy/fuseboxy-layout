@@ -90,8 +90,7 @@ elseif ( !empty($modalLayout['nav']) ) :
 							 ?><span class="<?php echo implode(' ', $itemNameClass); ?>"><?php echo $item['name']; ?></span><?php
 							// remark
 							if ( !empty($item['remark']) ) :
-								$itemRemarkClass = array('text-muted');
-								?><small class="<?php echo implode(' ', $itemRemarkClass); ?>">(<?php echo $item['remark']; ?>)</small><?php
+								?><small class="text-muted">(<?php echo $item['remark']; ?>)</small><?php
 							endif;
 						?></a><?php
 					?></li><?php
