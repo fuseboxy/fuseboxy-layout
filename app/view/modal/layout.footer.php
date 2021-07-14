@@ -20,7 +20,7 @@
 			?><div class="small mr-auto"><small class="text-muted">Execution time: <?php echo $et; ?>ms</small></div><?php
 		endif;
 		// button
-		?><button type="button" class="btn btn-light" data-dismiss="modal">Close</button><?php
+		?><button type="button" class="btn btn-light btn-close" data-dismiss="modal">Close</button><?php
 	// custom footer
 	else :
 		echo $modalLayout['footer'];
