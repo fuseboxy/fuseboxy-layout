@@ -11,7 +11,7 @@
 	</io>
 </fusedoc>
 */ ?>
-<div class="modal-footer"><?php
+<footer class="modal-footer"><?php
 	// default footer
 	if ( !isset($modalLayout['footer']) ) :
 		// execution time
@@ -25,4 +25,4 @@
 	else :
 		echo $modalLayout['footer'];
 	endif;
-?></div>
+?></footer>

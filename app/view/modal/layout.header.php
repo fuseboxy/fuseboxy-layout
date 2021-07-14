@@ -29,10 +29,10 @@
 */
 // display (user-defined) modal header, or...
 if ( !empty($modalLayout['header']) ) :
-	?><div class="modal-header"><?php
+	?><header class="modal-header"><?php
 		echo $modalLayout['header'];
 		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
-	?></div><?php
+	?></header><?php
 
 
 // display modal title, or...
@@ -40,15 +40,15 @@ elseif ( !empty($modalLayout['title']) ) :
 	if ( is_string($modalLayout['title']) ) :
 		$modalLayout['title'] = array( 'text' => $modalLayout['title'], 'class' => 'h5');
 	endif;
-	?><div class="modal-header"><?php
+	?><header class="modal-header"><?php
 		?><div class="modal-title <?php echo $modalLayout['title']['class']; ?>"><?php echo $modalLayout['title']['text']; ?></div><?php
 		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
-	?></div><?php
+	?></header><?php
 
 
 // display modal nav
 elseif ( !empty($modalLayout['nav']) ) :
-	?><div class="modal-header pb-0"><?php
+	?><header class="modal-header pb-0"><?php
 		?><ul class="nav nav-tabs border-bottom-0"><?php
 			foreach ( $modalLayout['nav'] as $itemKey => $item ) :
 				// fix menu (when necessary)
@@ -98,7 +98,7 @@ elseif ( !empty($modalLayout['nav']) ) :
 			endforeach;
 		?></ul><!--/.nav-tabs--><?php
 		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
-	?></div><!--/.modal-header--><?php
+	?></header><!--/.modal-header--><?php
 
 
 endif;
