@@ -25,7 +25,7 @@
 		<script src="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-scaffold-asset/2.1.4/fuseboxy.scaffold.js"></script><?php
 	endif;
 	// captcha
-	if ( class_exists('Captcha') ) echo Captcha::api();
+	if ( !empty(F::config('captcha')) ) echo Captcha::api();
 	// custom
 	if ( is_file( F::config('baseDir').'css/main.css' ) ) :
 		?><link rel="stylesheet" href="<?php echo F::config('baseUrl'); ?>css/main.css?t=<?php echo date('YmdHis'); ?>" /><?php
