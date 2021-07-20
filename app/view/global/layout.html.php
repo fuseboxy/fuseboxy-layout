@@ -28,10 +28,10 @@
 	if ( class_exists('Captcha') ) echo Captcha::api();
 	// custom
 	if ( is_file( F::config('baseDir').'css/main.css' ) ) :
-		?><link rel="stylesheet" href="<?php echo F::config('baseUrl'); ?>css/main.css" /><?php
+		?><link rel="stylesheet" href="<?php echo F::config('baseUrl'); ?>css/main.css?t=<?php echo date('YmdHis'); ?>" /><?php
 	endif;
 	if ( is_file( F::config('baseDir').'js/main.js' ) ) :
-		?><script src="<?php echo F::config('baseUrl'); ?>js/main.js"></script><?php
+		?><script src="<?php echo F::config('baseUrl'); ?>js/main.js?t=<?php echo date('YmdHis'); ?>"></script><?php
 	endif;
 ?></head>
 <body data-controller="<?php echo $fusebox->controller; ?>" data-action="<?php echo $fusebox->action; ?>"><?php
