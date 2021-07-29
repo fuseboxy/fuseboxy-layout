@@ -6,7 +6,7 @@ Pre-built global layout with handy navigation, flash message, breadcrumb, etc.
 This module is **OPTIONAL** to Fuseboxy framework.
 
 
-
+--
 
 ## Third-party Components
 The global layout module includes CDN of following JS and CSS libraries to provide a faster development environment:
@@ -21,30 +21,37 @@ Please be noted that the Fuseboxy framework core does **NOT** depend on any one 
 Therefore, developer could feel free to keep/remove any of these at `app/view/global/layout.basic.php` whenever applicable.
 
 
+--
+
+## Configuration
+Enable **output_buffering** of PHP settings:
+* e.g. `output_buffering = 4096`
 
 
-## Configuration & Installation
+-- 
 
-1. Enable **output_buffering** of PHP settings:
-	* e.g. `output_buffering = 4096`
+## Installation
+Composer Installation
+1. (WIP)
 
-2. Add following config into **app/config/fusebox_config.php** if not already exists:
+Manual Installation
+1. Add following config into **app/config/fusebox_config.php** if not already exists:
 	* `'baseUrl' => str_replace('//', '/', str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']).'/' ) )`
 
-3. Copy files from the package into your application:
+2. Copy files from the package into your application:
 	* `app/view/global/*`
 	* `css/main.css` *- optional*
 	* `js/main.js` *- optional*
 	* `test/test_fuseboxy_global_layout.php` *- optional (Only if you want to perform a unit test)*
 
-4. Open and edit following variables at **app/view/global/layout.php**:
+3. Open and edit following variables at **app/view/global/layout.php**:
 	* `$layout['metaTitle']`
 	* `$layout['brand']`
 
-5. Done.
+4. Done.
 
 
-
+--
 
 ## Usage
 
@@ -67,7 +74,7 @@ endswitch;
 ```
 
 
-
+--
 
 ## Navigation
 
