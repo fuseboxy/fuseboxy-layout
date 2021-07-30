@@ -1,8 +1,7 @@
 <footer id="footer" class="border-top pt-4 pb-5">
 	<div class="container-fluid small text-muted text-right"><?php
 		// execution time (when necessary)
-		if ( isset($GLOBALS['startTick']) ) :
-			$et = round(microtime(true)*1000-$GLOBALS['startTick']);
+		if ( $et = F::et() ) :
 			?><small class="float-left text-muted">Execution time: <?php echo $et; ?>ms</small><?php
 		endif;
 		// copyright

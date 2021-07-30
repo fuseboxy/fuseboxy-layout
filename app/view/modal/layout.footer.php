@@ -14,9 +14,8 @@
 <footer class="modal-footer"><?php
 	// default footer
 	if ( !isset($modalLayout['footer']) ) :
-		// execution time
-		if ( isset($GLOBALS['startTick']) ) :
-			$et = round(microtime(true)*1000-$GLOBALS['startTick']);
+		// execution time (when necessary)
+		if ( $et = F::et() ) :
 			?><div class="small mr-auto"><small class="text-muted">Execution time: <?php echo $et; ?>ms</small></div><?php
 		endif;
 		// button
