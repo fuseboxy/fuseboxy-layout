@@ -99,8 +99,8 @@ if ( !function_exists('layoutHeaderNav') ) :
 							// menu name
 							if ( !empty($item['name']) ) :
 								$itemNameClass = array();
-								if ( !empty($item['icon']) ) $itemNameClass[] = 'ml-2';
-								if ( !empty($item['remark']) ) $itemNameClass[] = 'mr-2';
+								if ( !empty($item['icon']) ) $itemNameClass[] = 'ml-1';
+								if ( !empty($item['remark']) ) $itemNameClass[] = 'mr-1';
 								 ?><span class="<?php echo implode(' ', $itemNameClass); ?>"><?php echo $item['name']; ?></span><?php
 							endif;
 							// menu remark
