@@ -77,12 +77,12 @@ $arguments['navRight'] = array(
 	// logout
 	( class_exists('Auth') and Auth::user() ) ? array(
 		'icon' => 'fa fa-user',
+		'name' => Auth::actualUser('username'),
 		'menus' => array(
-			array('navHeader' => Auth::actualUser('username'), 'divider' => 'after'),
 			array('name' => 'Update Profile', 'url' => F::url('account.profile'), 'active' => F::is('account.profile')),
 			array('name' => 'Change Password', 'url' => F::url('account.password'), 'active' => F::is('account.password')),
 			array('name' => 'Sign Out', 'url' => F::url('auth.logout'), 'icon' => 'fa fa-power-off mr-1', 'divider' => 'before'),
 		),
-		'linkClass' => F::is('account.*') ? 'text-primary dropdown-toggle' : 'dropdown-toggle',
+		'linkClass' => 'text-primary',
 	) : false,
 );
