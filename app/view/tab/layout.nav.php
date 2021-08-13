@@ -127,7 +127,7 @@ if ( $tabLayout['justify'] === true ) {
 						endif;
 						// tab name
 						$tabNameClass = array();
-						if ( !empty($tab['icon']) ) $tabNameClass[] = 'ml-2';
+						if ( !empty($tab['icon']) ) $tabNameClass[] = 'ml-1';
 						if ( !empty($tab['remark']) ) $tabNameClass[] = 'mr-2';
 						 ?><span class="<?php echo implode(' ', $tabNameClass); ?>"><?php echo $tab['name']; ?></span><?php
 						// tab remark
