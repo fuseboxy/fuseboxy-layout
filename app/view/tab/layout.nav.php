@@ -123,18 +123,18 @@ if ( $tabLayout['justify'] === true ) {
 					><?php
 						// tab icon
 						if ( !empty($tab['icon']) ) :
-							?><i class="<?php echo $tab['icon']; ?>"></i><?php
+							?><i class="<?php echo $tab['icon']; ?>"></i> <?php
 						endif;
 						// tab name
-						$tabNameClass = array();
-						if ( !empty($tab['icon']) ) $tabNameClass[] = 'ml-1';
-						if ( !empty($tab['remark']) ) $tabNameClass[] = 'mr-2';
-						 ?><span class="<?php echo implode(' ', $tabNameClass); ?>"><?php echo $tab['name']; ?></span><?php
+						if ( !empty($tab['name']) ) :
+							$tabNameClass = array();
+							?><span class="<?php echo implode(' ', $tabNameClass); ?>"><?php echo $tab['name']; ?></span><?php
+						endif;
 						// tab remark
 						if ( !empty($tab['remark']) ) :
-							$tabRemarkClass = array();
+							$tabRemarkClass = array('ml-1');
 							if ( $tabLayout['style'] == 'tabs' or empty($tab['active']) ) $tabRemarkClass[] = 'text-muted';
-							?><small class="<?php echo implode(' ', $tabRemarkClass); ?>">(<?php echo $tab['remark']; ?>)</small><?php
+							?> <small class="<?php echo implode(' ', $tabRemarkClass); ?>">(<?php echo $tab['remark']; ?>)</small><?php
 						endif;
 					?></a><!--/.nav-link--><?php
 					// buttons (for horizontal orientation)
