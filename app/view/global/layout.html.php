@@ -39,9 +39,13 @@
 	// custom
 	if ( is_file( F::config('baseDir').'css/main.css' ) ) :
 		?><link rel="stylesheet" href="<?php echo F::config('baseUrl'); ?>css/main.css?t=<?php echo date('YmdHis'); ?>" /><?php
+	elseif ( is_file( dirname(F::config('baseDir')).'/css/'.basename(F::config('baseDir')).'.css' ) ) :
+		?><link rel="stylesheet" href="<?php echo dirname(F::config('baseUrl')); ?>/css/<?php echo basename(F::config('baseDir')); ?>.css?t=<?php echo date('YmdHis'); ?>" /><?php
 	endif;
 	if ( is_file( F::config('baseDir').'js/main.js' ) ) :
 		?><script src="<?php echo F::config('baseUrl'); ?>js/main.js?t=<?php echo date('YmdHis'); ?>"></script><?php
+	elseif ( is_file( dirname(F::config('baseDir')).'/js/'.basename(F::config('baseDir')).'.js' ) ) :
+		?><script src="<?php echo dirname(F::config('baseUrl')); ?>/js/<?php echo basename(F::config('baseDir')); ?>.js?t=<?php echo date('YmdHis'); ?>"></script><?php
 	endif;
 ?></head>
 <body data-controller="<?php echo F::command('controller'); ?>" data-action="<?php echo F::command('action'); ?>"><?php
