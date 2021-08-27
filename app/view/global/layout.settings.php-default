@@ -62,7 +62,7 @@ $arguments['navRight'] = array(
 			!class_exists('I18N') ? false : array('name' => 'Multi-Language', 'url' => F::url('i18n'), 'active' => F::is('i18n.*')),
 			!class_exists('Log')  ? false : array('name' => 'Audit Log', 'url' => F::url('log'), 'active' => F::is('log.*')),
 		),
-		'linkClass' => F::is('user.*,enum.*,log.*') ? 'text-primary dropdown-toggle' : 'dropdown-toggle',
+		'linkClass' => 'dropdown-toggle',
 	) : false,
 	// user-sim
 	( class_exists('Sim') and class_exists('Auth') and Auth::actualUserInRole('SUPER') ) ? array(
