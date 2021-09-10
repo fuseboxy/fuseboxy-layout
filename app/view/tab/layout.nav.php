@@ -8,9 +8,9 @@
 				<string name="orientation" comments="vertical|horizontal" />
 				<boolean name="justify" optional="yes" default="false" comments="true|false|fill|center|end" />
 				<string name="header" optional="yes" />
-				<string name="headerClass" optional="yes" default="h4" />
+				<string name="headerClass" optional="yes" default="h4 mb-3" />
 				<string name="footer" optional="yes" />
-				<string name="footerClass" optional="yes" />
+				<string name="footerClass" optional="yes" default="mt-3" />
 				<array name="nav">
 					<structure name="~tabNameOptional~">
 						<string name="name" optional="yes" />
@@ -63,12 +63,8 @@ if ( $tabLayout['justify'] === true ) {
 <ul class="<?php echo implode(' ', $tabNavClass); ?>" role="navigation"><?php
 	// nav header
 	if ( !empty($tabLayout['header']) ) :
-		?><li class="nav-header nav-item mb-3"><?php
-			$headerClass = isset($tabLayout['headerClass']) ? $tabLayout['headerClass'] : 'h4';
-			?><span <?php if ( !empty($headerClass) ) : ?>class="<?php echo $headerClass; ?>"<?php endif; ?>><?php
-				echo $tabLayout['header'];
-			?></span><?php
-		?></li><?php
+		$headerClass = isset($tabLayout['headerClass']) ? $tabLayout['headerClass'] : 'h4 mb-3';
+		?><li class="nav-header nav-item <?php echo $headerClass; ?>"><?php echo $tabLayout['header']; ?></li><?php
 	endif;
 	// nav items
 	if ( !empty($tabLayout['nav']) ) :
@@ -149,11 +145,7 @@ if ( $tabLayout['justify'] === true ) {
 	endif; // if-has-nav
 	// nav footer
 	if ( !empty($tabLayout['footer']) ) :
-		?><li class="nav-footer nav-item mt-3"><?php
-			$footerClass = isset($tabLayout['footerClass']) ? $tabLayout['footerClass'] : '';
-			?><span <?php if ( !empty($footerClass) ) : ?>class="<?php echo $footerClass; ?>"<?php endif; ?>><?php
-				echo $tabLayout['footer'];
-			?></span><?php
-		?></li><?php
+		$footerClass = isset($tabLayout['footerClass']) ? $tabLayout['footerClass'] : 'mt-3';
+		?><li class="nav-footer nav-item <?php echo $footerClass; ?>"><?php echo $tabLayout['footer']; ?></li><?php
 	endif;
 ?></ul>
