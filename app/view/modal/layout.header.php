@@ -32,7 +32,7 @@
 if ( !empty($modalLayout['header']) ) :
 	?><header class="modal-header"><?php
 		echo $modalLayout['header'];
-		if ( $modalLayout['headerClose']) ) :
+		if ( $modalLayout['headerClose'] ) :
 			?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
 		endif;
 	?></header><?php
@@ -46,7 +46,7 @@ elseif ( !empty($modalLayout['title']) ) :
 		// title
 		?><div class="modal-title <?php echo $modalLayout['title']['class']; ?>"><?php echo $modalLayout['title']['text']; ?></div><?php
 		// close
-		if ( $modalLayout['headerClose']) ) :
+		if ( $modalLayout['headerClose'] ) :
 			?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
 		endif;
 	?></header><?php
@@ -105,7 +105,7 @@ elseif ( !empty($modalLayout['nav']) ) :
 			endforeach;
 		?></ul><!--/.nav-tabs--><?php
 		// close button
-		if ( $modalLayout['headerClose']) ) :
+		if ( $modalLayout['headerClose'] ) :
 			?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
 		endif;
 	?></header><!--/.modal-header--><?php
