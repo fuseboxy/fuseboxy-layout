@@ -33,8 +33,7 @@
 </fusedoc>
 */
 $modalLayout['elementID'] = isset($modalLayout['elementID']) ? $modalLayout['elementID'] : ('modal-'.uniqid());
-?>
-<div id="<?php echo $modalLayout['elementID']; ?>" class="modal-content"><?php
+?><div id="<?php echo $modalLayout['elementID']; ?>" class="modal-content"><?php
 	include F::appPath('view/modal/layout.header.php');
 	include F::appPath('view/modal/layout.body.php');
 	include F::appPath('view/modal/layout.footer.php');
