@@ -3,6 +3,7 @@
 	<io>
 		<in>
 			<structure name="$modalLayout">
+				<boolean name="headerClose" />
 				<string name="header" optional="yes" />
 				<string name="title" optional="yes" />
 				<structure name="title" optional="yes">
@@ -31,24 +32,30 @@
 if ( !empty($modalLayout['header']) ) :
 	?><header class="modal-header"><?php
 		echo $modalLayout['header'];
-		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
+		if ( $modalLayout['headerClose']) ) :
+			?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
+		endif;
 	?></header><?php
 
 
 // display modal title, or...
 elseif ( !empty($modalLayout['title']) ) :
-	if ( is_string($modalLayout['title']) ) :
-		$modalLayout['title'] = array( 'text' => $modalLayout['title'], 'class' => 'h5');
-	endif;
+	// fix format
+	if ( is_string($modalLayout['title']) ) $modalLayout['title'] = array('text' => $modalLayout['title'], 'class' => 'h5');
 	?><header class="modal-header"><?php
+		// title
 		?><div class="modal-title <?php echo $modalLayout['title']['class']; ?>"><?php echo $modalLayout['title']['text']; ?></div><?php
-		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
+		// close
+		if ( $modalLayout['headerClose']) ) :
+			?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
+		endif;
 	?></header><?php
 
 
 // display modal nav
 elseif ( !empty($modalLayout['nav']) ) :
 	?><header class="modal-header pb-0"><?php
+		// tab menu
 		?><ul class="nav nav-tabs border-bottom-0"><?php
 			foreach ( $modalLayout['nav'] as $itemKey => $item ) :
 				// fix menu (when necessary)
@@ -97,7 +104,10 @@ elseif ( !empty($modalLayout['nav']) ) :
 				endif;
 			endforeach;
 		?></ul><!--/.nav-tabs--><?php
-		?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
+		// close button
+		if ( $modalLayout['headerClose']) ) :
+			?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
+		endif;
 	?></header><!--/.modal-header--><?php
 
 
