@@ -3,8 +3,8 @@
 	<io>
 		<in>
 			<structure name="$modalLayout">
-				<boolean name="headerClose" />
 				<string name="header" optional="yes" />
+				<boolean name="headerClose" optional="yes" default="true" />
 				<string name="title" optional="yes" />
 				<structure name="title" optional="yes">
 					<string name="text" />
@@ -28,6 +28,10 @@
 	</io>
 </fusedoc>
 */
+// default for close button
+$modalLayout['headerClose'] = $modalLayout['headerClose'] ?? true;
+
+
 // display (user-defined) modal header, or...
 if ( !empty($modalLayout['header']) ) :
 	?><header class="modal-header"><?php
