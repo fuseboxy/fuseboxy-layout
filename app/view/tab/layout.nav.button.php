@@ -19,7 +19,7 @@
 foreach ( $tab['buttons'] as $btn ) :
 	// button styling
 	$btnClass = array('btn', 'btn-sm');
-	if ( empty($btn['class']) ) $btnClass[] = 'btn-light';
+	if ( empty($btn['class']) ) $btnClass[] = 'btn-light b-1';
 	$btnClass[] = 'py-0 px-1 ml-1';
 	if ( $tabLayout['orientation'] == 'vertical' ) $btnClass[] = 'mb-n3';
 	if ( !empty($btn['class']) ) $btnClass[] = $btn['class'];
