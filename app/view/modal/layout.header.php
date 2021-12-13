@@ -61,51 +61,51 @@ elseif ( !empty($modalLayout['nav']) ) :
 	?><header class="modal-header pb-0"><?php
 		// tab menu
 		?><ul class="nav nav-tabs border-bottom-0"><?php
-			foreach ( $modalLayout['nav'] as $itemKey => $item ) :
-				// fix menu (when necessary)
-				if ( is_string($item) ) $item = array('name' => $item);
-				elseif ( !is_numeric($itemKey) and empty($item['name']) ) $item['name'] = $itemKey;
+			foreach ( $modalLayout['nav'] as $tabKey => $tab ) :
 				// display menu item (when necessary)
-				if ( !empty($item) ) :
+				if ( !empty($tab) ) :
+					// fix menu (when necessary)
+					if ( is_string($tab) ) $tab = array('name' => $tab);
+					elseif ( !is_numeric($tabKey) and empty($tab['name']) ) $tab['name'] = $tabKey;
 					// nav item
-					$itemClass = array('nav-item mr-1');
-					if ( !empty($item['class']) ) $itemClass[] = $item['class'];
+					$tabClass = array('nav-item mr-1');
+					if ( !empty($tab['class']) ) $tabClass[] = $tab['class'];
 					// display item
-					?><li class="<?php echo implode(' ', $itemClass); ?>"><?php
+					?><li class="<?php echo implode(' ', $tabClass); ?>"><?php
 						// nav link
 						$linkClass = array('nav-link');
-						if ( !empty($item['active'])    ) $linkClass[] = 'active';
-						if ( !empty($item['linkClass']) ) $linkClass[] = $item['linkClass'];
+						if ( !empty($tab['active'])    ) $linkClass[] = 'active';
+						if ( !empty($tab['linkClass']) ) $linkClass[] = $tab['linkClass'];
 						// display link
 						?><a
 							class="<?php echo implode(' ', $linkClass); ?>"
-							<?php if ( !empty($item['url']) ) : ?>
-								href="<?php echo $item['url']; ?>"
+							<?php if ( !empty($tab['url']) ) : ?>
+								href="<?php echo $tab['url']; ?>"
 							<?php endif; ?>
-							<?php if ( !empty($item['url']) and !empty($item['newWindow']) ) : ?>
+							<?php if ( !empty($tab['url']) and !empty($tab['newWindow']) ) : ?>
 								target="_blank"
-							<?php elseif ( !empty($item['url']) ) : ?>
+							<?php elseif ( !empty($tab['url']) ) : ?>
 								data-toggle="ajax-load"
 								data-toggle-transition="none"
 								data-target="[id^=global-modal].modal.show:last .modal-content"
 							<?php endif; ?>
 						><?php
 							// icon
-							if ( !empty($item['icon']) ) :
-								?><i class="<?php echo $item['icon']; ?>"></i> <?php
+							if ( !empty($tab['icon']) ) :
+								?><i class="<?php echo $tab['icon']; ?>"></i> <?php
 							endif;
 							// name
-							if ( !empty($item['name']) ) :
-								$itemNameClass = array();
-								?><span class="<?php echo implode(' ', $itemNameClass); ?>"><?php echo $item['name']; ?></span><?php
+							if ( !empty($tab['name']) ) :
+								$tabNameClass = array();
+								?><span class="<?php echo implode(' ', $tabNameClass); ?>"><?php echo $tab['name']; ?></span><?php
 							endif;
 							// remark
-							if ( !empty($item['remark']) ) :
-								?> <small class="text-muted">(<?php echo $item['remark']; ?>)</small><?php
+							if ( !empty($tab['remark']) ) :
+								?> <small class="text-muted">(<?php echo $tab['remark']; ?>)</small><?php
 							endif;
 						?></a><?php
 					?></li><?php
-				endif;
+				endif; // if-not-empty
 			endforeach;
 		?></ul><!--/.nav-tabs--><?php
 		// close button

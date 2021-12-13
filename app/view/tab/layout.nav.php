@@ -69,11 +69,11 @@ if ( $tabLayout['justify'] === true ) {
 	// nav items
 	if ( !empty($tabLayout['nav']) ) :
 		foreach ( $tabLayout['nav'] as $tabKey => $tab ) :
-			// fix tab (when necessary)
-			if ( is_string($tab) ) $tab = array('name' => $tab);
-			elseif ( !is_numeric($tabKey) and empty($tab['name']) ) $tab['name'] = $tabKey;
 			// display tab (when necessary)
 			if ( !empty($tab) ) :
+				// fix tab (when necessary)
+				if ( is_string($tab) ) $tab = array('name' => $tab);
+				elseif ( !is_numeric($tabKey) and empty($tab['name']) ) $tab['name'] = $tabKey;
 				// menu item
 				$itemClass = array('nav-item');
 				if ( !empty($tab['class']) ) $itemClass[] = $tab['class'];
@@ -140,7 +140,7 @@ if ( $tabLayout['justify'] === true ) {
 						?></div><?php
 					endif;
 				?></li><!--/.nav-item--><?php
-			endif; // if-tab
+			endif; // if-not-empty
 		endforeach; // foreach-nav
 	endif; // if-has-nav
 	// nav footer

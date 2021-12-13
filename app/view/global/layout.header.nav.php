@@ -41,11 +41,11 @@
 if ( !function_exists('layoutHeaderNav') ) :
 	function layoutHeaderNav($menus, $level=1, $align='left') {
 		foreach ( $menus as $itemKey => $item ) :
-			// fix menu (when necessary)
-			if ( is_string($item) ) $item = array('name' => $item);
-			elseif ( !is_numeric($itemKey) and empty($item['name']) ) $item['name'] = $itemKey;
 			// display menu item (when necessary)
 			if ( !empty($item) ) :
+				// fix menu (when necessary)
+				if ( is_string($item) ) $item = array('name' => $item);
+				elseif ( !is_numeric($itemKey) and empty($item['name']) ) $item['name'] = $itemKey;
 				// fix variable
 				if ( empty($item['divider']) ) :
 					$itemDivider = array();
@@ -118,7 +118,7 @@ if ( !function_exists('layoutHeaderNav') ) :
 				if ( in_array('after', $itemDivider) ) :
 					?><li class="dropdown-divider"></li><?php
 				endif;
-			endif; // if-item
+			endif; // if-not-empty
 		endforeach; // foreach-item
 	} // function
 endif; // if-function-exists
