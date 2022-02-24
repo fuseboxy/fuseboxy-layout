@@ -17,10 +17,10 @@
 	// scaffold
 	if ( class_exists('Scaffold') ) :
 		?><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" />
-		<link rel="stylesheet" href="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-scaffold-asset/2.1.5/fuseboxy.scaffold.css" />
+		<link rel="stylesheet" href="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-scaffold-asset/2.1.6/fuseboxy.scaffold.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-		<script src="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-scaffold-asset/2.1.5/fuseboxy.scaffold.js"></script><?php
+		<script src="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-scaffold-asset/2.1.6/fuseboxy.scaffold.js"></script><?php
 	endif;
 	// webform
 	if ( class_exists('Webform') ) :
