@@ -86,7 +86,7 @@ elseif ( !empty($modalLayout['nav']) ) :
 								target="_blank"
 							<?php elseif ( !empty($tab['url']) ) : ?>
 								data-toggle="ajax-load"
-								data-toggle-transition="none"
+								data-transition="none"
 								data-target="[id^=global-modal].modal.show:last .modal-content"
 							<?php endif; ?>
 						><?php
