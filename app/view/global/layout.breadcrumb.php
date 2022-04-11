@@ -10,7 +10,7 @@
 	</io>
 </fusedoc>
 */
-if ( isset($arguments['breadcrumb']) ) :
+if ( isset($arguments['breadcrumb']) and $arguments['breadcrumb'] !== false ) :
 	?><nav id="breadcrumb" aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="<?php echo F::url(); ?>"><i class="fa fa-home"></i></a></li><?php
