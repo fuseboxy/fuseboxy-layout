@@ -87,7 +87,7 @@ elseif ( !empty($modalLayout['nav']) ) :
 							<?php elseif ( !empty($tab['url']) ) : ?>
 								data-toggle="ajax-load"
 								data-transition="none"
-								data-target="[id^=global-modal].modal.show:last .modal-content"
+								data-target="[id^=global-modal].modal.show:last .modal-content:first"
 							<?php endif; ?>
 						><?php
 							// icon
