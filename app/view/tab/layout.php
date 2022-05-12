@@ -21,10 +21,16 @@
 						<string name="url" optinonal="yes" />
 						<boolean name="active" optional="yes" />
 						<boolean name="disabled" optional="yes" />
+						<!-- custom stylling -->
 						<string name="class" optional="yes" />
-						<string name="style" optional="yes" />
 						<string name="linkClass" optional="yes" />
-						<string name="linkStyle" optional="yes" />
+						<!-- custom attributes -->
+						<structure name="attr" optional="yes">
+							<string name="~attrName~" value="~attrValue~" />
+						</structure>
+						<structure name="linkAttr" optional="yes">
+							<string name="~attrName~" value="~attrValue~" />
+						</structure>
 						<!-- button -->
 						<array name="buttons" optional="yes">
 							<structure name="+">

@@ -20,9 +20,14 @@
 				<boolean name="newWindow" optional="yes" />
 				<!-- custom styling -->
 				<string name="class" optional="yes" />
-				<string name="style" optional="yes" />
 				<string name="linkClass" optional="yes" />
-				<string name="linkStyle" optional="yes" />
+				<!-- custom attributes -->
+				<structure name="attr" optional="yes">
+					<string name="~attrName~" value="~attrValue~" />
+				</structure>
+				<structure name="linkAttr" optional="yes">
+					<string name="~attrName~" value="~attrValue~" />
+				</structure>
 				<!-- utilities for dropdown -->
 				<string name="navHeader" optional="yes" />
 				<array name="divider" optional="yes">
