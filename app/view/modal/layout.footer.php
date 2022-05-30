@@ -27,7 +27,7 @@ elseif ( !empty($modalLayout['footer']) ) :
 	?><footer class="modal-footer"><?php
 		// extract footer content if already wrapped by [modal-footer] element
 		$footer = class_exists('Util') ? Util::phpQuery($modalLayout['footer']) : $modalLayout['footer'];
-		echo ( is_object($footer) and $footer->find('> .modal-footer')->length ) ? $footer->find('> .modal-footer')->length : $footer;
+		echo ( is_object($footer) and $footer->find('> .modal-footer')->length ) ? $footer->find('> .modal-footer') : $footer;
 	?></footer><?php
 
 endif;
