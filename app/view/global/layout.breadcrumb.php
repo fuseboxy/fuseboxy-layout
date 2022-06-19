@@ -20,7 +20,7 @@ if ( isset($arguments['breadcrumb']) and $arguments['breadcrumb'] !== false ) :
 					?><li class="breadcrumb-item"><a href="<?php echo $val; ?>"><?php echo $key; ?></a></li><?php
 				// item without link
 				elseif ( is_numeric($key) and !empty($val) ) :
-					?><li class="breadcrumb-item active" aria-current="page"><?php echo $val; ?></li><?php
+					?><li class="breadcrumb-item text-muted" aria-current="page"><?php echo $val; ?></li><?php
 				endif;
 			endforeach;
 		?></ol>
