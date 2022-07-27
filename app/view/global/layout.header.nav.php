@@ -82,7 +82,9 @@ if ( !function_exists('layoutHeaderNav') ) :
 				endif;
 				// simply output (when necessary)
 				if ( !empty($item['output']) ) :
-					?><li class="<?php echo implode(' ', $itemClass); ?>" <?php echo implode(' ', $itemAttr); ?>><?php echo $output; ?></li><?php
+					?><li class="<?php echo implode(' ', $itemClass); ?>" <?php echo implode(' ', $itemAttr); ?>><?php
+						echo $item['output'];
+					?></li><?php
 				// display nav item (when necessary)
 				elseif ( !empty($item['name']) or !empty($item['icon']) ) :
 					?><li class="<?php echo implode(' ', $itemClass); ?>" <?php echo implode(' ', $itemAttr); ?>><?php
