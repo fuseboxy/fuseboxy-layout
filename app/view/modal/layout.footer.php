@@ -16,7 +16,7 @@ if ( !isset($modalLayout['footer']) ) :
 	?><footer class="modal-footer"><?php
 		// execution time (if any)
 		if ( $et = F::et() ) :
-			?><div class="small mr-auto"><small class="text-muted">Execution time: <?php echo $et; ?>ms</small></div><?php
+			?><div class="et small mr-auto"><small class="text-muted">Execution time: <?php echo $et; ?>ms</small></div><?php
 		endif;
 		// close button
 		?><button type="button" class="btn btn-light b-1 btn-close" data-dismiss="modal">Close</button><?php
