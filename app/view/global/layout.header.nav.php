@@ -4,6 +4,7 @@
 		<in>
 			<array name="$menus">
 				<structure name="~menuNameOptional~">
+					<!-- link -->
 					<string name="name" optional="yes" />
 					<string name="url" optional="yes" />
 					<string name="icon" optional="yes" />
@@ -29,6 +30,8 @@
 					</array>
 					<!-- sub menu (if any) -->
 					<array name="menus" optional="yes" />
+					<!-- others -->
+					<string name="output" optional="yes" comments="simply output and do not display link" />
 				</structure>
 			</array>
 			<number name="$level" optional="yes" default="1" />
@@ -62,7 +65,7 @@ if ( !function_exists('layoutHeaderNav') ) :
 				if ( !empty($item['navHeader']) ) :
 					?><li class="dropdown-header h6"><?php echo $item['navHeader']; ?></li><?php 
 				endif;
-				// nav item
+				// nav item class
 				$itemClass = array();
 				if ( $level == 1                             ) $itemClass[] = 'nav-item';
 				if ( !empty($item['active']) and $level == 1 ) $itemClass[] = 'active';
@@ -70,12 +73,19 @@ if ( !function_exists('layoutHeaderNav') ) :
 				if ( !empty($item['disabled'])               ) $itemClass[] = 'disabled';
 				if ( !empty($item['class'])                  ) $itemClass[] = $item['class'];
 				if ( !empty($item['attr']['class'])          ) $itemClass[] = $item['attr']['class'];
+				// nav item attributes
+				$itemAttr = array();
+				if ( !empty($item['attr']) ) :
+					foreach ( $item['attr'] as $key => $val ) :
+						if ( $key != 'class' ) $itemAttr[] = $key.'="'.$val.'"';
+					endforeach;
+				endif;
+				// simply output (when necessary)
+				if ( !empty($item['output']) ) :
+					?><li class="<?php echo implode(' ', $itemClass); ?>" <?php echo implode(' ', $itemAttr); ?>><?php echo $output; ?></li><?php
 				// display nav item (when necessary)
-				if ( !empty($item['name']) or !empty($item['icon']) ) :
-					?><li 
-						class="<?php echo implode(' ', $itemClass); ?>"
-						<?php if ( !empty($item['attr']) ) foreach ( $item['attr'] as $key => $val ) if ( $key != 'class' ) echo "{$key}='{$val}' "; ?>
-					><?php
+				elseif ( !empty($item['name']) or !empty($item['icon']) ) :
+					?><li class="<?php echo implode(' ', $itemClass); ?>" <?php echo implode(' ', $itemAttr); ?>><?php
 						// nav link
 						$linkClass = array();
 						$linkClass[] =  ( $level == 1 ) ? 'nav-link' : 'dropdown-item';
