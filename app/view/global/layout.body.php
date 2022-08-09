@@ -17,10 +17,11 @@ $contentStyle = $contentStyle ?? '';
 if ( is_string($contentClass) ) $contentClass = array($contentClass);
 if ( is_string($contentStyle) ) $contentStyle = array($contentStyle);
 // apply corresponding class for layout width
-$layout['width'] = $layout['width'] ?? 'container';
-if ( $layout['width'] == 'normal' ) $layout['width'] = 'container';
-if ( $layout['width'] == 'full'   ) $layout['width'] = 'container-fluid';
-$contentClass[] = $layout['width'];
+$contentClass[] = call_user_func(function() use ($layout){
+	if ( $layout['width'] == 'full'   ) return 'container-fluid';
+	if ( $layout['width'] == 'normal' ) return 'container';
+	return $layout['width'] ?? 'container';
+});
 // display
 ?><div id="global-layout"><?php
 	// header
