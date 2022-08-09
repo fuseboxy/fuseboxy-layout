@@ -48,13 +48,9 @@ if ( !function_exists('layoutHeaderNav') ) :
 				if ( is_string($item) ) $item = array('name' => $item);
 				elseif ( !is_numeric($itemKey) and empty($item['name']) ) $item['name'] = $itemKey;
 				// fix variable
-				if ( empty($item['divider']) ) :
-					$itemDivider = array();
-				elseif ( $item['divider'] === true ) :
-					$itemDivider = array('after');
-				elseif ( is_string($item['divider']) ) :
-					$itemDivider = array_filter( explode(',', str_replace('|', ',', $item['divider']) ) );
-				endif;
+				if     ( empty($item['divider'])     ) $itemDivider = array();
+				elseif ( $item['divider'] === true   ) $itemDivider = array('after');
+				elseif ( is_string($item['divider']) ) $itemDivider = array_filter( explode(',', str_replace('|', ',', $item['divider']) ) );
 				// divider (if any)
 				if ( in_array('before', $itemDivider) ) :
 					?><li class="dropdown-divider"></li><?php
@@ -78,7 +74,7 @@ if ( !function_exists('layoutHeaderNav') ) :
 				?><li <?php foreach ( $itemAttr as $key => $val ) echo $key.'="'.$val.'" '; ?>><?php
 					// prepare link class
 					$linkClass = array();
-					$linkClass[] =  ( $level == 1 ) ? 'nav-link' : 'dropdown-item';
+					$linkClass[] = ( $level == 1 ) ? 'nav-link' : 'dropdown-item';
 					if ( !empty($item['active']) and $level > 1 ) $linkClass[] = 'active';
 					if ( !empty($item['linkClass'])             ) $linkClass[] = $item['linkClass'];
 					if ( !empty($item['linkAttr']['class'])     ) $linkClass[] = $item['linkAttr']['class'];
@@ -111,7 +107,7 @@ if ( !function_exists('layoutHeaderNav') ) :
 					if ( !empty($item['url']) or !empty($item['menus']) ) :
 						?></a><?php
 					endif;
-					// has submenu
+					// sub-menu (if any)
 					if ( !empty($item['menus']) ) :
 						?><ul class="dropdown-menu <?php if ( $align == 'right' ) echo 'dropdown-menu-right'; ?>"><?php
 							layoutHeaderNav($item['menus'], $level+1, $align);
