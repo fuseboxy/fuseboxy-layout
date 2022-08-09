@@ -18,9 +18,10 @@ if ( is_string($contentClass) ) $contentClass = array($contentClass);
 if ( is_string($contentStyle) ) $contentStyle = array($contentStyle);
 // apply corresponding class for layout width
 $contentClass[] = call_user_func(function() use ($layout){
-	if ( $layout['width'] == 'full'   ) return 'container-fluid';
+	if ( empty($layout['width'])      ) return 'container';
 	if ( $layout['width'] == 'normal' ) return 'container';
-	return $layout['width'] ?? 'container';
+	if ( $layout['width'] == 'full'   ) return 'container-fluid';
+	return $layout['width'];
 });
 // display
 ?><div id="global-layout"><?php
