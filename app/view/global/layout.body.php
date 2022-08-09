@@ -3,7 +3,7 @@
 	<io>
 		<in>
 			<structure name="$layout">
-				<string name="width" comments="normal|full" />
+				<string name="width" comments="normal|full|container|w-100|.." default="container-fluid" />
 			</structure>
 			<array name="$contentClass" optional="yes" default="p-4" />
 			<array name="$contentStyle" optional="yes" />
@@ -17,7 +17,7 @@ $contentStyle = $contentStyle ?? '';
 if ( is_string($contentClass) ) $contentClass = array($contentClass);
 if ( is_string($contentStyle) ) $contentStyle = array($contentStyle);
 // apply corresponding class for layout width
-if     ( !isset($layout['width'])     ) $contentClass[] = 'container';
+if     ( !isset($layout['width'])     ) $contentClass[] = 'container-fluid';
 elseif ( $layout['width'] == 'normal' ) $contentClass[] = 'container';
 elseif ( $layout['width'] == 'full'   ) $contentClass[] = 'container-fluid';
 // display
