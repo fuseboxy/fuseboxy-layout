@@ -30,8 +30,6 @@
 					</array>
 					<!-- sub menu (if any) -->
 					<array name="menus" optional="yes" />
-					<!-- others -->
-					<string name="output" optional="yes" comments="simply output and do not display link" />
 				</structure>
 			</array>
 			<number name="$level" optional="yes" default="1" />
@@ -65,67 +63,62 @@ if ( !function_exists('layoutHeaderNav') ) :
 				if ( !empty($item['navHeader']) ) :
 					?><li class="dropdown-header h6"><?php echo $item['navHeader']; ?></li><?php 
 				endif;
-				// nav item class
+				// prepare item url (when necessary)
+				$item['url'] = $item['url'] ?? $item['linkAttr']['href'] ?? false;
+				// prepare item class
 				$itemClass = array();
 				if ( $level == 1                             ) $itemClass[] = 'nav-item';
-				if ( !empty($item['active']) and $level == 1 ) $itemClass[] = 'active';
+				if ( $level == 1 and !empty($item['active']) ) $itemClass[] = 'active';
 				if ( !empty($item['menus'])                  ) $itemClass[] = ( $level == 1 ) ? 'dropdown' : 'dropdown-submenu';
 				if ( !empty($item['disabled'])               ) $itemClass[] = 'disabled';
 				if ( !empty($item['class'])                  ) $itemClass[] = $item['class'];
 				if ( !empty($item['attr']['class'])          ) $itemClass[] = $item['attr']['class'];
-				// nav item attributes
-				$itemAttr = array();
-				if ( !empty($item['attr']) ) :
-					foreach ( $item['attr'] as $key => $val ) :
-						if ( $key != 'class' ) $itemAttr[] = $key.'="'.$val.'"';
-					endforeach;
-				endif;
-				// simply output (when necessary)
-				if ( !empty($item['output']) ) :
-					?><li class="<?php echo implode(' ', $itemClass); ?>" <?php echo implode(' ', $itemAttr); ?>><?php
-						echo $item['output'];
-					?></li><?php
-				// display nav item (when necessary)
-				elseif ( !empty($item['name']) or !empty($item['icon']) ) :
-					?><li class="<?php echo implode(' ', $itemClass); ?>" <?php echo implode(' ', $itemAttr); ?>><?php
-						// nav link
-						$linkClass = array();
-						$linkClass[] =  ( $level == 1 ) ? 'nav-link' : 'dropdown-item';
-						if ( !empty($item['active']) and $level > 1 ) $linkClass[] = 'active';
-						if ( !empty($item['linkClass'])             ) $linkClass[] = $item['linkClass'];
-						if ( !empty($item['linkAttr']['class'])     ) $linkClass[] = $item['linkAttr']['class'];
-						// default link
-						$item['url'] = isset($item['url']) ? $item['url'] : '#';
-						// display nav link
+				// prepare item attributes
+				$itemAttr = $item['attr'] ?? array();
+				if ( isset($itemAttr['class']) ) unset($itemAttr['class']);
+				// display nav item
+				?><li class="<?php echo implode(' ', $itemClass); ?>" <?php echo http_build_query($itemAttr, '', ' '); ?>><?php
+					// prepare link class
+					$linkClass = array();
+					$linkClass[] =  ( $level == 1 ) ? 'nav-link' : 'dropdown-item';
+					if ( !empty($item['active']) and $level > 1 ) $linkClass[] = 'active';
+					if ( !empty($item['linkClass'])             ) $linkClass[] = $item['linkClass'];
+					if ( !empty($item['linkAttr']['class'])     ) $linkClass[] = $item['linkAttr']['class'];
+					// prepare link attributes
+					$linkAttr = $item['linkAttr'] ?? array();
+					if ( isset($linkAttr['href']) ) unset($linkAttr['href']);
+					if ( isset($linkAttr['class']) ) unset($linkAttr['class']);
+					if ( !empty($item['newWindow']) ) $linkAttr['target'] = '_blank';
+					// wrap by link (when necessary)
+					if ( !empty($item['url']) or !empty($item['menus']) ) :
 						?><a 
 							href="<?php echo $item['url']; ?>" 
 							class="<?php echo implode(' ', $linkClass); ?>" 
-							<?php if ( !empty($item['newWindow']) ) : ?>target="_blank"<?php endif; ?>
+							<?php echo http_build_query($linkAttr, '', ' '); ?>
 							<?php if ( !empty($item['menus']) ) : ?>role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <?php endif; ?>
-							<?php if ( !empty($item['linkAttr']) ) foreach ( $item['linkAttr'] as $key => $val ) if ( $key != 'class' ) echo "{$key}='{$val}' "; ?>
 						><?php
-							// menu icon
-							if ( !empty($item['icon']) ) :
-								?><i class="<?php echo $item['icon']; ?>"></i> <?php
-							endif;
-							// menu name
-							if ( !empty($item['name']) ) :
-								$itemNameClass = array();
-								?><span class="<?php echo implode(' ', $itemNameClass); ?>"><?php echo $item['name']; ?></span><?php
-							endif;
-							// menu remark
-							if ( !empty($item['remark']) ) :
-								?> <small class="text-muted">(<?php echo $item['remark']; ?>)</small><?php
-							endif;
+					endif;
+					// menu icon
+					if ( !empty($item['icon']) ) :
+						?><i class="<?php echo $item['icon']; ?>"></i> <?php
+					endif;
+					// menu name
+					if ( !empty($item['name']) ) echo $item['name'];
+					// menu remark
+					if ( !empty($item['remark']) ) :
+						?> <small class="text-muted">(<?php echo $item['remark']; ?>)</small><?php
+					endif;
+					// wrap by link (when necessary)
+					if ( !empty($item['url']) or !empty($item['menus']) ) :
 						?></a><?php
-						// has submenu
-						if ( !empty($item['menus']) ) :
-							?><ul class="dropdown-menu <?php if ( $align == 'right' ) echo 'dropdown-menu-right'; ?>"><?php
-								layoutHeaderNav($item['menus'], $level+1, $align);
-							?></ul><?php
-						endif;
-					?></li><?php
-				endif; // if-item-name
+					endif;
+					// has submenu
+					if ( !empty($item['menus']) ) :
+						?><ul class="dropdown-menu <?php if ( $align == 'right' ) echo 'dropdown-menu-right'; ?>"><?php
+							layoutHeaderNav($item['menus'], $level+1, $align);
+						?></ul><?php
+					endif;
+				?></li><?php
 				// divider (if any)
 				if ( in_array('after', $itemDivider) ) :
 					?><li class="dropdown-divider"></li><?php

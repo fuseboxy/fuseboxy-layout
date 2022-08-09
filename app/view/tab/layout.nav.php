@@ -31,6 +31,8 @@
 						<array name="buttons" optional="yes" />
 						<!-- dropdown -->
 						<array name="menus" optional="yes" />
+						<!-- others -->
+						<string name="output" optional="yes" comments="simply output and do not display link" />
 					</structure>
 				</array>
 			</structure>
@@ -72,7 +74,7 @@ if ( $tabLayout['justify'] === true ) {
 			// display tab (when necessary)
 			if ( !empty($tab) ) :
 				// fix tab (when necessary)
-				if ( is_string($tab) ) $tab = array('name' => $tab);
+				if ( is_string($tab) ) $tab = array('output' => $tab);
 				elseif ( !is_numeric($tabKey) and empty($tab['name']) ) $tab['name'] = $tabKey;
 				// menu item
 				$itemClass = array('nav-item');
