@@ -63,8 +63,6 @@ if ( !function_exists('layoutHeaderNav') ) :
 				if ( !empty($item['navHeader']) ) :
 					?><li class="dropdown-header h6"><?php echo $item['navHeader']; ?></li><?php 
 				endif;
-				// prepare item url (when necessary)
-				$item['url'] = $item['url'] ?? $item['linkAttr']['href'] ?? false;
 				// prepare item class
 				$itemClass = array();
 				if ( $level == 1                             ) $itemClass[] = 'nav-item';
@@ -75,9 +73,9 @@ if ( !function_exists('layoutHeaderNav') ) :
 				if ( !empty($item['attr']['class'])          ) $itemClass[] = $item['attr']['class'];
 				// prepare item attributes
 				$itemAttr = $item['attr'] ?? array();
-				if ( isset($itemAttr['class']) ) unset($itemAttr['class']);
+				$itemAttr['class'] = implode(' ', $itemClass);
 				// display nav item
-				?><li class="<?php echo implode(' ', $itemClass); ?>" <?php echo http_build_query($itemAttr, '', ' '); ?>><?php
+				?><li <?php foreach ( $itemAttr as $key => $val ) echo $key.'="'.$val.'" '; ?>><?php
 					// prepare link class
 					$linkClass = array();
 					$linkClass[] =  ( $level == 1 ) ? 'nav-link' : 'dropdown-item';
@@ -86,17 +84,18 @@ if ( !function_exists('layoutHeaderNav') ) :
 					if ( !empty($item['linkAttr']['class'])     ) $linkClass[] = $item['linkAttr']['class'];
 					// prepare link attributes
 					$linkAttr = $item['linkAttr'] ?? array();
-					if ( isset($linkAttr['href']) ) unset($linkAttr['href']);
-					if ( isset($linkAttr['class']) ) unset($linkAttr['class']);
+					$linkAttr['class'] = implode(' ', $linkClass);
+					if ( !empty($item['url']) ) $linkAttr['href'] = $item['url'];
 					if ( !empty($item['newWindow']) ) $linkAttr['target'] = '_blank';
+					if ( !empty($item['menus']) ) $linkAttr = array_merge($linkAttr, [
+						'role'          => 'button',
+						'data-toggle'   => 'dropdown',
+						'aria-haspopup' => 'true',
+						'aria-expanded' => 'false',
+					]);
 					// wrap by link (when necessary)
 					if ( !empty($item['url']) or !empty($item['menus']) ) :
-						?><a 
-							href="<?php echo $item['url']; ?>" 
-							class="<?php echo implode(' ', $linkClass); ?>" 
-							<?php echo http_build_query($linkAttr, '', ' '); ?>
-							<?php if ( !empty($item['menus']) ) : ?>role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <?php endif; ?>
-						><?php
+						?><a <?php foreach ( $linkAttr as $key => $val ) echo $key.'="'.$val.'" '; ?>><?php
 					endif;
 					// menu icon
 					if ( !empty($item['icon']) ) :
