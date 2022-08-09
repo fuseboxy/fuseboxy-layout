@@ -17,9 +17,9 @@ $contentStyle = $contentStyle ?? '';
 if ( is_string($contentClass) ) $contentClass = array($contentClass);
 if ( is_string($contentStyle) ) $contentStyle = array($contentStyle);
 // apply corresponding class for layout width
-if     ( !isset($layout['width'])     ) $contentClass[] = 'container-fluid';
-elseif ( $layout['width'] == 'normal' ) $contentClass[] = 'container';
-elseif ( $layout['width'] == 'full'   ) $contentClass[] = 'container-fluid';
+$layout['width'] = $layout['width'] ?? 'container';
+if ( $layout['width'] == 'normal' ) $contentClass[] = 'container';
+if ( $layout['width'] == 'full'   ) $contentClass[] = 'container-fluid';
 // display
 ?><div id="global-layout"><?php
 	// header
