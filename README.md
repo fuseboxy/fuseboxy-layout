@@ -114,8 +114,11 @@ endswitch;
 	<array name="nav">
 		<structure name="~tabNameOptional~">
 
+			<boolean name="disabled" optional="yes" />
+			<string name="icon" optional="yes" />
+			<string name="remark" optinonal="yes" />
+			<string name="class" optional="yes" />
 			<string name="linkClass" optional="yes" />
-
 			<structure name="attr" optional="yes">
 				<string name="~attrName~" value="~attrValue~" />
 			</structure>
