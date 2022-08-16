@@ -1,40 +1,20 @@
 Fuseboxy Layout (v2.x)
 ======================
 
-Pre-built global layout with handy navigation, flash message, breadcrumb, etc.
 
-This module is **OPTIONAL** to Fuseboxy framework.
-
-
---
-
-## Third-party Components
-The global layout module includes CDN of following JS and CSS libraries to provide a faster development environment:
-* jQuery
-* Bootstrap
-* Font Awesome
-* HTML Shiv
-* Respond JS
-
-Please be noted that the Fuseboxy framework core does **NOT** depend on any one of these.
-
-Therefore, developer could feel free to keep/remove any of these at `app/view/global/layout.basic.php` whenever applicable.
-
-
---
-
-## Configuration
+## Prerequisites
 Enable **output_buffering** of PHP settings:
 * e.g. `output_buffering = 4096`
 
 
--- 
-
 ## Installation
-Composer Installation
+
+### Composer Installation
+
 1. (WIP)
 
-Manual Installation
+### Manual Installation
+
 1. Add following config into **app/config/fusebox_config.php** if not already exists:
 	* `'baseUrl' => str_replace('//', '/', str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']).'/' ) )`
 
@@ -51,7 +31,101 @@ Manual Installation
 4. Done.
 
 
---
+-------------------------
+
+## Global Layout
+
+### Settings
+
+```
+```
+
+### Example
+
+```
+```
+
+-------------------------
+
+## Tab Layout
+
+### Settings
+
+```
+<structure name="$tabLayout">
+	<string name="style" comments="tabs|pills|~empty~" />
+	<string name="position" comments="left|right|top|bottom" />
+	<string name="orientation" comments="vertical|horizontal" />
+	<boolean name="justify" optional="yes" default="false" comments="~true~|~false~|fill|center|end" />
+	<string name="header" optional="yes" />
+	<string name="headerClass" optional="yes" default="h4 mb-3" />
+	<string name="footer" optional="yes" />
+	<string name="footerClass" optional="yes" default="mt-3" />
+	<array name="nav">
+		<structure name="~tabNameOptional~">
+			<string name="name" optional="yes" />
+			<string name="url" optional="yes" />
+			<boolean name="active" optional="yes" />
+			<boolean name="disabled" optional="yes" />
+			<string name="icon" optional="yes" />
+			<string name="remark" optinonal="yes" />
+			<string name="class" optional="yes" />
+			<string name="linkClass" optional="yes" />
+			<structure name="attr" optional="yes">
+				<string name="~attrName~" value="~attrValue~" />
+			</structure>
+			<structure name="linkAttr" optional="yes">
+				<string name="~attrName~" value="~attrValue~" />
+			</structure>
+			<!-- button -->
+			<array name="buttons" optional="yes" />
+			<!-- dropdown -->
+			<array name="menus" optional="yes" />
+		</structure>
+	</array>
+</structure>
+```
+
+### Example
+
+```
+...
+
+$tabLayout = array(
+	'style' => 'tab',
+	'position' => left',
+	'nav' => array(
+		'Home' => array('url' => F::url('home'), 'icon' => 'fa fa-home', 'active' => F::is('home.*')),
+		'User' => array('url' => F::url('user'), 'icon' => 'fa fa-user', 'active' => F::is('user.*')),
+		'Settings' => array('url' => F::url('settings'), 'icon' => 'fa fa-cog', 'active' => F::is('settings.*')),
+	),
+);
+ob_start();
+include F::appPath('view/tab/layout.php');
+$layout['content'] = ob_get_clean();
+$layout['width'] = 'full';
+include F::appPath('view/global/layout.php');
+
+...
+```
+
+
+-------------------------
+
+## Modal Layout
+
+### Settings
+
+```
+```
+
+### Example
+
+```
+```
+
+
+-------------------------
 
 ## Usage
 
