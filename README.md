@@ -114,6 +114,8 @@ endswitch;
 	<array name="nav">
 		<structure name="~tabNameOptional~">
 
+			<string name="url" optional="yes" />
+			<boolean name="active" optional="yes" />
 			<boolean name="disabled" optional="yes" />
 			<string name="icon" optional="yes" />
 			<string name="remark" optinonal="yes" />
@@ -147,10 +149,12 @@ $tabLayout = array(
 		'Settings' => array('url' => F::url('settings'), 'icon' => 'fa fa-cog', 'active' => F::is('settings.*')),
 	),
 );
-ob_start();
+
 // display tab layout
+ob_start();
 include F::appPath('view/tab/layout.php');
 $layout['content'] = ob_get_clean();
+
 // wrap by global layout
 $layout['width'] = 'full';
 include F::appPath('view/global/layout.php');
