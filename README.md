@@ -114,6 +114,8 @@ endswitch;
 	<array name="nav">
 		<structure name="~tabNameOptional~">
 
+			<string name="linkClass" optional="yes" />
+
 			<structure name="attr" optional="yes">
 				<string name="~attrName~" value="~attrValue~" />
 			</structure>
