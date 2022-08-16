@@ -113,6 +113,17 @@ endswitch;
 	<string name="footerClass" optional="yes" default="mt-3" />
 	<array name="nav">
 		<structure name="~tabNameOptional~">
+
+			<structure name="attr" optional="yes">
+				<string name="~attrName~" value="~attrValue~" />
+			</structure>
+			<structure name="linkAttr" optional="yes">
+				<string name="~attrName~" value="~attrValue~" />
+			</structure>
+			<!-- button -->
+			<array name="buttons" optional="yes" />
+			<!-- dropdown -->
+			<array name="menus" optional="yes" />
 		</structure>
 	</array>
 </structure>
