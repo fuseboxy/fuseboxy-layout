@@ -3,17 +3,19 @@ Fuseboxy Layout (v2.x)
 
 
 ## Prerequisites
-Enable **output_buffering** of PHP settings:
-* e.g. `output_buffering = 4096`
+
+#### PHP Settings
+
+* Enable __output_buffering__ at `php.ini` (e.g. `output_buffering = 4096`)
 
 
 ## Installation
 
-### Composer Installation
+#### Composer Installation
 
-1. (WIP)
+1. (work-in-progress)
 
-### Manual Installation
+#### Manual Installation
 
 1. Add following config into **app/config/fusebox_config.php** if not already exists:
 	* `'baseUrl' => str_replace('//', '/', str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']).'/' ) )`
@@ -284,6 +286,22 @@ endswitch;
 #### Example
 
 ```
+<?php
+switch ( $fusebox->action ) :
+
+	case 'index':
+		ob_start();
+		include F::appPath('view/home/index.php');
+		$layout['content'] = ob_get_clean();
+		// title
+		$layout['title'] = 'Home Page';
+		// global layout
+		include F::appPath('view/global/layout.php');
+		break;
+
+	...
+
+endswitch;
 ```
 
 
@@ -340,5 +358,25 @@ endswitch;
 #### Example
 
 ```
+<?php
+switch ( $fusebox->action ) :
+
+	...
+
+	case 'view':
+		$product = ORM::get('product', $arguments['productID']);
+		// display
+		ob_start();
+		include F::appPath('view/product/view.php');
+		$layout['content'] = ob_get_clean();
+		// breadcrumb
+		$arguments['breadcrumb'] = array($product->category, $product->title);
+		// global layout
+		include F::appPath('view/global/layout.php');
+		break;
+
+	...
+
+endswitch;
 ```
 
