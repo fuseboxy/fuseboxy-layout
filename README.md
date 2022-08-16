@@ -35,9 +35,9 @@ Enable **output_buffering** of PHP settings:
 
 ## Global Layout
 
-#### Settings File
+#### Configuration File
 
-`{APP_PATH}`/view/global/layout.php
+* {APP_PATH}/view/global/layout.php
 
 #### Settings
 
@@ -150,8 +150,10 @@ $tabLayout = array(
 	),
 );
 ob_start();
+// display tab layout
 include F::appPath('view/tab/layout.php');
 $layout['content'] = ob_get_clean();
+// wrap by global layout
 $layout['width'] = 'full';
 include F::appPath('view/global/layout.php');
 ```
@@ -164,11 +166,56 @@ include F::appPath('view/global/layout.php');
 #### Settings
 
 ```
+<structure name="$modalLayout">
+	<string name="header" optional="yes" />
+	<boolean name="headerClose" optional="yes" default="true" />
+	<string name="title" optional="yes" />
+	<structure name="title" optional="yes">
+		<string name="text" />
+		<string name="class" />
+	</structure>
+	<array name="nav">
+		<structure name="~menuNameOptional~">
+			<string name="name" />
+			<string name="url" />
+			<string name="icon" />
+			<string name="remark" />
+			<string name="class" />
+			<string name="linkClass" />
+			<boolean name="active" />
+			<boolean name="newWindow" />
+		</structure>
+	</array>
+	<string name="footer" optional="yes" />
+</structure>
 ```
 
 #### Example
 
 ```
+<?php
+switch ( $fusebox->action ) :
+
+	...
+
+	case 'edit':
+		$arguments['data'] = ORM::get('foo', 100);
+		// display form
+		ob_start();
+		include F::appPath('view/foo/edit.php');
+		$layout['content'] = ob_get_clean();
+		// custom footer
+		ob_start();
+		include F::appPath('view/foo/edit.button.php');
+		$modalLayout['footer'] = ob_get_clean();
+		// show as modal
+		$modalLayout['title'] = 'Edit';
+		include F::appPath('view/modal/layout.php');
+		break;
+
+	...
+
+endswitch;
 ```
 
 
