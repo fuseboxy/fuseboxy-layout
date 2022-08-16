@@ -3,7 +3,7 @@
 	<io>
 		<in>
 			<structure name="breadcrumb" scope="$arguments">
-				<string name="~label~" />
+				<string name="~label~" value="~url~" />
 			</structure>
 		</in>
 		<out />

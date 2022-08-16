@@ -33,6 +33,7 @@ Enable **output_buffering** of PHP settings:
 
 -------------------------
 
+
 ## Global Layout
 
 #### Configuration File
@@ -95,7 +96,9 @@ switch ( $fusebox->action ) :
 endswitch;
 ```
 
+
 -------------------------
+
 
 ## Tab Layout
 
@@ -163,6 +166,7 @@ include F::appPath('view/global/layout.php');
 
 -------------------------
 
+
 ## Modal Layout
 
 #### Settings
@@ -223,42 +227,118 @@ endswitch;
 
 -------------------------
 
-## Usage
 
-After you have correctly installed the module, you could try your first example:
+## Top Flash
+
+#### Settings
 
 ```
+<string name="topFlash" scope="$arguments|$_SESSION" />
+<structure name="topFlash" scope="$arguments|$_SESSION">
+	<string name="icon" optional="yes" />
+	<string name="type" optional="yes" default="primary text-white" comments="primary|secondary|success|info|warning|danger|light|dark" />
+	<string name="title" optional="yes" />
+	<string name="message" />
+</structure>
+```
+
+#### Example
+
+```
+<?php
 switch ( $fusebox->action ) :
+
 	...
 
-	case 'example':
-		$layout['pageTitle'] = 'Hello World';
-		ob_start();
-		echo 'Global Layout Example';
-		$layout['content'] = ob_get_clean();
-		include 'app/view/global/layout.php';
+	case 'foo':
+		...
+		$arguments['topFlash'] = array('type' => 'danger', 'message' => 'Very Important Message!!');
+		include F::appPath('view/global/layout.php');
 		break;
 
 	...
+
 endswitch;
 ```
 
 
---
+-------------------------
 
-## Navigation
+
+## Title
+
+#### Settings
+
+```
+<structure name="$layout">
+	<structure name="title" optional="yes">
+		<string name="tag" optional="yes" default="h1" />
+		<string name="icon" optional="yes" />
+		<string name="class" optional="yes" default="page-header border-bottom mb-4" />
+		<string name="message" />
+	</structure>
+	<string name="title" optional="yes" />
+</structure>
+```
+
+#### Example
+
+```
+```
+
+
+-------------------------
 
 
 ## Flash
 
+#### Settings
 
-## Top Flash
+```
+<string name="flash" scope="$arguments|$_SESSION" />
+<structure name="flash" scope="$arguments|$_SESSION">
+	<string name="type" optional="yes" default="primary" comments="primary|secondary|success|info|warning|danger|light|dark" />
+	<string name="icon" optional="yes" />
+	<string name="heading" optional="yes" />
+	<string name="message" />
+</structure>
+```
+
+#### Example
+
+```
+<?php
+switch ( $fusebox->action ) :
+
+	...
+
+	case 'save':
+		$bean = ORM::saveNew($bean, $arguments['data']);
+		$arguments['flash'] = 'Record Saved';
+		include F::appPath('view/global/layout.php');
+		break;
+
+	...
+
+endswitch;
+```
+
+
+-------------------------
 
 
 ## Breadcrumb
 
+#### Settings
 
-## Pagination
+```
+<structure name="breadcrumb" scope="$arguments">
+	<string name="~label~" value="~url~" />
+</structure>
+```
 
+#### Example
 
-## Tab Layout
+```
+```
+
