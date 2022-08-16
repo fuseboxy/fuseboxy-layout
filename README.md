@@ -35,21 +35,71 @@ Enable **output_buffering** of PHP settings:
 
 ## Global Layout
 
-### Settings
+#### Settings File
+
+`{APP_PATH}`/view/global/layout.php
+
+#### Settings
 
 ```
+<structure name="$layout">
+	<string name="metaTitle" comments="showing at browser tab" />
+	<string name="logo|brand" optional="yes" />
+	<structure name="logo|brand" optional="yes">
+		<string name="~breakpoint~" comments="empty is the default" />
+	</structure>
+</structure>
+<structure name="nav|navRight" scope="$arguments">
+	<string name="icon" optional="yes" />
+	<string name="name" optional="yes" />
+	<string name="url" optinonal="yes" />
+	<boolean name="active" optional="yes" />
+	<string name="remark" optinonal="yes" />
+	<boolean name="disabled" optional="yes" />
+	<boolean name="newWindow" optional="yes" />
+	<!-- custom styling -->
+	<string name="class" optional="yes" />
+	<string name="linkClass" optional="yes" />
+	<!-- custom attributes -->
+	<structure name="attr" optional="yes">
+		<string name="~attrName~" value="~attrValue~" />
+	</structure>
+	<structure name="linkAttr" optional="yes">
+		<string name="~attrName~" value="~attrValue~" />
+	</structure>
+	<!-- utilities for dropdown -->
+	<string name="navHeader" optional="yes" />
+	<array name="divider" optional="yes">
+		<string name="+" comments="before|after" />
+	</array>
+	<!-- sub menu (if any) -->
+	<array name="menus" optional="yes" />
+</structure>
 ```
 
-### Example
+#### Example
 
 ```
+<?php
+switch ( $fusebox->action ) :
+
+	case 'index':
+		ob_start();
+		?><h1>Hello World</h1><?php
+		$layout['content'] = ob_get_clean();
+		include F::appPath('view/global/layout.php');
+		break;
+
+	...
+
+endswitch;
 ```
 
 -------------------------
 
 ## Tab Layout
 
-### Settings
+#### Settings
 
 ```
 <structure name="$tabLayout">
@@ -86,11 +136,10 @@ Enable **output_buffering** of PHP settings:
 </structure>
 ```
 
-### Example
+#### Example
 
 ```
-...
-
+<?php
 $tabLayout = array(
 	'style' => 'tab',
 	'position' => left',
@@ -105,8 +154,6 @@ include F::appPath('view/tab/layout.php');
 $layout['content'] = ob_get_clean();
 $layout['width'] = 'full';
 include F::appPath('view/global/layout.php');
-
-...
 ```
 
 
@@ -114,12 +161,12 @@ include F::appPath('view/global/layout.php');
 
 ## Modal Layout
 
-### Settings
+#### Settings
 
 ```
 ```
 
-### Example
+#### Example
 
 ```
 ```
