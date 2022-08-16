@@ -113,14 +113,6 @@ endswitch;
 	<string name="footerClass" optional="yes" default="mt-3" />
 	<array name="nav">
 		<structure name="~tabNameOptional~">
-			<string name="name" optional="yes" />
-			<string name="url" optional="yes" />
-			<boolean name="active" optional="yes" />
-			<boolean name="disabled" optional="yes" />
-			<string name="icon" optional="yes" />
-			<string name="remark" optinonal="yes" />
-			<string name="class" optional="yes" />
-			<string name="linkClass" optional="yes" />
 		</structure>
 	</array>
 </structure>
