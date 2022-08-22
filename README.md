@@ -9,28 +9,14 @@ Fuseboxy Layout (v2.x)
 * Enable __output_buffering__ at `php.ini` (e.g. `output_buffering = 4096`)
 
 
+-------------------------
+
+
 ## Installation
 
-#### Composer Installation
+#### By Composer
 
-1. (work-in-progress)
-
-#### Manual Installation
-
-1. Add following config into **app/config/fusebox_config.php** if not already exists:
-	* `'baseUrl' => str_replace('//', '/', str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']).'/' ) )`
-
-2. Copy files from the package into your application:
-	* `app/view/global/*`
-	* `css/main.css` *- optional*
-	* `js/main.js` *- optional*
-	* `test/test_fuseboxy_global_layout.php` *- optional (Only if you want to perform a unit test)*
-
-3. Open and edit following variables at **app/view/global/layout.php**:
-	* `$layout['metaTitle']`
-	* `$layout['brand']`
-
-4. Done.
+#### Manually
 
 
 -------------------------
@@ -39,11 +25,11 @@ Fuseboxy Layout (v2.x)
 ## Global Layout
 
 #### Configuration File
-
-* {APP_PATH}/view/global/layout.php
+````
+{APP_PATH}/view/global/layout.settings.php
+````
 
 #### Settings
-
 ```
 <structure name="$layout">
 	<string name="metaTitle" comments="showing at browser tab" />
@@ -52,6 +38,7 @@ Fuseboxy Layout (v2.x)
 		<string name="~breakpoint~" comments="empty is the default" />
 	</structure>
 </structure>
+
 <structure name="nav|navRight" scope="$arguments">
 	<string name="icon" optional="yes" />
 	<string name="name" optional="yes" />
@@ -81,7 +68,6 @@ Fuseboxy Layout (v2.x)
 ```
 
 #### Example
-
 ```
 <?php
 switch ( $fusebox->action ) :
@@ -105,7 +91,6 @@ endswitch;
 ## Tab Layout
 
 #### Settings
-
 ```
 <structure name="$tabLayout">
 	<string name="style" comments="tabs|pills|~empty~" />
@@ -142,7 +127,6 @@ endswitch;
 ```
 
 #### Example
-
 ```
 <?php
 $tabLayout = array(
@@ -172,7 +156,6 @@ include F::appPath('view/global/layout.php');
 ## Modal Layout
 
 #### Settings
-
 ```
 <structure name="$modalLayout">
 	<string name="header" optional="yes" />
@@ -199,7 +182,6 @@ include F::appPath('view/global/layout.php');
 ```
 
 #### Example
-
 ```
 <?php
 switch ( $fusebox->action ) :
@@ -233,9 +215,9 @@ endswitch;
 ## Top Flash
 
 #### Settings
-
 ```
 <string name="topFlash" scope="$arguments|$_SESSION" />
+
 <structure name="topFlash" scope="$arguments|$_SESSION">
 	<string name="icon" optional="yes" />
 	<string name="type" optional="yes" default="primary text-white" comments="primary|secondary|success|info|warning|danger|light|dark" />
@@ -245,7 +227,6 @@ endswitch;
 ```
 
 #### Example
-
 ```
 <?php
 switch ( $fusebox->action ) :
@@ -270,7 +251,6 @@ endswitch;
 ## Title
 
 #### Settings
-
 ```
 <structure name="$layout">
 	<structure name="title" optional="yes">
@@ -284,7 +264,6 @@ endswitch;
 ```
 
 #### Example
-
 ```
 <?php
 switch ( $fusebox->action ) :
@@ -311,9 +290,9 @@ endswitch;
 ## Flash
 
 #### Settings
-
 ```
 <string name="flash" scope="$arguments|$_SESSION" />
+
 <structure name="flash" scope="$arguments|$_SESSION">
 	<string name="type" optional="yes" default="primary" comments="primary|secondary|success|info|warning|danger|light|dark" />
 	<string name="icon" optional="yes" />
@@ -323,7 +302,6 @@ endswitch;
 ```
 
 #### Example
-
 ```
 <?php
 switch ( $fusebox->action ) :
@@ -348,7 +326,6 @@ endswitch;
 ## Breadcrumb
 
 #### Settings
-
 ```
 <structure name="breadcrumb" scope="$arguments">
 	<string name="~label~" value="~url~" />
@@ -356,7 +333,6 @@ endswitch;
 ```
 
 #### Example
-
 ```
 <?php
 switch ( $fusebox->action ) :
