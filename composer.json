@@ -3,6 +3,5 @@
 	"description": "Fuseboxy Layout - Global Layout, Tab Layout, etc.",
 	"license": "MIT",
     "type": "fuseboxy-module",
-	"repositories": [ { "type": "git", "url": "https://www.bitbucket.org/henrygotmojo/fuseboxy-installer" } ],
-    "require": { "fuseboxy/fuseboxy-installer": "*" }
+	"require": { "fuseboxy/fuseboxy-installer": "2.2.x" }
 }
