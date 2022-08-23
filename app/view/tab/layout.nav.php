@@ -109,7 +109,7 @@ if ( $tabLayout['justify'] === true ) {
 						'aria-expanded' => 'false',
 					]);
 					// wrap by link (when necessary)
-					if ( !empty($item['url']) or !empty($item['menus']) ) :
+					if ( !empty($item['url']) ) :
 						?><a <?php foreach ( $linkAttr as $key => $val ) echo $key.'="'.$val.'" '; ?>><?php
 					endif;
 					// tab icon
@@ -125,7 +125,7 @@ if ( $tabLayout['justify'] === true ) {
 						?> <small class="<?php echo implode(' ', $tabRemarkClass); ?>">(<?php echo $item['remark']; ?>)</small><?php
 					endif;
 					// wrap by link (when necessary)
-					if ( !empty($item['url']) or !empty($item['menus']) ) :
+					if ( !empty($item['url']) ) :
 						?></a><?php
 					endif;
 					// dropdown menu (if any)
