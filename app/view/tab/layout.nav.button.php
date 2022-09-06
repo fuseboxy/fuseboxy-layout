@@ -39,7 +39,6 @@ foreach ( $tabItem['buttons'] as $btnKey => $btnItem ) :
 	// button styling
 	// ===> default use [btn-light] when not specified
 	$btnClass = array('btn', 'btn-xs', 'ml-1', $btnItem['class'] ?? 'btn-light b-1');
-	if ( $tabLayout['orientation'] == 'vertical' ) $btnClass[] = 'mb-n3';
 	// display button
 	?><a 
 		class="<?php echo implode(' ', $btnClass); ?>"

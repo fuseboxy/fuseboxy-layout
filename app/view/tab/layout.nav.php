@@ -86,7 +86,7 @@ if ( $tabLayout['justify'] === true ) {
 				?><li <?php foreach ( $itemAttr as $key => $val ) echo $key.'="'.$val.'" '; ?>><?php
 					// buttons (for vertical orientation)
 					if ( !empty($item['buttons']) and $tabLayout['orientation'] == 'vertical' ) :
-						?><div class="position-absolute" style="right: .5rem;"><?php
+						?><div class="position-absolute" style="right: .5rem; top: .5rem;"><?php
 							$tabItem = $item;
 							include F::appPath('view/tab/layout.nav.button.php');
 						?></div><?php
