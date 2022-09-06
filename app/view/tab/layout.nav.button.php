@@ -2,7 +2,10 @@
 <fusedoc>
 	<io>
 		<in>
-			<structure name="$tab">
+			<structure name="$tabLayout">
+				<string name="orientation" comments="horizontal|vertical" />
+			</structure>
+			<structure name="$item" comments="tab">
 				<array name="buttons" optional="yes">
 					<structure name="+">
 						<string name="name" />
@@ -16,7 +19,7 @@
 	</io>
 </fusedoc>
 */
-foreach ( $tab['buttons'] as $btn ) :
+foreach ( $item['buttons'] as $btn ) :
 	// button styling
 	$btnClass = array('btn', 'btn-sm');
 	if ( empty($btn['class']) ) $btnClass[] = 'btn-light b-1';
