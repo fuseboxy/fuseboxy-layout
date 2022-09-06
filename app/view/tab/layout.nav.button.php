@@ -38,7 +38,7 @@ foreach ( $tabItem['buttons'] as $btnKey => $btnItem ) :
 	else $btnUrl = $btnItem['url'] ?? '';
 	// button styling
 	// ===> default use [btn-light] when not specified
-	$btnClass = array('btn', 'btn-sm', 'py-0 px-1 ml-1', $btnItem['class'] ?? 'btn-light b-1');
+	$btnClass = array('btn', 'btn-xs', 'ml-1', $btnItem['class'] ?? 'btn-light b-1');
 	if ( $tabLayout['orientation'] == 'vertical' ) $btnClass[] = 'mb-n3';
 	// display button
 	?><a 
