@@ -34,7 +34,7 @@ foreach ( $tabItem['buttons'] as $btnKey => $btnItem ) :
 	// ===> default use [array-value] when both key & value are string
 	// ===> then use [url] when specified
 	// ===> otherwise empty
-	if ( !is_numeric($btnKey) and is_string($btnItem))) $btnUrl = $btnItem;
+	if ( !is_numeric($btnKey) and is_string($btnItem) ) $btnUrl = $btnItem;
 	else $btnUrl = $btnItem['url'] ?? '';
 	// button styling
 	// ===> default use [btn-light] when not specified
