@@ -75,7 +75,7 @@ if ( $tabLayout['justify'] === true ) {
 				if ( is_string($item) ) $item = array('name' => $item);
 				elseif ( !is_numeric($itemKey) and empty($item['name']) ) $item['name'] = $itemKey;
 				// prepare item class
-				$itemClass = array('nav-item');
+				$itemClass = array('nav-item', 'position-relative');
 				if ( !empty($item['class']) ) $itemClass[] = $item['class'];
 				if ( !empty($item['attr']['class']) ) $itemClass[] = $item['attr']['class'];
 				$itemClass[] = ( $tabLayout['orientation'] == 'vertical' ) ? 'mb-1' : 'mr-1';
@@ -86,7 +86,7 @@ if ( $tabLayout['justify'] === true ) {
 				?><li <?php foreach ( $itemAttr as $key => $val ) echo $key.'="'.$val.'" '; ?>><?php
 					// buttons (for vertical orientation)
 					if ( !empty($item['buttons']) and $tabLayout['orientation'] == 'vertical' ) :
-						?><div class="float-right"><?php
+						?><div class="position-absolute" style="right: 1.5rem;"><?php
 							$tabItem = $item;
 							include F::appPath('view/tab/layout.nav.button.php');
 						?></div><?php
