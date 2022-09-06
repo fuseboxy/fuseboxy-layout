@@ -39,7 +39,7 @@ foreach ( $tabItem['buttons'] as $btnKey => $btnItem ) :
 	// button styling
 	// ===> default use [btn-light] when not specified
 	$btnClass = array('btn btn-xs ml-1');
-	if ( !empty($btnItem['class']) ) $btnClass[] = 'btn-light b-1';
+	if ( empty($btnItem['class']) ) $btnClass[] = 'btn-light b-1';
 	// display button
 	?><a 
 		class="<?php echo implode(' ', $btnClass); ?>"
