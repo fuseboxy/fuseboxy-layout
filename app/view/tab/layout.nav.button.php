@@ -5,10 +5,11 @@
 			<structure name="$tabLayout">
 				<string name="orientation" comments="horizontal|vertical" />
 			</structure>
-			<structure name="$item" comments="tab">
+			<structure name="$tabItem" comments="tab">
 				<array name="buttons" optional="yes">
-					<structure name="+">
-						<string name="name" />
+					<string name="~buttonName~" value="~url~" optional="yes" />
+					<structure name="~indexOrName~">
+						<string name="name" optional="yes" />
 						<string name="url" />
 						<string name="class" optional="yes" />
 					</structure>
@@ -19,16 +20,29 @@
 	</io>
 </fusedoc>
 */
-foreach ( $item['buttons'] as $btn ) :
+foreach ( $tabItem['buttons'] as $btnKey => $btnItem ) :
+	// button name
+	// ===> default use [name] when specified
+	// ===> then use [array-key] when not numeric
+	// ===> then use [array-value] when key is numeric & value is string
+	// ===> otherwise empty
+	if ( !empty($btnItem['name']) ) $btnName = $btnItem['name'];
+	elseif ( !is_numeric($btnKey) ) $btnName = $btnKey;
+	elseif (  is_string($btnItem) ) $btnName = $btnItem;
+	else $btnName = '';
+	// button url
+	// ===> default use [array-value] when both key & value are string
+	// ===> then use [url] when specified
+	// ===> otherwise empty
+	if ( !is_numeric($btnKey) and is_string($btnItem))) $btnUrl = $btnItem;
+	else $btnUrl = $btnItem['url'] ?? '';
 	// button styling
-	$btnClass = array('btn', 'btn-sm');
-	if ( empty($btn['class']) ) $btnClass[] = 'btn-light b-1';
-	$btnClass[] = 'py-0 px-1 ml-1';
+	// ===> default use [btn-light] when not specified
+	$btnClass = array('btn', 'btn-sm', 'py-0 px-1 ml-1', $btnItem['class'] ?? 'btn-light b-1');
 	if ( $tabLayout['orientation'] == 'vertical' ) $btnClass[] = 'mb-n3';
-	if ( !empty($btn['class']) ) $btnClass[] = $btn['class'];
 	// display button
 	?><a 
-		href="<?php echo $btn['url']; ?>" 
 		class="<?php echo implode(' ', $btnClass); ?>"
-	><?php echo $btn['name']; ?></a><?php
+		<?php if ( !empty($btnUrl) ) : ?>href="<?php echo $btnUrl; ?>"<?php endif; ?>
+	><?php echo $btnName; ?></a><?php
 endforeach;

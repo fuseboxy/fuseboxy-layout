@@ -87,6 +87,7 @@ if ( $tabLayout['justify'] === true ) {
 					// buttons (for vertical orientation)
 					if ( !empty($item['buttons']) and $tabLayout['orientation'] == 'vertical' ) :
 						?><div class="float-right"><?php
+							$tabItem = $item;
 							include F::appPath('view/tab/layout.nav.button.php');
 						?></div><?php
 					endif;
@@ -135,6 +136,7 @@ if ( $tabLayout['justify'] === true ) {
 					// buttons (for horizontal orientation)
 					if ( !empty($item['buttons']) and $tabLayout['orientation'] == 'horizontal' ) :
 						?><div class="d-inline-block"><?php
+							$tabItem = $item;
 							include F::appPath('view/tab/layout.nav.button.php');
 						?></div><?php
 					endif;
