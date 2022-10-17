@@ -38,5 +38,5 @@ if ( !empty($layout['title']['message']) ) :
 			?><small class="ml-2 text-muted"><?php echo $layout['title']['remark']; ?></small><?php
 		endif;
 	// close-tag
-	?></<?php echo $layout['title']['tag']; ?>"><?php
+	?></<?php echo $layout['title']['tag']; ?>><?php
 endif;
