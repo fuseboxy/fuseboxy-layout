@@ -7,7 +7,8 @@
 					<string name="tag" optional="yes" default="h1" />
 					<string name="icon" optional="yes" />
 					<string name="class" optional="yes" default="page-header border-bottom mb-4" />
-					<string name="message" />
+					<string name="text|message" optional="yes" />
+					<string name="remark" optional="yes" />
 				</structure>
 				<string name="title" optional="yes" />
 			</structure>
@@ -24,8 +25,18 @@ if ( !isset($layout['title']['class']) ) $layout['title']['class'] = 'page-heade
 
 // display
 if ( !empty($layout['title']['message']) ) :
-	echo "<{$layout['title']['tag']} class='{$layout['title']['class']}'>";
-	if ( !empty($layout['title']['icon']) ) echo "<i class='{$layout['title']['icon']}'></i>";
-	echo $layout['title']['message'];
-	echo "</{$layout['title']['tag']}>";
+	// open-tag & class
+	?><<?php echo $layout['title']['tag']; ?> class="<?php echo ['title']['class']; ?>"><?php
+		// icon
+		if ( !empty($layout['title']['icon']) ) :
+			?><i class="<?php echo $layout['title']['icon']; ?>"></i><?php
+		endif;
+		// message
+		echo $layout['title']['title'] ?? $layout['title']['message'] ?? '';
+		// remark
+		if ( !empty($layout['title']['remark']) ) :
+			?><small class="ml-2 text-muted"><?php echo $layout['title']['remark']; ?></small><?php
+		endif;
+	// close-tag
+	?></<?php echo $layout['title']['tag']; ?>"><?php
 endif;

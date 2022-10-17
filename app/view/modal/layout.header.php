@@ -7,8 +7,11 @@
 				<boolean name="headerClose" optional="yes" default="true" />
 				<string name="title" optional="yes" />
 				<structure name="title" optional="yes">
-					<string name="text" />
-					<string name="class" />
+					<string name="tag" optional="yes" default="div" />
+					<string name="icon" optional="yes" />
+					<string name="class" optional="yes" />
+					<string name="text|message" optional="yes" />
+					<string name="remark" optional="yes" />
 				</structure>
 				<array name="nav">
 					<structure name="~menuNameOptional~">
@@ -44,11 +47,26 @@ if ( !empty($modalLayout['header']) ) :
 
 // display modal title, or...
 elseif ( !empty($modalLayout['title']) ) :
-	// fix format
-	if ( is_string($modalLayout['title']) ) $modalLayout['title'] = array('text' => $modalLayout['title'], 'class' => 'h5');
+	// default format
+	if ( is_string($modalLayout['title']) ) $modalLayout['title'] = array(
+		'tag' => 'div',
+		'class' => 'h5',
+		'text' => $modalLayout['title'],
+	);
 	?><header class="modal-header"><?php
-		// title
-		?><div class="modal-title <?php echo $modalLayout['title']['class']; ?>"><?php echo $modalLayout['title']['text']; ?></div><?php
+		// title tag & class
+		?><<?php echo $modalLayout['title']['tag']; ?> class="modal-title <?php echo $modalLayout['title']['class'] ?? ''; ?>"><?php
+			// icon
+			if ( !empty($modalLayout['title']['icon']) ) :
+				?><i class="<?php echo $modalLayout['title']['icon']; ?>"></i><?php
+			endif;
+			// title
+			echo $modalLayout['title']['text'] ?? $modalLayout['title']['message'] ?? '';
+			// remark
+			if ( !empty($modalLayout['title']['remark']) ) :
+				?><small class="ml-2 text-muted"><?php echo $modalLayout['title']['remark']; ?></small><?php
+			endif;
+		?></<?php echo $modalLayout['title']['tag']; ?>><?php
 		// close
 		if ( $modalLayout['headerClose'] ) :
 			?><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php
