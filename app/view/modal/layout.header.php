@@ -47,15 +47,14 @@ if ( !empty($modalLayout['header']) ) :
 
 // display modal title, or...
 elseif ( !empty($modalLayout['title']) ) :
-	// default format
-	if ( is_string($modalLayout['title']) ) $modalLayout['title'] = array(
-		'tag' => 'div',
-		'class' => 'h5',
-		'text' => $modalLayout['title'],
-	);
+	// fix format
+	if ( is_string($modalLayout['title']) ) $modalLayout['title'] = array('text' => $modalLayout['title']);
+	if ( !isset($modalLayout['title']['tag']) ) $modalLayout['title']['tag'] = 'div';
+	if ( !isset($modalLayout['title']['class']) ) $modalLayout['title']['class'] = 'h5';
+	// display header
 	?><header class="modal-header"><?php
-		// title tag & class
-		?><<?php echo $modalLayout['title']['tag']; ?> class="modal-title <?php echo $modalLayout['title']['class'] ?? ''; ?>"><?php
+		// tag & class
+		?><<?php echo $modalLayout['title']['tag']; ?> class="modal-title <?php echo $modalLayout['title']['class']; ?>"><?php
 			// icon
 			if ( !empty($modalLayout['title']['icon']) ) :
 				?><i class="<?php echo $modalLayout['title']['icon']; ?>"></i><?php

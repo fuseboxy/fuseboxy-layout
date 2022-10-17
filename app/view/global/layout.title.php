@@ -26,7 +26,7 @@ if ( !isset($layout['title']['class']) ) $layout['title']['class'] = 'page-heade
 // display
 if ( !empty($layout['title']['message']) ) :
 	// open-tag & class
-	?><<?php echo $layout['title']['tag']; ?> class="<?php echo ['title']['class']; ?>"><?php
+	?><<?php echo $layout['title']['tag']; ?> class="<?php echo $layout['title']['class']; ?>"><?php
 		// icon
 		if ( !empty($layout['title']['icon']) ) :
 			?><i class="<?php echo $layout['title']['icon']; ?>"></i><?php
