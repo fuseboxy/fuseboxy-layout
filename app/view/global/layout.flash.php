@@ -7,7 +7,7 @@
 				<string name="type" optional="yes" default="primary" comments="primary|secondary|success|info|warning|danger|light|dark" />
 				<string name="icon" optional="yes" />
 				<string name="heading" optional="yes" />
-				<string name="message" />
+				<string name="message" optional="yes" />
 			</structure>
 		</in>
 		<out />
@@ -37,6 +37,8 @@ if ( isset($arguments['flash']) ) :
 		if ( !empty($arguments['flash']['heading']) ) :
 			?><span class="mr-1"><strong><?php echo $arguments['flash']['heading']; ?></strong></span><?php
 		endif;
-		?><span><?php echo $arguments['flash']['message']; ?></span><?php
+		if ( !empty($arguments['flash']['message']) ) :
+			?><span><?php echo $arguments['flash']['message']; ?></span><?php
+		endif;
 	?></div><?php
 endif;
