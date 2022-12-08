@@ -15,21 +15,17 @@
 </fusedoc>
 */
 // cross-page
-if ( isset($_SESSION['flash']) ) {
+if ( isset($_SESSION['flash']) ) :
 	$arguments['flash'] = $_SESSION['flash'];
 	unset($_SESSION['flash']);
-}
+endif;
 // default
-if ( isset($arguments['flash']) ) {
-	if ( !is_array($arguments['flash']) ) {
-		$arguments['flash'] = array('message' => $arguments['flash']);
-	}
-	if ( empty($arguments['flash']['type']) ) {
-		$arguments['flash']['type'] = 'primary';
-	}
-}
+if ( !empty($arguments['flash']) ) :
+	if ( !is_array($arguments['flash']) ) $arguments['flash'] = array('message' => $arguments['flash']);
+	if ( empty($arguments['flash']['type']) ) $arguments['flash']['type'] = 'primary';
+endif;
 // display (when necessary)
-if ( isset($arguments['flash']) ) :
+if ( !empty($arguments['flash']) ) :
 	?><div id="flash" class="alert alert-<?php echo $arguments['flash']['type']; ?>"><?php
 		if ( !empty($arguments['flash']['icon']) ) :
 			?><span class="mr-1"><i class="<?php echo $arguments['flash']['icon']; ?>"></i></span><?php

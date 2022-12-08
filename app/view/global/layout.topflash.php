@@ -15,22 +15,18 @@
 </fusedoc>
 */
 // cross-page
-if ( isset($_SESSION['topFlash']) ) {
+if ( isset($_SESSION['topFlash']) ) :
 	$arguments['topFlash'] = $_SESSION['topFlash'];
 	unset($_SESSION['topFlash']);
-}
+endif;
 // default
-if ( isset($arguments['topFlash']) ) {
-	if ( !is_array($arguments['topFlash']) ) {
-		$arguments['topFlash'] = array('message' => $arguments['topFlash']);
-	}
-	if ( empty($arguments['topFlash']['type']) ) {
-		$arguments['topFlash']['type'] = 'primary text-white';
-	}
-}
-?>
-<?php if ( isset($arguments['topFlash']) ) : ?>
-	<div id="top-flash" class="navbar-dark bg-<?php echo $arguments['topFlash']['type']; ?>">
+if ( !empty($arguments['topFlash']) ) :
+	if ( !is_array($arguments['topFlash']) ) $arguments['topFlash'] = array('message' => $arguments['topFlash']);
+	if ( empty($arguments['topFlash']['type']) ) $arguments['topFlash']['type'] = 'primary text-white';
+endif;
+// display (when necessary)
+if ( !empty($arguments['topFlash']) ) :
+	?><div id="top-flash" class="navbar-dark bg-<?php echo $arguments['topFlash']['type']; ?>">
 		<div class="container py-2 text-center">
 			<?php if ( !empty($arguments['topFlash']['icon']) ) : ?>
 				<i class="<?php echo $arguments['topFlash']['icon']; ?>"></i>
@@ -40,5 +36,5 @@ if ( isset($arguments['topFlash']) ) {
 			<?php endif; ?>
 			<?php echo $arguments['topFlash']['message']; ?>
 		</div>
-	</div>
-<?php endif; ?>
+	</div><?php
+endif;
