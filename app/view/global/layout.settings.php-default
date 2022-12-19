@@ -1,7 +1,12 @@
 <?php /*
 <fusedoc>
 	<io>
-		<in />
+		<in>
+			<structure name="$layout">
+				<array name="js" optional="yes" />
+				<array name="css" optional="yes" />
+			</structure>
+		</in>
 		<out>
 			<structure name="$layout">
 				<string name="metaTitle" comments="showing at browser tab" />
@@ -9,6 +14,8 @@
 				<structure name="logo|brand" optional="yes">
 					<string name="~breakpoint~" comments="empty is the default" />
 				</structure>
+				<array name="js" comments="merged" />
+				<array name="css" comments="merged" />
 			</structure>
 			<structure name="nav|navRight" scope="$arguments">
 				<string name="icon" optional="yes" />
@@ -47,6 +54,22 @@ $layout['metaTitle'] = '';
 // brand name
 $layout['logo'] = '';
 $layout['brand'] = 'Fuseboxy Layout';
+
+
+// javascript
+$layout['js'] = array_merge([
+
+], $layout['js'] ?? [], [
+
+]);
+
+
+// stylesheet
+$layout['css'] = array_merge([
+
+], $layout['css'] ?? [], [
+
+]);
 
 
 // left menu
