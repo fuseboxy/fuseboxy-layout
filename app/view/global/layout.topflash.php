@@ -33,7 +33,7 @@ if ( !empty($arguments['topFlash']) ) :
 				?><i class="<?php echo $arguments['topFlash']['icon']; ?>"></i> <?php
 			endif;
 			// heading
-			if ( !empty($arguments['topFlash']['title'] ?? $arguments['topFlash']['heading']) ) :
+			if ( !empty($arguments['topFlash']['title']) or !empty($arguments['topFlash']['heading']) ) :
 				?><strong><?php echo $arguments['topFlash']['title'] ?? $arguments['topFlash']['heading']; ?></strong> <?php
 			endif;
 			// message
