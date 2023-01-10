@@ -36,26 +36,26 @@
 	// jquery & bootstrap
 	?><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-	<link rel="stylesheet" href="https://cdn.statically.io/bb/henrygotmojo/bootstrap-extend/4.4.4/bootstrap.extend.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/henrygotmojo/bootstrap-extend@4.4.4/bootstrap.extend.css" />
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-	<script src="https://cdn.statically.io/bb/henrygotmojo/bootstrap-extend/4.4.4/bootstrap.extend.js"></script><?php
+	<script src="https://cdn.jsdelivr.net/gh/henrygotmojo/bootstrap-extend@4.4.4/bootstrap.extend.js"></script><?php
 	// captcha
 	if ( !empty(F::config('captcha')) ) echo Captcha::api();
 	// scaffold
 	if ( class_exists('Scaffold') ) :
 		?><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.css" />
-		<link rel="stylesheet" href="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-scaffold-asset/2.1.8/fuseboxy.scaffold.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/henrygotmojo/fuseboxy-scaffold-asset@2.1.8/fuseboxy.scaffold.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.js"></script>
-		<script src="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-scaffold-asset/2.1.8/fuseboxy.scaffold.js"></script><?php
+		<script src="https://cdn.jsdelivr.net/gh/henrygotmojo/fuseboxy-scaffold-asset@2.1.8/fuseboxy.scaffold.js"></script><?php
 	endif;
 	// webform
 	if ( class_exists('Webform') ) :
-		?><link rel="stylesheet" href="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-webform-asset/0.9.1/fuseboxy.webform.css" />
+		?><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/henrygotmojo/fuseboxy-webform-asset@0.9.1/fuseboxy.webform.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jSignature/2.1.3/jSignature.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
-		<script src="https://cdn.statically.io/bb/henrygotmojo/fuseboxy-webform-asset/0.9.1/fuseboxy.webform.js"></script><?php
+		<script src="https://cdn.jsdelivr.net/gh/henrygotmojo/fuseboxy-webform-asset@0.9.1/fuseboxy.webform.js"></script><?php
 	endif;
 	// scaffold & webform
 	if ( class_exists('Scaffold') or class_exists('Webform') ) :
