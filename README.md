@@ -101,6 +101,7 @@ endswitch;
 	<string name="headerClass" optional="yes" default="h4 mb-3" />
 	<string name="footer" optional="yes" />
 	<string name="footerClass" optional="yes" default="mt-3" />
+	<number name="navWidth" optional="yes" default="2" comments="12-base grid layout" />
 	<array name="nav">
 		<structure name="~tabNameOptional~">
 			<string name="name" optional="yes" />
