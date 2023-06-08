@@ -52,10 +52,10 @@
 	endif;
 	// webform
 	if ( class_exists('Webform') ) :
-		?><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/henrygotmojo/fuseboxy-webform-asset@0.9.1/fuseboxy.webform.css" />
+		?><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/henrygotmojo/fuseboxy-webform-asset@0.9.2/fuseboxy.webform.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jSignature/2.1.3/jSignature.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/henrygotmojo/fuseboxy-webform-asset@0.9.1/fuseboxy.webform.js"></script><?php
+		<script src="https://cdn.jsdelivr.net/gh/henrygotmojo/fuseboxy-webform-asset@0.9.2/fuseboxy.webform.js"></script><?php
 	endif;
 	// scaffold & webform
 	if ( class_exists('Scaffold') or class_exists('Webform') ) :
