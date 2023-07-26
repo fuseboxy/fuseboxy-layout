@@ -7,7 +7,7 @@
 					<string name="tag" optional="yes" default="h1" />
 					<string name="icon" optional="yes" />
 					<string name="class" optional="yes" default="page-header border-bottom mb-4" />
-					<string name="text|message" optional="yes" />
+					<string name="message|text|title" optional="yes" />
 					<string name="remark" optional="yes" />
 				</structure>
 				<string name="title" optional="yes" />
@@ -32,7 +32,7 @@ if ( !empty($layout['title']['message']) ) :
 			?><i class="<?php echo $layout['title']['icon']; ?>"></i><?php
 		endif;
 		// message
-		echo $layout['title']['title'] ?? $layout['title']['message'] ?? '';
+		echo $layout['title']['message'] ?? $layout['title']['text'] ?? $layout['title']['title'] ?? '';
 		// remark
 		if ( !empty($layout['title']['remark']) ) :
 			?><small class="ml-2 text-muted"><?php echo $layout['title']['remark']; ?></small><?php

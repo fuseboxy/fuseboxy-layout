@@ -10,7 +10,7 @@
 					<string name="tag" optional="yes" default="div" />
 					<string name="icon" optional="yes" />
 					<string name="class" optional="yes" />
-					<string name="text|message" optional="yes" />
+					<string name="message|text|title" optional="yes" />
 					<string name="remark" optional="yes" />
 				</structure>
 				<array name="nav">
@@ -48,7 +48,7 @@ if ( !empty($modalLayout['header']) ) :
 // display modal title, or...
 elseif ( !empty($modalLayout['title']) ) :
 	// fix format
-	if ( is_string($modalLayout['title']) ) $modalLayout['title'] = array('text' => $modalLayout['title']);
+	if ( is_string($modalLayout['title']) ) $modalLayout['title'] = array('message' => $modalLayout['title']);
 	if ( !isset($modalLayout['title']['tag']) ) $modalLayout['title']['tag'] = 'div';
 	if ( !isset($modalLayout['title']['class']) ) $modalLayout['title']['class'] = 'h5';
 	// display header
@@ -60,7 +60,7 @@ elseif ( !empty($modalLayout['title']) ) :
 				?><i class="<?php echo $modalLayout['title']['icon']; ?>"></i><?php
 			endif;
 			// title
-			echo $modalLayout['title']['text'] ?? $modalLayout['title']['message'] ?? '';
+			echo $modalLayout['title']['message'] ?? $modalLayout['title']['text'] ?? $modalLayout['title']['title'] ?? '';
 			// remark
 			if ( !empty($modalLayout['title']['remark']) ) :
 				?><small class="ml-2 text-muted"><?php echo $modalLayout['title']['remark']; ?></small><?php
