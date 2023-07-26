@@ -24,7 +24,7 @@ if ( !isset($layout['title']['tag']) ) $layout['title']['tag'] = 'h1';
 if ( !isset($layout['title']['class']) ) $layout['title']['class'] = 'page-header mb-4';
 
 // display
-if ( !empty($layout['title']['message']) ) :
+if ( !empty($layout['title']) ) :
 	// open-tag & class
 	?><<?php echo $layout['title']['tag']; ?> class="<?php echo $layout['title']['class']; ?>"><?php
 		// icon
