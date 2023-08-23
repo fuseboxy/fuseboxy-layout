@@ -9,18 +9,6 @@
 			<structure name="$layout">
 				<string name="metaTitle" optional="yes" />
 				<string name="content" optional="yes" />
-				<array name="js" optional="yes">
-					<string name="+" value="~src~" optional="yes" />
-					<structure name="+" optional="yes">
-						<string name="src|integrity|crossorigin|.." />
-					</structure>
-				</array>
-				<array name="css" optional="yes">
-					<string name="+" value="~href~" optional="yes" />
-					<structure name="+" optional="yes">
-						<string name="href|integrity|crossorigin|.." />
-					</structure>
-				</array>
 			</structure>
 		</in>
 		<out />
