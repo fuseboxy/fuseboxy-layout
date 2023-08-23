@@ -23,8 +23,14 @@ if ( isset($layout['title']) and is_string($layout['title']) ) $layout['title'] 
 if ( !isset($layout['title']['tag']) ) $layout['title']['tag'] = 'h1';
 if ( !isset($layout['title']['class']) ) $layout['title']['class'] = 'page-header mb-4';
 
-// display
-if ( !empty($layout['title']) ) :
+// display (when anything in title)
+if (
+	!empty($layout['title']['icon']) or 
+	!empty($layout['title']['message']) or
+	!empty($layout['title']['text']) or
+	!empty($layout['title']['title']) or
+	!empty($layout['title']['remark'])
+) :
 	// open-tag & class
 	?><<?php echo $layout['title']['tag']; ?> class="<?php echo $layout['title']['class']; ?>"><?php
 		// icon
