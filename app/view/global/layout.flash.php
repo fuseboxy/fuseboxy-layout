@@ -21,5 +21,5 @@ if ( isset($_SESSION['flash']) ) :
 endif;
 // display (when necessary)
 if ( !empty($arguments['flash']) ) :
-	F::alert(array_merge($arguments['flash'], [ 'id' => 'flash' ]));
+	?><div id="flash"><?php F::alert($arguments['flash']); ?></div><?php
 endif;
