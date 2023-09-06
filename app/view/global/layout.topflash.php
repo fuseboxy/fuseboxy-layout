@@ -6,6 +6,7 @@
 			<structure name="topFlash" scope="$arguments|$_SESSION">
 				<string name="icon" optional="yes" />
 				<string name="type" optional="yes" default="primary text-white" comments="primary|secondary|success|info|warning|danger|light|dark" />
+				<string name="titleClass" optional="yes" default="h6" />
 				<string name="title|heading" optional="yes" />
 				<string name="message" optional="yes" />
 			</structure>
@@ -21,8 +22,9 @@ if ( isset($_SESSION['topFlash']) ) :
 endif;
 // default
 if ( !empty($arguments['topFlash']) ) :
-	if ( !is_array($arguments['topFlash']) ) $arguments['topFlash'] = array('message' => $arguments['topFlash']);
-	if ( empty($arguments['topFlash']['type']) ) $arguments['topFlash']['type'] = 'primary text-white';
+	if ( is_string($arguments['topFlash']) ) $arguments['topFlash'] = array('message' => $arguments['topFlash']);
+	$arguments['topFlash']['type'] = $arguments['topFlash']['type'] ?? 'primary text-white';
+	$arguments['topFlash']['titleClass'] = $arguments['topFlash']['titleClass'] ?? 'h6';
 endif;
 // display (when necessary)
 if ( !empty($arguments['topFlash']) ) :
@@ -30,15 +32,15 @@ if ( !empty($arguments['topFlash']) ) :
 		<div class="container py-2 text-center"><?php
 			// icon
 			if ( !empty($arguments['topFlash']['icon']) ) :
-				?><i class="<?php echo $arguments['topFlash']['icon']; ?>"></i> <?php
+				?><span class="mr-2"><i class="<?php echo $arguments['topFlash']['icon']; ?>"></i></span><?php
 			endif;
 			// heading
 			if ( !empty($arguments['topFlash']['title']) or !empty($arguments['topFlash']['heading']) ) :
-				?><strong><?php echo $arguments['topFlash']['title'] ?? $arguments['topFlash']['heading']; ?></strong> <?php
+				?><span class="<?php echo $arguments['topFlash']['titleClass']; ?> mr-2"><?php echo $arguments['topFlash']['title'] ?? $arguments['topFlash']['heading']; ?></span><?php
 			endif;
 			// message
 			if ( !empty($arguments['topFlash']['message']) ) :
-				?><span><?php echo $arguments['topFlash']['message']; ?></span> <?php
+				?><span><?php echo $arguments['topFlash']['message']; ?></span><?php
 			endif;
 		?></div>
 	</div><?php
