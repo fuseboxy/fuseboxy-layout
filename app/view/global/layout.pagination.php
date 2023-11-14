@@ -10,6 +10,7 @@
 				<number name="recordCount" />
 				<number name="recordPerPage" optional="yes" default="10" />
 				<number name="pageVisible" optional="yes" default="999" />
+				<boolean name="allowShowAll" optional="yes" default="true" />
 			</structure>
 			<boolean name="showAll" scope="$arguments" optional="yes" />
 		</in>
@@ -23,6 +24,7 @@ if ( isset($arguments['pagination']) ) :
 	// param default
 	$arguments['pagination']['recordPerPage'] = !empty($arguments['pagination']['recordPerPage']) ? $arguments['pagination']['recordPerPage'] : 10;
 	$arguments['pagination']['pageVisible']   = !empty($arguments['pagination']['pageVisible'])   ? $arguments['pagination']['pageVisible']   : 999;
+	$arguments['pagination']['allowShowAll']  = $arguments['pagination']['allowShowAll'] ?? true;
 	// calculate number of pages
 	$page_count = ceil( $arguments['pagination']['recordCount'] / $arguments['pagination']['recordPerPage'] );
 	if ( !empty($arguments['showAll']) ) $page_count = 1;
@@ -103,7 +105,7 @@ if ( isset($arguments['pagination']) ) :
 			?></ul><!--/.pagination--><?php
 		endif; // if-multiple-pages
 		// show all button (when necessary)
-		if ( $page_count > 1 or !empty($arguments['showAll']) ) :
+		if ( $arguments['pagination']['allowShowAll'] and ( $page_count > 1 or !empty($arguments['showAll']) ) ) :
 			$btnLink = empty($arguments['showAll']) ? ( $url_without_page.( ( strpos($url_without_page, '?') === false ) ? '?' : '&' ).'showAll=1' ) : $url_without_page;
 			$btnText = empty($arguments['showAll']) ? 'Show all' : "Show {$arguments['pagination']['recordPerPage']} per page";
 			?><a href="<?php echo $btnLink; ?>" class="btn btn-primary btn-show-all border-0 ml-3"><?php echo $btnText; ?></em></a><?php
