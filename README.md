@@ -1,5 +1,14 @@
-Fuseboxy Layout (v2.x)
-======================
+Fuseboxy Layout (2.x)
+=====================
+
+
+Fuseboxy Core 1.x
+Bootstrap 4.x
+jQuery 1.x
+
+
+--
+
 
 
 ## Prerequisites
