@@ -10,7 +10,6 @@ jQuery 1.x
 --
 
 
-
 ## Prerequisites
 
 #### PHP Settings
