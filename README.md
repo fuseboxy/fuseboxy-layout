@@ -1,4 +1,4 @@
-Fuseboxy Layout (2.x)
+Fuseboxy Layout (1.x)
 =====================
 
 
