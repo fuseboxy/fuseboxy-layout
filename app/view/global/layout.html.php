@@ -33,17 +33,17 @@
 	// scaffold
 	if ( class_exists('Scaffold') ) :
 		?><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.css" />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fuseboxy/fuseboxy-scaffold-asset@2.2/fuseboxy.scaffold.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fuseboxy/fuseboxy-scaffold-asset@1.2.1/fuseboxy.scaffold.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/fuseboxy/fuseboxy-scaffold-asset@2.2/fuseboxy.scaffold.js"></script><?php
+		<script src="https://cdn.jsdelivr.net/gh/fuseboxy/fuseboxy-scaffold-asset@1.2.1/fuseboxy.scaffold.js"></script><?php
 	endif;
 	// webform
 	if ( class_exists('Webform') ) :
-		?><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fuseboxy/fuseboxy-webform-asset@0.9.2/fuseboxy.webform.css" />
+		?><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fuseboxy/fuseboxy-webform-asset@1.0.0/fuseboxy.webform.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jSignature/2.1.3/jSignature.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/fuseboxy/fuseboxy-webform-asset@0.9.2/fuseboxy.webform.js"></script><?php
+		<script src="https://cdn.jsdelivr.net/gh/fuseboxy/fuseboxy-webform-asset@1.0.0/fuseboxy.webform.js"></script><?php
 	endif;
 	// scaffold & webform
 	if ( class_exists('Scaffold') or class_exists('Webform') ) :
